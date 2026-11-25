@@ -201,7 +201,8 @@ p {
 }
 
 .field input,
-.field select {
+.field select,
+.field .select-trigger {
   height: 54px;
   padding: 0 16px;
   border-radius: var(--radius-control);
@@ -212,8 +213,19 @@ p {
 }
 
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field .select-trigger:focus {
   border-color: var(--blue);
+}
+
+.field input[type='number'] {
+  appearance: textfield;
+}
+
+.field input[type='number']::-webkit-inner-spin-button,
+.field input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
 }
 
 /* Status and empty states */
@@ -1887,7 +1899,42 @@ p {
 
 .settings-range {
   width: min(100%, 260px);
-  accent-color: var(--blue);
+  appearance: none;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.settings-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
+.settings-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
+.settings-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.settings-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue);
 }
 
 .settings-hint {
@@ -4009,7 +4056,77 @@ p {
   height: 20px;
   margin: 0;
   flex-shrink: 0;
-  accent-color: var(--blue);
+  appearance: none;
+  border: 2px solid var(--border-strong);
+  border-radius: 5px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.library-saved input:checked,
+.library-check:checked {
+  border-color: var(--blue);
+  background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m4 10 4 4 8-8' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+
+@media (forced-colors: active) {
+  .library-saved input,
+  .library-check,
+  .settings-range { appearance: auto; }
+}
+
+.select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.select-trigger > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select-trigger:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.select-menu {
+  z-index: 100;
+  min-width: var(--radix-select-trigger-width);
+  max-width: min(90vw, 420px);
+  max-height: var(--radix-select-content-available-height);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(23 24 26 / 12%);
+}
+
+.select-viewport {
+  padding: 6px;
+}
+
+.select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  outline: none;
+  cursor: pointer;
+}
+
+.select-option[data-highlighted] {
+  background: var(--blue-tint);
+  color: var(--blue-strong);
 }
 
 .library-card {

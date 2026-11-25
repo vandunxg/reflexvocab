@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
+import { Select } from '../components/Select';
 import { Icon, type IconName } from '../components/Icon';
 import { StartPractice } from '../components/StartPractice';
 import type { ExerciseKind, SessionConfig } from '../domain/model';
@@ -72,16 +73,16 @@ export function PracticePage() {
         <p>{t('practice.customBody')}</p>
         <div className="practice-fields">
           <label className="field">{t('practice.topic')}
-            <select value={topic} onChange={(event) => setTopic(event.target.value)}>
+            <Select value={topic} onValueChange={setTopic}>
               <option value="">{t('library.allTopics')}</option>
               {catalog.topics.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
-            </select>
+            </Select>
           </label>
           <label className="field">{t('practice.kind')}
-            <select value={kind} onChange={(event) => setKind(event.target.value as ExerciseKind | '')}>
+            <Select value={kind} onValueChange={(value) => setKind(value as ExerciseKind | '')}>
               <option value="">{t('practice.allKinds')}</option>
               {KINDS.map((item) => <option key={item} value={item}>{t(`session.kinds.${item}`)}</option>)}
-            </select>
+            </Select>
           </label>
           <label className="field">{t('practice.budget')}
             <input type="number" min={1} max={30} value={budget}

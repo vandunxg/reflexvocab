@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
 import type { InterfaceLocale, UserSettings } from '../domain/model';
 import { DAILY_MINUTE_OPTIONS, NEW_WORD_OPTIONS } from '../domain/settings';
+import { Select } from '../components/Select';
 import { Icon } from '../components/Icon';
 import { audio, useEnglishVoices } from '../features/audio/audio';
 
@@ -99,22 +100,22 @@ export function SettingsPage() {
             <label htmlFor="minutes" className="settings-label">{t('settings.habit.minutes')}</label>
             <p id="minutes-hint" className="settings-hint">{t('settings.habit.minutesHint')}</p>
           </div>
-          <select id="minutes" className="settings-control" aria-describedby="minutes-hint" value={minutes}
-            onChange={(event) => edit(setMinutes)(Number(event.target.value))}>
+          <Select id="minutes" className="settings-control" aria-describedby="minutes-hint" value={minutes}
+            onValueChange={(value) => edit(setMinutes)(Number(value))}>
             {withSaved(DAILY_MINUTE_OPTIONS, minutes).map((value) => (
               <option key={value} value={value}>{t('settings.habit.minutesOption', { minutes: value })}</option>
             ))}
-          </select>
+          </Select>
         </div>
         <div className="settings-row">
           <div className="settings-row-text">
             <label htmlFor="new-words" className="settings-label">{t('settings.habit.newWords')}</label>
             <p id="new-words-hint" className="settings-hint">{t('settings.habit.newWordsHint')}</p>
           </div>
-          <select id="new-words" className="settings-control" aria-describedby="new-words-hint" value={newPerDay}
-            onChange={(event) => edit(setNewPerDay)(Number(event.target.value))}>
+          <Select id="new-words" className="settings-control" aria-describedby="new-words-hint" value={newPerDay}
+            onValueChange={(value) => edit(setNewPerDay)(Number(value))}>
             {withSaved(NEW_WORD_OPTIONS, newPerDay).map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
+          </Select>
         </div>
         <div className="settings-row">
           <div className="settings-row-text">
@@ -123,20 +124,20 @@ export function SettingsPage() {
               {t('settings.habit.timezoneHint')} <span className="settings-local-time">{t('settings.habit.timezoneNow', { date: localNow })}</span>
             </p>
           </div>
-          <select id="timezone" className="settings-control" aria-describedby="timezone-hint" value={timezone}
-            onChange={(event) => edit(setTimezone)(event.target.value)}>
+          <Select id="timezone" className="settings-control" aria-describedby="timezone-hint" value={timezone}
+            onValueChange={edit(setTimezone)}>
             {withSaved(TIMEZONES, timezone).map((value) => <option key={value} value={value}>{value}</option>)}
-          </select>
+          </Select>
         </div>
         <div className="settings-row">
           <div className="settings-row-text">
             <label htmlFor="locale" className="settings-label">{t('settings.habit.language')}</label>
             <p id="locale-hint" className="settings-hint">{t('settings.habit.languageHint')}</p>
           </div>
-          <select id="locale" className="settings-control" aria-describedby="locale-hint" value={locale}
-            onChange={(event) => edit(setLocale)(event.target.value as InterfaceLocale)}>
+          <Select id="locale" className="settings-control" aria-describedby="locale-hint" value={locale}
+            onValueChange={(value) => edit(setLocale)(value as InterfaceLocale)}>
             {LOCALES.map((value) => <option key={value} value={value} lang={value}>{t(`settings.habit.languages.${value}`)}</option>)}
-          </select>
+          </Select>
         </div>
       </section>
 
@@ -152,17 +153,17 @@ export function SettingsPage() {
         )}
         <div className="settings-row">
           <label htmlFor="voice" className="settings-label">{t('settings.audio.voice')}</label>
-          <select
+          <Select
             id="voice"
             className="settings-control"
             value={voiceId ?? ''}
             disabled={!canSpeak}
-            onChange={(event) => edit(setVoiceId)(event.target.value || null)}
+            onValueChange={(value) => edit(setVoiceId)(value || null)}
           >
             <option value="">{t('settings.audio.defaultVoice')}</option>
             {voiceMissing && <option value={voiceId}>{t('settings.audio.missingVoice')}</option>}
             {voices.map((voice) => <option key={voice.id} value={voice.id}>{`${voice.name} (${voice.lang})`}</option>)}
-          </select>
+          </Select>
         </div>
         {voiceMissing && <p className="settings-hint settings-row-note" role="status">{t('settings.audio.missingNote')}</p>}
         <div className="settings-row">

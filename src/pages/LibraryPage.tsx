@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
 import type { MasteryStage } from '../domain/model';
 import { buildQueue, MAX_QUESTION_BUDGET } from '../domain/session';
+import { Select } from '../components/Select';
 import { Icon } from '../components/Icon';
 import { StartPractice } from '../components/StartPractice';
 import { LibraryRow, type LibraryEntry } from '../features/library/LibraryRow';
@@ -101,18 +102,18 @@ export function LibraryPage() {
           <Icon name="search" size={20} />
           <input type="search" value={query} placeholder={t('library.searchPlaceholder')} onChange={(event) => setQuery(event.target.value)} />
         </label>
-        <select className="library-select" aria-label={t('library.topicLabel')} value={topicId} onChange={(event) => setTopicId(event.target.value)}>
+        <Select className="library-select" aria-label={t('library.topicLabel')} value={topicId} onValueChange={setTopicId}>
           <option value="">{t('library.allTopics')}</option>
           {catalog.topics.map((topic) => <option key={topic.id} value={topic.id} lang="en">{topic.title}</option>)}
-        </select>
-        <select className="library-select" aria-label={t('library.levelLabel')} value={levelId} onChange={(event) => setLevelId(event.target.value)}>
+        </Select>
+        <Select className="library-select" aria-label={t('library.levelLabel')} value={levelId} onValueChange={setLevelId}>
           <option value="">{t('library.allLevels')}</option>
           {levels.map((id) => <option key={id} value={id}>{levelName(t, id)}</option>)}
-        </select>
-        <select className="library-select" aria-label={t('library.stageLabel')} value={stage} onChange={(event) => setStage(event.target.value as MasteryStage | '')}>
+        </Select>
+        <Select className="library-select" aria-label={t('library.stageLabel')} value={stage} onValueChange={(value) => setStage(value as MasteryStage | '')}>
           <option value="">{t('library.allStages')}</option>
           {STAGES.map((value) => <option key={value} value={value}>{t(`mastery.${value}`)}</option>)}
-        </select>
+        </Select>
         <label className="library-saved">
           <input type="checkbox" checked={savedOnly} onChange={(event) => setSavedOnly(event.target.checked)} />
           {t('library.saved')}
