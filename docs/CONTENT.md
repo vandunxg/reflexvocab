@@ -1,6 +1,6 @@
 # Vocabulary content strategy
 
-The intended dataset combines frequency-informed sequencing with TOEIC topics, contextual meanings, and collocations. The eventual target is approximately 1,000 reviewed learning items. The [starter seed](../supabase/seed.sql) includes three original workplace-English senses and six exercises as development material. It contains no official test questions and makes no frequency or exam-level claim.
+The intended dataset combines frequency-informed sequencing with TOEIC topics, contextual meanings, and collocations. The eventual target is approximately 1,000 reviewed learning items. The [starter seed](../supabase/seed.sql) includes three original workplace-English senses and six exercises. The owner-reviewed [office follow-up batch](content/p05-office-follow-up-draft.md) adds four senses and eight exercises when [its SQL](../supabase/content/office_follow_up.sql) is applied. Both are original project-authored material, contain no official test questions and make no frequency or exam-level claim.
 
 This document specifies future authoring work. [PLAN.md](PLAN.md) locates the relevant phase tasks; [PROGRESS.md](PROGRESS.md) tracks execution. Content must satisfy [REQUIREMENTS.md](REQUIREMENTS.md), especially R03, R05, R10, and R21.
 

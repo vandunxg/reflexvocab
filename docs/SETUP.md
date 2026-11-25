@@ -8,7 +8,7 @@ Start the Docker database with `docker compose up -d --wait`. It listens only on
 `127.0.0.1:55432` with database/user `reflexvocab` and the development-only
 password `reflexvocab-local`. Its named Docker volume persists data across
 container restarts. The first initialization applies the existing migrations and
-`supabase/seed.sql`; subsequent starts do not reapply changed files. Never use
+`supabase/seed.sql` and `supabase/content/office_follow_up.sql`; subsequent starts do not reapply changed files. Never use
 `docker compose down -v` unless intentionally discarding local data.
 
 The local `auth` schema only lets PostgreSQL apply and test the existing
@@ -84,7 +84,7 @@ psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 \
   -f supabase/tests/starter_content.sql
 ```
 
-If the local Supabase stack already applied the migrations, run only the fixtures. To retain the starter catalog in the disposable environment after checks, run `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/seed.sql`. The batch does not write to learner tables. To check SQL without Supabase, a disposable PostgreSQL instance needs the API roles `anon`, `authenticated` and `service_role` (with `BYPASSRLS`), `auth.users` with a UUID primary key, and a minimal `auth.uid()` that reads the test claim. That substitute does not verify Supabase Auth or the Data API.
+If the local Supabase stack already applied the migrations, run only the fixtures. To retain the reviewed catalog in the disposable environment after checks, run `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/seed.sql -f supabase/content/office_follow_up.sql`. The batches do not write to learner tables. To check SQL without Supabase, a disposable PostgreSQL instance needs the API roles `anon`, `authenticated` and `service_role` (with `BYPASSRLS`), `auth.users` with a UUID primary key, and a minimal `auth.uid()` that reads the test claim. That substitute does not verify Supabase Auth or the Data API.
 
 The authorized hosted development project has had migrations through
 `20261125000600_spaced_retry_queue.sql` applied directly with `psql`.

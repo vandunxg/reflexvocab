@@ -13,6 +13,7 @@ services:
       - ./dev/postgres/auth.sql:/dev-setup/auth.sql:ro
       - ./supabase/migrations:/dev-setup/migrations:ro
       - ./supabase/seed.sql:/dev-setup/seed.sql:ro
+      - ./supabase/content:/dev-setup/content:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U reflexvocab -d reflexvocab"]
       interval: 2s
