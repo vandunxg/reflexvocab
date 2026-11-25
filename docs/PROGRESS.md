@@ -13,7 +13,7 @@ This is the **only execution/status tracker** for this starter. Requirements, PL
 | Work stopped after     | `submitAnswer` in `src/domain/transition.ts` validates the active item and returns feedback plus one immutable `AttemptCommit` (attempt, progress, recovery queue, cursor, completion and revision). |
 | Next task              | [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01) after closing the remaining P01 verification |
 | Next action            | Provision two dedicated hosted test accounts (owner-approved), verify signup configuration, concurrent replay and an authenticated save through the Data API, then build the shell and sign-in. |
-| Product implementation | 5 of 25 product tasks complete |
+| Product implementation | 6 of 25 product tasks complete |
 
 ## Status meanings
 
@@ -36,7 +36,7 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | [P01-T01 — Content and learning data contracts](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t01)   | `DONE`        |
 | [P01-T02 — Private authentication and ownership](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t02)  | `BLOCKED`     |
 | [P01-T03 — Learning repository and atomic writes](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t03) | `IN_PROGRESS` |
-| [P01-T04 — Starter content and import path](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t04)       | `IN_PROGRESS` |
+| [P01-T04 — Starter content and import path](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t04)       | `DONE`        |
 | [P02-T01 — Answer evaluation and evidence](phases/PHASE_02_LEARNING_CORE.md#p02-t01)                  | `DONE`        |
 | [P02-T02 — Scheduling and mastery](phases/PHASE_02_LEARNING_CORE.md#p02-t02)                          | `DONE`        |
 | [P02-T03 — Sessions and recovery](phases/PHASE_02_LEARNING_CORE.md#p02-t03)                           | `DONE`        |
@@ -91,6 +91,7 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | P01-T03 | Ran `start_session.sql`, `commit_attempt.sql` and new `spaced_retry.sql` on local Docker PostgreSQL 17, each in one rolled-back transaction with migrations `20261125000400`–`20261125000600`. | Passed. Without `20261125000600`, `spaced_retry.sql` failed on the mid-queue retry. With it, one active retry for the answered sense is accepted after the cursor; insertion before the cursor, replacing a pending item, a non-retry source, another sense and two insertions are rejected without writing an attempt. |
 | P01-T03 | With owner approval, applied `20261125000600` to hosted development in one `psql` transaction, then ran `start_session.sql`, `commit_attempt.sql` and `spaced_retry.sql` there and called the RPC anonymously through the Data API. | Passed. The function remains `SECURITY DEFINER` with an empty `search_path`, executable by `authenticated` but not `anon`; anonymous RPC returned `42501`. No fixture users, sessions or attempts remained after rollback. An end-to-end authenticated answer save through the Data API remains unverified. |
 | P02-T04 | `tests/transition.test.ts`, `node --test tests/*.test.ts` (31 passed) and `npm run check`. | A wrong first answer returns feedback and one payload with matching attempt flags, initialized progress, a recovery retry, cursor/revision advance and unchanged inputs; the final answer completes the session; mismatched exercise/version, closed session and malformed answers are rejected without a payload. A payload generated from seed exercises was accepted by `commit_learning_attempt` on local PostgreSQL and its exact replay added no second attempt. |
+| P01-T04 | `loadCatalog` (`src/lib/catalog.ts`) read through an authenticated test account's Data API session; `npm run build` followed by a search of `dist/`. | Returned 1 topic, 3 senses and 6 exercises covering all five kinds; the production bundle contains no catalog text or exercise IDs. Seed validation plus schema constraints reject broken references, missing answer keys, duplicate IDs and invalid option/chunk sets; the owner confirmed the editorial review. |
 
 The source/configuration review found no useful further scaffold refactor. Formatting left executable source and configuration unchanged after the passing checks; later documentation edits reused that evidence. The fixed delivery report is [VERIFICATION.md](VERIFICATION.md).
 
