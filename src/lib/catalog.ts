@@ -25,8 +25,8 @@ async function readAll(client: SupabaseClient, table: string, order: string[]): 
         code: error.code === '42501' ? 'unauthenticated' : 'unavailable',
       });
     }
+    if (!data.length) return rows;
     rows.push(...(data as Rows));
-    if (data.length < 1000) return rows;
   }
 }
 
