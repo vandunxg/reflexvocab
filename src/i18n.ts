@@ -2,17 +2,12 @@ import i18n, { type TFunction } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { en } from './locales/en';
 import { vi } from './locales/vi';
-import type { InterfaceLocale } from './domain/model';
+import { normalizeLocale } from './domain/settings';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
     resources: { translation: typeof en };
   }
-}
-
-/** Unsupported, missing or malformed values resolve to English. */
-export function normalizeLocale(value: unknown): InterfaceLocale {
-  return value === 'vi' ? 'vi' : 'en';
 }
 
 void i18n.use(initReactI18next).init({

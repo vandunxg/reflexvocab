@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
+import type { InterfaceLocale, UserSettings } from '../domain/model';
+import { DAILY_MINUTE_OPTIONS, NEW_WORD_OPTIONS } from '../domain/settings';
 import { Icon } from '../components/Icon';
 import { audio, useEnglishVoices } from '../features/audio/audio';
 
@@ -8,14 +11,24 @@ import { audio, useEnglishVoices } from '../features/audio/audio';
 const VOICE_SAMPLE = 'Please attach the invoice to your email.';
 const RATE_MIN = 0.6;
 const RATE_MAX = 1.2;
+const LOCALES: InterfaceLocale[] = ['en', 'vi'];
+const FALLBACK_TIMEZONES = ['Asia/Ho_Chi_Minh', 'Asia/Tokyo', 'Europe/London', 'America/New_York', 'UTC'];
+const TIMEZONES = typeof Intl.supportedValuesOf === 'function' ? Intl.supportedValuesOf('timeZone') : FALLBACK_TIMEZONES;
+// A saved value outside the offered choices stays selectable instead of being silently changed.
+const withSaved = <T,>(options: readonly T[], saved: T) => (options.includes(saved) ? [...options] : [saved, ...options]);
 
-/** Settings (`/settings`): English voice preferences and the account section. P04-T04 adds the rest. */
+/** Settings (`/settings`): study habit, interface language, English voice and the account section. */
 export function SettingsPage() {
   const { t, i18n } = useTranslation();
   const { auth, repository, settings, applySettings } = useLearning();
   const voices = useEnglishVoices();
+  const [minutes, setMinutes] = useState(settings.dailyMinutes);
+  const [newPerDay, setNewPerDay] = useState(settings.newPerDay);
+  const [timezone, setTimezone] = useState(settings.timezone);
+  const [locale, setLocale] = useState(settings.locale);
   const [voiceId, setVoiceId] = useState(settings.voiceId);
   const [rate, setRate] = useState(settings.speechRate);
+  const [now] = useState(() => new Date());
   const [save, setSave] = useState<'idle' | 'saving' | 'saved' | 'failed'>('idle');
   const [sample, setSample] = useState<'idle' | 'playing' | 'failed'>('idle');
   const [signOut, setSignOut] = useState<'idle' | 'pending' | 'failed'>('idle');
@@ -23,18 +36,27 @@ export function SettingsPage() {
 
   const canSpeak = audio.supported && voices.length > 0;
   const voiceMissing = voiceId !== null && canSpeak && !voices.some((voice) => voice.id === voiceId);
-  const dirty = voiceId !== settings.voiceId || rate !== settings.speechRate;
+  const draft: Partial<UserSettings> = { dailyMinutes: minutes, newPerDay, timezone, locale, voiceId, speechRate: rate };
+  // Only changed fields are sent, so a save never overwrites a value this form did not touch.
+  const changes = Object.fromEntries(Object.entries(draft)
+    .filter(([key, value]) => settings[key as keyof UserSettings] !== value)) as Partial<UserSettings>;
+  const dirty = Object.keys(changes).length > 0;
   const rateText = new Intl.NumberFormat(i18n.language, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(rate);
+  const localNow = new Intl.DateTimeFormat(i18n.language, {
+    timeZone: timezone, weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+  }).format(now);
+  const edit = <T,>(setter: (value: T) => void) => (value: T) => { setter(value); setSave('idle'); };
 
   async function handleSave() {
     setSave('saving');
     try {
-      await repository.saveSettings({ voiceId, speechRate: rate });
+      await repository.saveSettings(changes);
     } catch {
       setSave('failed');
       return;
     }
-    applySettings({ voiceId, speechRate: rate });
+    // A saved locale switches the interface in place; account data is not reloaded.
+    applySettings(changes);
     setSave('saved');
   }
 
@@ -61,10 +83,62 @@ export function SettingsPage() {
 
   return (
     <div className="page page-narrow">
+      <Link to="/" className="settings-back"><Icon name="arrowLeft" size={18} />{t('settings.back')}</Link>
       <div className="page-heading">
         <h1>{t('settings.title')}</h1>
         <p>{t('settings.subtitle')}</p>
       </div>
+
+      <section className="settings-card" aria-labelledby="habit-title">
+        <div className="settings-card-head">
+          <span className="settings-icon" aria-hidden="true"><Icon name="calendar" size={18} /></span>
+          <h2 id="habit-title">{t('settings.habit.title')}</h2>
+        </div>
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <label htmlFor="minutes" className="settings-label">{t('settings.habit.minutes')}</label>
+            <p id="minutes-hint" className="settings-hint">{t('settings.habit.minutesHint')}</p>
+          </div>
+          <select id="minutes" className="settings-control" aria-describedby="minutes-hint" value={minutes}
+            onChange={(event) => edit(setMinutes)(Number(event.target.value))}>
+            {withSaved(DAILY_MINUTE_OPTIONS, minutes).map((value) => (
+              <option key={value} value={value}>{t('settings.habit.minutesOption', { minutes: value })}</option>
+            ))}
+          </select>
+        </div>
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <label htmlFor="new-words" className="settings-label">{t('settings.habit.newWords')}</label>
+            <p id="new-words-hint" className="settings-hint">{t('settings.habit.newWordsHint')}</p>
+          </div>
+          <select id="new-words" className="settings-control" aria-describedby="new-words-hint" value={newPerDay}
+            onChange={(event) => edit(setNewPerDay)(Number(event.target.value))}>
+            {withSaved(NEW_WORD_OPTIONS, newPerDay).map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </div>
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <label htmlFor="timezone" className="settings-label">{t('settings.habit.timezone')}</label>
+            <p id="timezone-hint" className="settings-hint">
+              {t('settings.habit.timezoneHint')} <span className="settings-local-time">{t('settings.habit.timezoneNow', { date: localNow })}</span>
+            </p>
+          </div>
+          <select id="timezone" className="settings-control" aria-describedby="timezone-hint" value={timezone}
+            onChange={(event) => edit(setTimezone)(event.target.value)}>
+            {withSaved(TIMEZONES, timezone).map((value) => <option key={value} value={value}>{value}</option>)}
+          </select>
+        </div>
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <label htmlFor="locale" className="settings-label">{t('settings.habit.language')}</label>
+            <p id="locale-hint" className="settings-hint">{t('settings.habit.languageHint')}</p>
+          </div>
+          <select id="locale" className="settings-control" aria-describedby="locale-hint" value={locale}
+            onChange={(event) => edit(setLocale)(event.target.value as InterfaceLocale)}>
+            {LOCALES.map((value) => <option key={value} value={value} lang={value}>{t(`settings.habit.languages.${value}`)}</option>)}
+          </select>
+        </div>
+      </section>
 
       <section className="settings-card" aria-labelledby="audio-title">
         <div className="settings-card-head">
@@ -83,7 +157,7 @@ export function SettingsPage() {
             className="settings-control"
             value={voiceId ?? ''}
             disabled={!canSpeak}
-            onChange={(event) => { setVoiceId(event.target.value || null); setSave('idle'); }}
+            onChange={(event) => edit(setVoiceId)(event.target.value || null)}
           >
             <option value="">{t('settings.audio.defaultVoice')}</option>
             {voiceMissing && <option value={voiceId}>{t('settings.audio.missingVoice')}</option>}
@@ -101,7 +175,7 @@ export function SettingsPage() {
             max={RATE_MAX}
             step={0.1}
             value={rate}
-            onChange={(event) => { setRate(Number(event.target.value)); setSave('idle'); }}
+            onChange={(event) => edit(setRate)(Number(event.target.value))}
           />
         </div>
         <div className="settings-row settings-row-start">

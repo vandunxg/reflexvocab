@@ -116,6 +116,24 @@ export const en = {
   settings: {
     title: 'Settings',
     subtitle: 'Adjust just enough to make each session easier to start.',
+    back: 'Today',
+    habit: {
+      title: 'Study habit',
+      minutes: 'Daily goal',
+      minutesHint: 'Used for the daily session.',
+      minutesOption: '{{minutes}} minutes',
+      newWords: 'New words per day',
+      newWordsHint: 'Maximum new word senses in one day.',
+      timezone: 'Timezone',
+      timezoneHint: 'Used for daily limits, streaks and the activity calendar.',
+      timezoneNow: 'Now there: {{date}}.',
+      language: 'Interface language',
+      languageHint: 'Buttons and messages. Learning content stays in English.',
+      languages: {
+        en: 'English',
+        vi: 'Tiếng Việt',
+      },
+    },
     audio: {
       title: 'English voice',
       voice: 'Voice',

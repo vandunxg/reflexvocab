@@ -1,7 +1,7 @@
 import { createContext, use, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { applyLocale } from '../i18n';
-import { DEFAULT_SETTINGS } from '../domain/settings';
+import { DEFAULT_SETTINGS, normalizeSettings } from '../domain/settings';
 import type { AttemptCommit, LearningSession, UserSettings } from '../domain/model';
 import type { PrivateAuth } from '../lib/auth';
 import { loadCatalog, type Catalog } from '../lib/catalog';
@@ -99,7 +99,7 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
 
   const value = useMemo(() => state.status === 'ready' ? {
     auth, repository, catalog: state.catalog, snapshot: state.snapshot,
-    settings: { ...DEFAULT_SETTINGS, ...state.snapshot.settings },
+    settings: normalizeSettings(state.snapshot.settings),
     refresh: load, applySession, applyCommit, applySettings, applyBookmark,
   } : null, [auth, repository, state, load, applySession, applyCommit, applySettings, applyBookmark]);
 

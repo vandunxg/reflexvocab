@@ -4,12 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
 import type { LearningSession, SessionConfig } from '../domain/model';
 import { buildQueue, questionBudgetFor } from '../domain/session';
-import { DEFAULT_SETTINGS } from '../domain/settings';
+import { DAILY_MINUTE_OPTIONS, DEFAULT_SETTINGS, NEW_WORD_OPTIONS } from '../domain/settings';
 import { Icon } from '../components/Icon';
 import { OnboardingHeader } from '../features/onboarding/OnboardingHeader';
 
-const MINUTE_OPTIONS = [5, 10, 15, 20] as const;
-const WORD_OPTIONS = [4, 6, 8, 10] as const;
 const TOPIC_ART = [
   { background: '#3d57e6', shapes: ['#d2f55d', '#ffffff', '#ff76d6'] },
   { background: '#ff9238', shapes: ['#ffcf3d', '#ffffff', '#3d57e6'] },
@@ -105,7 +103,7 @@ export function OnboardingPage() {
     content = (
       <StepFrame eyebrow={t('onboarding.time.eyebrow')} title={t('onboarding.time.title')} body={t('onboarding.time.body')} tone="yellow" step={step}>
         <div className="choice-list">
-          {MINUTE_OPTIONS.map((value) => (
+          {DAILY_MINUTE_OPTIONS.map((value) => (
             <ChoiceCard key={value} name="minutes" checked={minutes === value} onChange={() => setMinutes(value)}>
               <span className={`choice-icon choice-icon-${value}`} aria-hidden="true"><PieIcon fraction={value / 20} /></span>
               <span className="choice-text">
@@ -125,7 +123,7 @@ export function OnboardingPage() {
     content = (
       <StepFrame eyebrow={t('onboarding.words.eyebrow')} title={t('onboarding.words.title')} body={t('onboarding.words.body')} tone="purple" step={step}>
         <div className="choice-grid">
-          {WORD_OPTIONS.map((value) => (
+          {NEW_WORD_OPTIONS.map((value) => (
             <ChoiceCard key={value} name="words" checked={words === value} onChange={() => setWords(value)} tall>
               <span className="choice-text">
                 <span className="choice-number">

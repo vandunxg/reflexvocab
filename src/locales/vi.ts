@@ -118,6 +118,24 @@ export const vi: MessageCatalog = {
   settings: {
     title: 'Cài đặt',
     subtitle: 'Điều chỉnh vừa đủ để mỗi phiên học dễ bắt đầu hơn.',
+    back: 'Hôm nay',
+    habit: {
+      title: 'Thói quen học',
+      minutes: 'Mục tiêu mỗi ngày',
+      minutesHint: 'Dùng cho phiên hằng ngày.',
+      minutesOption: '{{minutes}} phút',
+      newWords: 'Giới hạn từ mới mỗi ngày',
+      newWordsHint: 'Số nghĩa từ mới tối đa trong một ngày.',
+      timezone: 'Múi giờ',
+      timezoneHint: 'Dùng cho giới hạn mỗi ngày, chuỗi ngày và lịch hoạt động.',
+      timezoneNow: 'Giờ hiện tại ở đó: {{date}}.',
+      language: 'Ngôn ngữ giao diện',
+      languageHint: 'Nút bấm và thông báo. Nội dung học vẫn bằng tiếng Anh.',
+      languages: {
+        en: 'English',
+        vi: 'Tiếng Việt',
+      },
+    },
     audio: {
       title: 'Giọng đọc tiếng Anh',
       voice: 'Giọng đọc',

@@ -1726,6 +1726,11 @@ p {
   font-weight: 700;
 }
 
+.settings-row-text {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
 .settings-control {
   min-height: 52px;
   width: min(100%, 300px);
@@ -1752,6 +1757,31 @@ p {
 
 .settings-notice {
   margin-top: 16px;
+}
+
+.settings-back {
+  display: none;
+}
+
+.settings-local-time {
+  white-space: nowrap;
+}
+
+@media (max-width: 719px) {
+  .settings-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin-bottom: -8px;
+    align-self: flex-start;
+    font-weight: 700;
+    color: var(--blue-strong);
+  }
+
+  .settings-control {
+    width: 100%;
+  }
 }
 
 .settings-save {
