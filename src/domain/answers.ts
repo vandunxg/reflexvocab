@@ -1,7 +1,7 @@
 import type { Exercise } from './model';
 
 type Assistance = { hintUsed: boolean; answerRevealed: boolean; isRetry: boolean };
-type Evidence = 'independent' | 'hinted' | 'revealed' | 'retry' | 'incorrect';
+export type Evidence = 'independent' | 'hinted' | 'revealed' | 'retry' | 'incorrect';
 
 export function evaluateAnswer(
   exercise: Exercise,
