@@ -58,7 +58,7 @@ There is no demo-mode variable or demo persistence strategy. Keep `.env.local` o
 | `npm run build`  | Verify production bundling and create build output. |
 | `npm run format` | Apply the configured formatter.                     |
 
-These commands do not connect Supabase. The schema has a separate SQL contract check; there is no application test runner yet.
+These commands do not connect Supabase. Run `node --test tests/*.test.ts` for the application tests; the schema has separate SQL contract checks.
 
 Before a code commit, inspect the diff, make useful local refactors and run the type/lint check on the final code. Documentation-only edits will not require npm commands. Build/test scope will follow the task's actual risk, as described in [FLOWS.md](FLOWS.md), rather than becoming a gate after every edit.
 
@@ -100,11 +100,11 @@ variables `TEST_EMAIL_1`, `TEST_PASSWORD_1`, `TEST_EMAIL_2` and
 ```bash
 set -a && . ./.env.local && set +a
 node scripts/hosted-check.ts
-psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/reset-test-accounts.sql
 ```
 
-The check writes a session and attempt for test account 1; the reset script
-removes learning data only for the two dedicated test accounts.
+The check writes a session and attempt for test account 1. The optional
+`scripts/reset-test-accounts.sql` deletes learning data for both dedicated test
+accounts; do not run it without explicit permission to discard that data.
 
 For the future integration, the implementer will:
 

@@ -10,9 +10,9 @@ This is the **only execution/status tracker** for this starter. Requirements, PL
 | Current phase          | [P06 — Private release](phases/PHASE_06_PRIVATE_RELEASE.md); [P01-T02](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t02) remains blocked on hosted signup configuration |
 | Current task           | [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) |
 | Last completed task    | [P05-T04 — End-to-end usability gaps](phases/PHASE_05_MVP_COMPLETION.md#p05-t04) |
-| Work stopped after     | The owner approved the four-sense follow-up batch; it was imported into hosted development and exercised in the existing learning UI. P05 journey checks passed against the expanded catalog. |
+| Work stopped after     | P06 release-candidate checks passed locally, but no private deployment target has been identified and hosted development still permits public signup. No release has been deployed. |
 | Next task              | [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) |
-| Next action            | Read [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) and identify the authorized private deployment target; hosted signup must still be disabled. |
+| Next action            | Obtain the authorized hosting target and access, and disable public signup in its Supabase project; then complete [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) before the real-environment journey. |
 | Product implementation | 21 of 25 product tasks complete |
 
 ## Status meanings
@@ -55,9 +55,9 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | [P05-T02 — Lightweight motivation](phases/PHASE_05_MVP_COMPLETION.md#p05-t02)                         | `DONE`        |
 | [P05-T03 — Reviewed content expansion](phases/PHASE_05_MVP_COMPLETION.md#p05-t03)                     | `DONE`        |
 | [P05-T04 — End-to-end usability gaps](phases/PHASE_05_MVP_COMPLETION.md#p05-t04)                      | `DONE`        |
-| [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01)                            | `NOT_STARTED` |
-| [P06-T02 — Private learning and recovery](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t02)                 | `NOT_STARTED` |
-| [P06-T03 — MVP handoff](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t03)                                   | `NOT_STARTED` |
+| [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01)                            | `BLOCKED`     |
+| [P06-T02 — Private learning and recovery](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t02)                 | `BLOCKED`     |
+| [P06-T03 — MVP handoff](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t03)                                   | `BLOCKED`     |
 
 ## Verification evidence
 
@@ -113,6 +113,8 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | P05-T03 | Owner approved [the office follow-up batch](content/p05-office-follow-up-draft.md). Applied [its SQL](../supabase/content/office_follow_up.sql) in one transaction to authorized hosted development; authenticated Data API read; `supabase/tests/office_follow_up.sql` on local PostgreSQL 17. | Hosted read returned 4 senses and 8 active exercises, with two contexts per sense. The rolled-back local fixture verified reimport preserves a newer exercise revision and an existing bookmark. Three representative exercise kinds rendered at 1440px and 390px using intercepted session metadata and no writes. |
 | P05-T04 | `npm run check`, `node --test tests/*.test.ts` (45 passed), and Playwright Chromium against hosted test account 2 at 390×844, with `en` and intercepted `vi` settings; write RPCs aborted. | Today, Learn, Practice, Library, Progress and Settings had no horizontal overflow or page errors in either locale; the first Tab focused the skip link. A deliberately aborted answer save retained feedback, disabled Continue, showed a localized error and resumed the acknowledged question after reload. No real write was made. The batch-dependent review was performed subsequently. |
 | P05-T04 | Repeated the same read-only bilingual journey after the reviewed batch was imported; reused P04-T01 onboarding and P03-T03 real save/resume evidence. | Both locales again showed no horizontal overflow or page errors; keyboard skip, save-failure feedback and acknowledged-question resume passed. The new exercise previews above cover all three kinds in the batch. |
+| P06-T01 | On revision `021ff82`, `npm run check`, `npm run build`, `node --test tests/*.test.ts` and a Chromium mobile preview using hosted development authentication. | Typecheck, lint, build and 45 tests passed. Direct preview routes for Progress, the follow-up lesson, Practice and Settings loaded without page errors. This is local preview, not deployment evidence. The build warned about a JavaScript chunk above 500 kB. |
+| P06-T01 | Scanned `dist/` for the configured database URL and four test password values; read hosted development Auth settings. | None of those five values appeared in the bundle; this is not a comprehensive secret audit. Auth returned `disable_signup: false`, so hosted development is not a private release environment. |
 
 The source/configuration review found no useful further scaffold refactor. Formatting left executable source and configuration unchanged after the passing checks; later documentation edits reused that evidence. The fixed delivery report is [VERIFICATION.md](VERIFICATION.md).
 
@@ -125,6 +127,7 @@ P00 did not verify product behavior. The P01-T01 fixture verifies database const
 - The existing desktop, mobile and state boards are inventoried under [docs/design](design/README.md). Screen composition must read its matching supplied boards; data/domain work and generic token groundwork can proceed independently.
 - The owner authorized use of the hosted development project in `.env.local` and reported applying both migrations and `supabase/seed.sql`. Auth health responded successfully, and unauthenticated Data API reads of `curriculum_topics` and `user_settings` were denied with SQLSTATE `42501`. Both owner-provided test accounts can authenticate and read the starter content; after the owner added settings rows, each account could read its own row but not the other's. Hosted signup configuration and application account-state switching remain unverified. Local Vite public-variable aliases reference the existing `NEXT_PUBLIC_*` values. P06 additionally needs an authorized private deployment target.
 - **Blocker (P01-T02):** public signup is enabled on hosted development. The owner must turn off **Allow new users to sign up** under Supabase Dashboard → Authentication → Sign In / Providers; afterwards re-read `/auth/v1/settings` and expect `disable_signup: true`. Account-state switching is verified with the P03-T01 shell.
+- **Blocker (P06):** the owner must identify and authorize the private host and Supabase target, provide appropriate deployment access, and ensure signup is disabled. P06-T02 requires the actual deployment, an intended device/browser for audible TTS, and a verified backup/recovery method for that environment. P06-T03 requires those release checks or explicit agreement on material blockers; local preview does not establish release readiness.
 - P03-T03 limitations: the completion summary is shown only until the next full load, because only `current` sessions are loaded. "Load saved version" shows no progress indicator while the reload runs.
 - P03-T04 limitation: audible playback with a real voice still needs a check on the owner's browser/device.
 - P04-T02 limitations: the starter catalog has one topic and level, so multi-topic filtering was checked only in code. Practising selected senses now uses the P04-T03 continue-or-replace step. Selected new senses still obey the daily new-word limit, and explaining an undersized pool belongs to [P04-T06](phases/PHASE_04_ONBOARDING_AND_PRACTICE.md#p04-t06).

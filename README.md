@@ -1,10 +1,10 @@
 # ReflexVocab
 
-A docs-first foundation for a private, English-first vocabulary learning application built with React, Vite, TypeScript, and Supabase.
+A private, English-first vocabulary learning application built with React, Vite, TypeScript, and Supabase. Private release is not yet complete; see [PROGRESS](docs/PROGRESS.md) for blockers.
 
 ## What this package contains
 
-- A minimal React application that intentionally renders a blank page.
+- A learning application with onboarding, sessions, practice, progress, settings, and English and Vietnamese interface copy.
 - TypeScript, ESLint, Prettier, editor settings, environment template, and an npm lockfile.
 - Product requirements, system design, learning and persistence contracts, user flows, and UI/UX specifications.
 - A separate file for every implementation phase, with detailed tasks.
@@ -13,7 +13,7 @@ A docs-first foundation for a private, English-first vocabulary learning applica
 
 The repository also includes TypeScript learning contracts, SQL migrations, a private Auth boundary, starter content outside the browser bundle, and the application shell with `en`/`vi` interface copy. See [PROGRESS](docs/PROGRESS.md) for current implementation and verification status.
 
-## Run the blank starter
+## Run locally
 
 Use Node 24 (see `.nvmrc`) and npm.
 
@@ -62,7 +62,7 @@ Use [docs/PLAN.md](docs/PLAN.md) to understand phase order. Each file under `doc
 
 ## Design handoff
 
-The entire product follows the light, colorful, Brilliant-inspired direction in [DESIGN.md](DESIGN.md). Desktop, mobile and state boards are supplied under `docs/design/`; they are implementation references, not implemented product screens. A UI task must read its matching boards and the current requirement/phase task instead of copying legacy status labels, Vietnamese placeholder copy or sample values from the export.
+The product follows the light, colorful, Brilliant-inspired direction in [DESIGN.md](DESIGN.md). Desktop, mobile and state boards under `docs/design/` are implementation references, not evidence of implemented screens. A UI task must read its matching boards and the current requirement/phase task instead of copying legacy status labels, Vietnamese placeholder copy or sample values from the export.
 
 Evondev UIUX is a reference for the requirements only. Its skill is not installed or bundled. Project-local guides live under `.agents/skills/`; an agent that does not discover that directory automatically can read the relevant `SKILL.md` directly through the links in [AGENTS.md](AGENTS.md).
 
