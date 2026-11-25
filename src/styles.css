@@ -1,0 +1,10 @@
+/* Baseline only. Add the approved design tokens during the UI foundation task. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: system-ui, sans-serif;
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Onboarding · Chủ đề</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border-radius:14px;background:#17181a;color:#fff;font:700 17px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.opt{position:relative;display:flex;flex-direction:column;overflow:hidden;border-radius:20px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 4px 0 #e4e1d8;color:#17181a;cursor:pointer}
+.opt:hover{border-color:#cfcbbf}
+.opt.on{border-color:#3d57e6;box-shadow:0 5px 0 #3d57e6}
+.opt input{position:absolute;top:14px;right:14px;width:24px;height:24px;margin:0;accent-color:#3d57e6}
+.band{position:relative;height:132px;overflow:hidden}
+.band span{position:absolute}
+.body{display:flex;flex-direction:column;gap:10px;padding:18px 20px 22px}
+.w{padding:4px 10px;border-radius:99px;background:#f0eee8;font-size:14px;font-weight:700}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:900px;display:flex;flex-direction:column;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55">
+
+<header style="width:100%;max-width:880px;margin:0 auto;box-sizing:border-box;padding:20px 24px 0;display:flex;align-items:center;gap:18px">
+<a href="OB-NewWords.dc.html" aria-label="Quay lại" style="width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#5b5d57"><svg class="i" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div role="progressbar" aria-label="Thiết lập ban đầu" aria-valuemin="0" aria-valuemax="3" aria-valuenow="3" aria-valuetext="Bước 3 trên 3" style="flex:1;height:14px;border-radius:99px;background:#e4e1d8;overflow:hidden"><div style="width:100%;height:100%;border-radius:99px;background:#d2f55d;box-shadow:inset 0 -4px 0 #b5d93a"><div style="margin:3px 8px 0;height:3px;border-radius:99px;background:#eefaa8"></div></div></div>
+<span style="min-width:32px;font-weight:700;color:#5b5d57">3/3</span>
+<a href="Main.dc.html" style="min-height:44px;display:inline-flex;align-items:center;padding:0 6px;font-weight:700;color:#2a3fb8">Bỏ qua, dùng mặc định</a>
+</header>
+
+<main style="flex:1;width:100%;max-width:880px;margin:0 auto;box-sizing:border-box;padding:48px 24px 40px">
+<span style="display:inline-block;padding:5px 12px;border-radius:99px;background:#e9edff;color:#2a3fb8;font-size:13px;font-weight:700;letter-spacing:.06em">CHỦ ĐỀ ĐẦU TIÊN</span>
+<h1 id="q" style="margin:14px 0 0;font:800 40px/1.12 Manrope,sans-serif;letter-spacing:-0.04em">Bạn muốn bắt đầu với chủ đề nào?</h1>
+<p style="margin:12px 0 0;max-width:600px;font-size:17px;color:#5b5d57">Phiên đầu tiên sẽ lấy nghĩa từ trong chủ đề này. Hai chủ đề còn lại vẫn nằm trong Lộ trình.</p>
+
+<fieldset aria-labelledby="q" style="margin:32px 0 0;padding:0;border:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px">
+
+<label class="opt">
+<div class="band" aria-hidden="true" style="background:#3d57e6">
+<span style="width:96px;height:96px;border-radius:50%;background:#d2f55d;left:22px;top:22px"></span>
+<span style="width:70px;height:70px;border-radius:16px;background:#fff;left:96px;top:46px;transform:rotate(12deg)"></span>
+<span style="width:120px;height:60px;border-radius:120px 120px 0 0;background:#ff76d6;right:-10px;bottom:0"></span>
+</div>
+<div class="body"><strong style="font:800 22px Manrope,sans-serif;letter-spacing:-0.02em">Meetings</strong><span style="color:#5b5d57">Họp, lịch trình và trao đổi công việc · 4 nghĩa từ</span><span style="display:flex;flex-wrap:wrap;gap:6px" lang="en"><span class="w">attend</span><span class="w">agenda</span><span class="w">postpone</span><span class="w">confirm</span></span></div>
+<input type="radio" name="topic" value="Meetings" aria-label="Meetings, 4 nghĩa từ">
+</label>
+
+<label class="opt">
+<div class="band" aria-hidden="true" style="background:#ff9238">
+<span style="width:110px;height:110px;background:#ffcf3d;clip-path:polygon(50% 0,100% 100%,0 100%);left:20px;top:26px"></span>
+<span style="width:80px;height:80px;border-radius:50%;background:#fff;right:40px;top:18px"></span>
+<span style="width:58px;height:58px;border-radius:14px;background:#3d57e6;right:110px;bottom:-14px;transform:rotate(-14deg)"></span>
+</div>
+<div class="body"><strong style="font:800 22px Manrope,sans-serif;letter-spacing:-0.02em">Travel</strong><span style="color:#5b5d57">Đặt chỗ, hành lý và công tác · 4 nghĩa từ</span><span style="display:flex;flex-wrap:wrap;gap:6px" lang="en"><span class="w">reservation</span><span class="w">itinerary</span><span class="w">luggage</span><span class="w">depart</span></span></div>
+<input type="radio" name="topic" value="Travel" aria-label="Travel, 4 nghĩa từ">
+</label>
+
+<label class="opt on">
+<div class="band" aria-hidden="true" style="background:#8a5cf0">
+<span style="width:84px;height:84px;border-radius:18px;background:#d2f55d;left:26px;top:30px;transform:rotate(-10deg)"></span>
+<span style="width:100px;height:100px;border-radius:50%;background:#ff76d6;right:-18px;top:-22px"></span>
+<span style="width:110px;height:55px;border-radius:0 0 110px 110px;background:#fff;left:120px;top:0"></span>
+</div>
+<div class="body"><strong style="display:flex;align-items:center;gap:10px;font:800 22px Manrope,sans-serif;letter-spacing:-0.02em">Work<span style="padding:2px 10px;border-radius:99px;background:#3d57e6;color:#fff;font:700 12px 'DM Sans',sans-serif;letter-spacing:.04em">Đã chọn</span></strong><span style="color:#5b5d57">Hạn chót, hóa đơn và phê duyệt · 4 nghĩa từ</span><span style="display:flex;flex-wrap:wrap;gap:6px" lang="en"><span class="w" style="background:#f1eaff;color:#5b33c7">deadline</span><span class="w" style="background:#f1eaff;color:#5b33c7">approve</span><span class="w" style="background:#f1eaff;color:#5b33c7">invoice</span><span class="w" style="background:#f1eaff;color:#5b33c7">submit</span></span></div>
+<input type="radio" name="topic" value="Work" checked="checked" aria-label="Work, 4 nghĩa từ">
+</label>
+
+</fieldset>
+</main>
+
+<footer style="background:#fff;border-top:2px solid #ece9e1">
+<div style="max-width:880px;margin:0 auto;box-sizing:border-box;padding:18px 24px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px">
+<span style="font-size:14px;color:#5b5d57">10 phút · 8 từ mới/ngày · Work</span>
+<a class="b1" href="Session-Intro.dc.html">Bắt đầu phiên đầu tiên<svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

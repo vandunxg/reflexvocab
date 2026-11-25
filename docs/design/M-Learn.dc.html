@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Lộ trình · mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:14px;background:#17181a;color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer;box-sizing:border-box}
+.tabi{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 10px;font-size:11px;font-weight:700;color:#5b5d57}
+.tabi .p{width:48px;height:28px;border-radius:999px;display:grid;place-items:center}
+.tabi.on{color:#17181a}
+.tabi.on .p{background:#d2f55d}
+.unit{display:flex;flex-direction:column;gap:10px}
+.lab{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#5b5d57}
+.node{position:relative;width:76px;height:76px;border-radius:999px;display:grid;place-items:center;color:#fff;font:800 22px Manrope,sans-serif}
+.card{padding:12px 14px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font:800 16px/1.3 Manrope,sans-serif;letter-spacing:-0.02em}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hrow .pill{flex-shrink:0}
+.brow{display:flex;align-items:center;gap:10px;font-size:13px;color:#5b5d57}
+.brow .bar{flex:1}
+.lg{display:inline-flex;align-items:center;gap:5px}
+.bar{height:10px;border-radius:99px;background:#f0eee8;overflow:hidden}
+.bar span{display:block;height:100%;border-radius:99px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;font-size:13px;color:#5b5d57}
+.pill{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 9px;border-radius:999px;background:#f7f6f1;border:2px solid #ece9e1;font-size:13px;font-weight:700;box-sizing:border-box}
+.m{width:12px;height:12px;flex-shrink:0}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="position:relative;width:390px;height:1400px;overflow:hidden;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 12px 0 16px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="M-Home.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:8px;font:800 17px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:32px;height:32px;border-radius:9px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 18px Manrope,sans-serif">r.</span>reflexvocab</a>
+<div style="display:flex;align-items:center;gap:4px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 12px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="M-Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;color:#55584f"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="padding:14px 16px 100px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><h1 style="margin:0;font:800 28px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Lộ trình học</h1><span style="font-size:13px;color:#5b5d57">Mọi bài đều mở</span></div>
+
+<section aria-label="Khóa học" style="position:relative;overflow:hidden;padding:16px;border-radius:20px;background:#3d57e6;color:#fff;box-shadow:0 5px 0 #2a3fb8;display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+<span aria-hidden="true" style="position:absolute;right:-26px;top:-30px;width:96px;height:96px;border-radius:999px;background:#d2f55d"></span>
+<span aria-hidden="true" style="position:absolute;right:46px;bottom:-16px;width:40px;height:40px;border-radius:10px;background:#ff76d6;transform:rotate(18deg)"></span>
+<p style="position:relative;margin:0;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#e9edff">TOEIC · SAMPLE PACK</p>
+<h2 style="position:relative;margin:0;font:800 19px/1.25 Manrope,sans-serif;letter-spacing:-0.02em">Tiếng Anh trong công việc</h2>
+<span style="position:relative;margin-top:2px;display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:#fff;color:#2a3fb8;font-size:13px;font-weight:700">Foundation · 3 chủ đề · 12 nghĩa từ</span>
+</section>
+
+<div role="note" aria-label="Chú giải mức ghi nhớ" style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:#3f4139">
+<span class="lg"><svg class="m" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#8a8c84" stroke-width="1.5"/></svg>Chưa học</span>
+<span class="lg"><svg class="m" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#c99a10" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 0 1 0 9z" fill="#c99a10"/></svg>Đang học</span>
+<span class="lg"><svg class="m" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#3d57e6" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 1 1-4.5 4.5z" fill="#3d57e6"/></svg>Quen thuộc</span>
+<span class="lg"><svg class="m" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#2fc66b"/></svg>Thành thạo</span>
+</div>
+
+<ol aria-label="Các bài trong Foundation" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+
+<li class="unit">
+<div style="display:flex;align-items:center;gap:14px;padding-left:22px">
+<span class="node" aria-hidden="true" style="background:#3d57e6;box-shadow:0 6px 0 #2a3fb8"><svg class="i" width="34" height="34" viewBox="0 0 24 24" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>
+<div><p class="lab">CHỦ ĐỀ 01 · MEETINGS</p><span class="pill" style="background:#e6f8ec;color:#17703a"><svg class="i" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Hoàn thành 4/4</span></div>
+</div>
+<article class="card"><div class="hrow"><h3>Bài 1 · Họp và lịch trình</h3><span class="pill" style="background:#e6f8ec;color:#17703a">2 thành thạo</span></div><div class="brow"><div class="bar" role="progressbar" aria-label="Họp và lịch trình: đã gặp 4 trên 4 nghĩa từ" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4"><span style="width:100%;background:#3d57e6"></span></div><span>đã gặp 4/4</span></div><ul class="chips" lang="en"><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Thành thạo"><circle cx="6" cy="6" r="5" fill="#2fc66b"/></svg>postpone</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Thành thạo"><circle cx="6" cy="6" r="5" fill="#2fc66b"/></svg>agenda</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Quen thuộc"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#3d57e6" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 1 1-4.5 4.5z" fill="#3d57e6"/></svg>attend</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Quen thuộc"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#3d57e6" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 1 1-4.5 4.5z" fill="#3d57e6"/></svg>confirm</li></ul></article>
+</li>
+
+<li aria-hidden="true" style="height:24px"><svg width="358" height="24" viewBox="0 0 358 24"><path d="M60 2 C 60 18, 298 6, 298 22" fill="none" stroke="#cfcbbf" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/></svg></li>
+
+<li class="unit">
+<div style="display:flex;align-items:center;justify-content:flex-end;gap:14px;padding-right:22px">
+<div style="text-align:right"><p class="lab">CHỦ ĐỀ 02 · TRAVEL</p><span class="pill" style="background:#e6f8ec;color:#17703a"><svg class="i" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Hoàn thành 4/4</span></div>
+<span class="node" aria-hidden="true" style="background:#ff9238;box-shadow:0 6px 0 #c96a16"><svg class="i" width="34" height="34" viewBox="0 0 24 24" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>
+</div>
+<article class="card"><div class="hrow"><h3>Bài 1 · Đặt chỗ và di chuyển</h3><span class="pill" style="background:#f0eee8;color:#3f4139">0 thành thạo</span></div><div class="brow"><div class="bar" role="progressbar" aria-label="Đặt chỗ và di chuyển: đã gặp 4 trên 4 nghĩa từ" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4"><span style="width:100%;background:#ff9238"></span></div><span>đã gặp 4/4</span></div><ul class="chips" lang="en"><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Đang học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#c99a10" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 0 1 0 9z" fill="#c99a10"/></svg>reservation</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Đang học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#c99a10" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 0 1 0 9z" fill="#c99a10"/></svg>luggage</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Quen thuộc"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#3d57e6" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 1 1-4.5 4.5z" fill="#3d57e6"/></svg>itinerary</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Quen thuộc"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#3d57e6" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 1 1-4.5 4.5z" fill="#3d57e6"/></svg>depart</li></ul></article>
+</li>
+
+<li aria-hidden="true" style="height:24px"><svg width="358" height="24" viewBox="0 0 358 24"><path d="M298 2 C 298 18, 179 6, 179 22" fill="none" stroke="#cfcbbf" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/></svg></li>
+
+<li class="unit">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+<a href="M-Lesson.dc.html" aria-label="Tiếp tục bài Hạn chót và giấy tờ, đã gặp 2 trên 4" style="position:relative;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:14px;background:#fff;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;font-weight:700;color:#5b33c7;box-sizing:border-box">Tiếp tục · 2/4<svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span aria-hidden="true" style="position:absolute;left:50%;bottom:-8px;width:12px;height:12px;margin-left:-7px;background:#fff;border-right:2px solid #e4e1d8;border-bottom:2px solid #e4e1d8;transform:rotate(45deg)"></span></a>
+<span aria-hidden="true" style="display:grid;place-items:center;padding:5px;border-radius:999px;border:4px solid #8a5cf0;background:#f1eaff"><span class="node" style="width:80px;height:80px;background:#8a5cf0;box-shadow:0 6px 0 #5b33c7;font-size:24px">03</span></span>
+<p class="lab">CHỦ ĐỀ 03 · WORK</p>
+</div>
+<article class="card" style="border-color:#8a5cf0;box-shadow:0 4px 0 #5b33c7;margin-top:12px"><div class="hrow"><h3>Bài 1 · Hạn chót và giấy tờ</h3><span class="pill" style="background:#eef1ff;color:#2a3fb8">Gợi ý tiếp</span></div><p style="margin:0;font-size:13px;color:#5b5d57">Còn 2 nghĩa từ mới · nằm trong giới hạn 8 từ mới hôm nay</p><div class="meta"><span style="font-weight:700;color:#7a5a00">Đang học</span><span class="pill" style="background:#f0eee8;color:#3f4139">0 thành thạo</span></div><div class="brow"><div class="bar" role="progressbar" aria-label="Hạn chót và giấy tờ: đã gặp 2 trên 4 nghĩa từ" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2"><span style="width:50%;background:#8a5cf0"></span></div><span>đã gặp 2/4</span></div><ul class="chips" lang="en"><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Đang học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#c99a10" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 0 1 0 9z" fill="#c99a10"/></svg>invoice</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Đang học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#c99a10" stroke-width="1.5"/><path d="M6 6V1.5a4.5 4.5 0 0 1 0 9z" fill="#c99a10"/></svg>submit</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Chưa học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#8a8c84" stroke-width="1.5"/></svg>deadline</li><li class="chip"><svg class="m" viewBox="0 0 12 12" role="img" aria-label="Chưa học"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#8a8c84" stroke-width="1.5"/></svg>approve</li></ul></article>
+</li>
+</ol>
+
+<p style="margin:0;padding:12px 14px;border-radius:14px;background:#f0eee8;font-size:13px;color:#3f4139">Sample pack: 1 bài mỗi chủ đề. Bài chuẩn sau M04 có 8–10 nghĩa từ. Hoàn thành bài ≠ thành thạo.</p>
+</main>
+
+<nav aria-label="Điều hướng chính" style="position:absolute;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:2px solid #ece9e1">
+<a class="tabi" href="M-Home.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .7-1.5l7-6a2 2 0 0 1 2.6 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Hôm nay</a>
+<a class="tabi on" href="M-Learn.dc.html" aria-current="page"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span>Lộ trình</a>
+<a class="tabi" href="M-Practice.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M21 5h-4"/></svg></span>Luyện tập</a>
+<a class="tabi" href="M-Library.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 6 4 14M12 6v14M8 8v12M4 4v16"/></svg></span>Kho từ</a>
+<a class="tabi" href="M-Progress.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16v5M16 14v7M20 10v11M4 18v3M8 14v7"/><path d="m22 3-8.6 8.6a.5.5 0 0 1-.7 0L9.4 8.4a.5.5 0 0 0-.7 0L2 15"/></svg></span>Tiến độ</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

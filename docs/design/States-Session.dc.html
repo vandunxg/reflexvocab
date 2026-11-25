@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Trạng thái · Phiên học</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:14px;background:#17181a;color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b1[disabled]{background:#cfcbbf;color:#3f4139;box-shadow:none;cursor:default}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.b2[disabled]{color:#8a8c84;box-shadow:none;cursor:default}
+.tx{display:inline-flex;align-items:center;gap:8px;min-height:44px;background:none;border:0;padding:0;font:700 15px 'DM Sans',sans-serif;color:#2a3fb8;cursor:pointer}
+.sc{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:24px;background:#fff;border:2px solid #ece9e1}
+.cap{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cap h2{margin:0;font:800 17px Manrope,sans-serif;letter-spacing:-0.01em;flex:1 1 auto}
+.where{padding:3px 10px;border-radius:99px;background:#f0eee8;color:#3f4139;font-size:12px;font-weight:700}
+.prop{padding:3px 10px;border-radius:99px;background:#f1eaff;color:#5b33c7;font-size:12px;font-weight:700}
+.pv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:200px;padding:22px;border-radius:16px;background:#f7f6f1;text-align:center;box-sizing:border-box}
+.pv h3{margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em}
+.pv p{margin:0;max-width:340px;color:#5b5d57;font-size:14px}
+.art{position:relative;width:64px;height:52px;margin-bottom:4px}
+.art span{position:absolute}
+.alert{width:100%;box-sizing:border-box;padding:14px 16px;border-radius:16px;background:#fff1e3;border:2px solid #ff9238;color:#a14e0a;text-align:left;font-size:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:99px;border:2px solid #e4e1d8;background:#fff;font-weight:700;font-size:14px;color:#2a3fb8}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1400px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;padding:36px 32px 48px;box-sizing:border-box">
+
+<div style="margin-bottom:24px">
+<h1 style="margin:0;font:800 32px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Trạng thái · Phiên học</h1>
+<p style="margin:6px 0 0;color:#5b5d57">Không có phiên, nội dung đổi, lỗi lưu/xung đột, gợi ý và đáp án đã hiện. Copy bám theo chuỗi trong <code>SessionPage</code> / <code>Question</code>; <span class="prop">ĐỀ XUẤT</span> là phần chưa có trong base.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px">
+
+<section class="sc" aria-labelledby="t1">
+<div class="cap"><h2 id="t1">Không có phiên</h2><span class="where">/session trống</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:42px;height:42px;border-radius:50%;background:#3d57e6;left:0;top:6px"></span><span style="width:32px;height:32px;background:#ffcf3d;clip-path:polygon(50% 0,100% 100%,0 100%);right:0;top:0"></span></div>
+<h3>Bắt đầu một phiên học</h3>
+<p>Chọn bài mới hoặc ôn lại những từ đã học.</p>
+<a class="b1" href="Practice.dc.html">Chọn phiên luyện tập</a>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t2">
+<div class="cap"><h2 id="t2">Nội dung đã thay đổi</h2><span class="where">câu hỏi không còn trong catalog</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:40px;height:40px;border-radius:10px;background:#d2f55d;left:4px;top:8px;transform:rotate(-10deg)"></span><span style="width:40px;height:40px;border-radius:10px;border:3px dashed #8a5cf0;box-sizing:border-box;right:2px;top:4px;transform:rotate(10deg)"></span></div>
+<h3>Nội dung phiên học đã thay đổi</h3>
+<p>Quay về để tạo phiên mới với nội dung hiện tại. Các kết quả đã lưu vẫn được giữ.</p>
+<a class="b2" href="Practice.dc.html">Chọn phiên mới</a>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t3">
+<div class="cap"><h2 id="t3">Không có câu phù hợp</h2><span class="where">Luyện tập · tự chọn</span></div>
+<div class="pv" style="align-items:stretch">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left;font-size:13px">
+<span style="padding:10px 12px;border-radius:12px;border:2px solid #e4e1d8;background:#fff"><span style="display:block;color:#5b5d57">Chủ đề</span><strong>Travel</strong></span>
+<span style="padding:10px 12px;border-radius:12px;border:2px solid #e4e1d8;background:#fff"><span style="display:block;color:#5b5d57">Nhóm từ</span><strong>Thử lại từ từng sai</strong></span>
+</div>
+<p role="alert" class="alert" style="margin:0;max-width:none;font-weight:700">Chưa có câu phù hợp với lựa chọn này. Thử chủ đề khác hoặc quay lại sau.</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t4">
+<div class="cap"><h2 id="t4">Không xử lý được câu</h2><span class="where">sau khi bấm Kiểm tra</span></div>
+<div class="pv" style="align-items:stretch">
+<div style="padding:14px 16px;border-radius:14px;border:2px solid #e4e1d8;background:#fff;text-align:left"><span style="font-size:13px;color:#5b5d57">Gõ từ còn thiếu</span><p lang="en" style="margin:4px 0 0;max-width:none;color:#17181a;font:700 16px/1.4 Manrope,sans-serif">They will ___ the meeting because the manager is away.</p></div>
+<p role="alert" class="alert" style="margin:0;max-width:none;font-weight:700">Không xử lý được câu này. Tải lại phiên đã lưu rồi thử lại.</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t5">
+<div class="cap"><h2 id="t5">Xung đột thiết bị</h2><span class="where">feedback · lưu lỗi</span></div>
+<div class="pv" style="align-items:stretch">
+<div role="alert" class="alert">
+<strong style="display:block;font-size:15px">Kết quả chưa đồng bộ.</strong>
+<p style="margin:4px 0 12px;max-width:none;color:#a14e0a">Phiên học đã thay đổi trên thiết bị khác. Tải lại để tiếp tục từ bản đã lưu.</p>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px"><button class="b2" type="button" disabled="disabled">Thử lưu lại</button><button class="tx" type="button">Tải bản đã lưu</button></div>
+</div>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t6">
+<div class="cap"><h2 id="t6">Xác nhận tải bản đã lưu</h2><span class="prop">ĐỀ XUẤT: dialog thay window.confirm</span></div>
+<div class="pv" style="background:#d9d6cd">
+<div role="dialog" aria-modal="true" aria-labelledby="t6d" style="width:100%;padding:20px;box-sizing:border-box;border-radius:22px;background:#fff;box-shadow:0 8px 0 #bdb9ad;text-align:left">
+<h3 id="t6d">Tải lại dữ liệu đã lưu?</h3>
+<p style="max-width:none;margin-top:6px">Lượt chưa đồng bộ có thể bị bỏ.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:16px"><button class="b2" type="button">Ở lại</button><button class="b1" type="button">Tải bản đã lưu</button></div>
+</div>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="t7" style="grid-column:span 2">
+<div class="cap"><h2 id="t7">Đã xem đáp án</h2><span class="where">feedback · answerRevealed</span></div>
+<div class="pv" style="align-items:stretch;text-align:left;padding:0;overflow:hidden;background:#fff;border:2px solid #ece9e1">
+<div style="padding:18px 20px;background:#eef1ff;border-bottom:2px solid #3d57e6">
+<div style="display:flex;align-items:center;gap:12px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:50%;background:#3d57e6;color:#fff;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="20" height="20" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><h3 style="font-size:21px">Cùng ghi nhớ cách dùng này.</h3></div>
+<p lang="en" style="margin:12px 0 0;max-width:none;color:#17181a;font:800 22px Manrope,sans-serif">postpone</p>
+<p lang="en" style="margin:4px 0 0;max-width:none;color:#3f4139">postpone: To arrange for something to happen at a later time. They will postpone the meeting because the manager is away.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:14px 20px">
+<span style="font-size:12px;font-weight:700;letter-spacing:.08em;color:#5b5d57">TRONG NGỮ CẢNH</span>
+<p lang="en" style="flex:1 1 280px;margin:0;max-width:none;color:#17181a">They will postpone the meeting because the manager is away.</p>
+<button type="button" aria-label="Nghe câu ví dụ" style="width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 3px 0 #e4e1d8;cursor:pointer"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6"/></svg></button>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:14px 20px;border-top:2px solid #f0eee8">
+<span role="status" style="font-size:14px;color:#5b5d57">Đã lưu tiến độ</span>
+<button class="b1" type="button">Tiếp tục<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+</div>
+</div>
+<p style="margin:0;font-size:13px;color:#5b5d57">Dùng màu xanh thông tin, không dùng cam “sai”: người học chủ động xem đáp án nên được dẫn lại cách dùng, không bị chấm như trả lời sai.</p>
+</section>
+
+<section class="sc" aria-labelledby="t8">
+<div class="cap"><h2 id="t8">Thang gợi ý &amp; trạng thái lưu</h2><span class="where">Question · footer</span></div>
+<div class="pv" style="align-items:stretch;text-align:left;justify-content:flex-start">
+<ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+<li><span class="chip"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>Một chút gợi ý?</span></li>
+<li><span class="chip">Xem hỗ trợ tiếng Việt</span></li>
+<li><span class="chip">Xem đáp án</span></li>
+<li><span class="chip" style="color:#5b5d57;border-style:dashed">Đã hiện đáp án</span></li>
+</ol>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:6px;padding-top:12px;border-top:2px solid #e4e1d8">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span role="status" style="font-size:14px;color:#5b5d57">Đang lưu…</span><button class="b1" type="button" disabled="disabled">Tiếp tục</button></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font-size:14px;color:#17703a;font-weight:700">Đã lưu tiến độ</span><button class="b1" type="button">Xem kết quả</button></div>
+</div>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Kho từ · mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:14px;background:#17181a;color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer;box-sizing:border-box}
+.ib{width:44px;height:44px;display:inline-grid;place-items:center;border-radius:12px;border:0;background:none;color:#5b5d57;cursor:pointer;flex-shrink:0}
+.ib:hover{background:#f0eee8}
+.w{padding:12px 14px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1;display:flex;flex-direction:column;gap:6px}
+.w.sel{border-color:#3d57e6;box-shadow:0 4px 0 #3d57e6;background:#f8f9ff}
+.top{display:flex;align-items:center;gap:6px}
+.top input{width:22px;height:22px;margin:0 6px 0 0;accent-color:#3d57e6;flex-shrink:0}
+.m{padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+select,input[type=search]{height:48px;padding:0 12px;border-radius:14px;border:2px solid #e4e1d8;background:#fff;color:#17181a;font:500 15px 'DM Sans',sans-serif;box-sizing:border-box;width:100%}
+.tabi{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 10px;font-size:11px;font-weight:700;color:#5b5d57}
+.tabi .p{width:48px;height:28px;border-radius:999px;display:grid;place-items:center}
+.tabi.on{color:#17181a}
+.tabi.on .p{background:#d2f55d}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="position:relative;width:390px;height:1500px;overflow:hidden;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 12px 0 16px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="M-Home.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:8px;font:800 17px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:32px;height:32px;border-radius:9px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 18px Manrope,sans-serif">r.</span>reflexvocab</a>
+<div style="display:flex;align-items:center;gap:4px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 12px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="M-Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;color:#55584f"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="padding:20px 16px 160px;display:flex;flex-direction:column;gap:12px">
+<div>
+<h1 style="margin:0;font:800 28px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Kho từ</h1>
+<p style="margin:6px 0 0;color:#5b5d57">Tìm, nghe và thử dùng từ trong ngữ cảnh. Tra cứu không đổi tiến độ học.</p>
+</div>
+
+<div role="search" style="display:flex;flex-direction:column;gap:10px">
+<label style="position:relative;display:flex;align-items:center">
+<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="position:absolute;left:14px;color:#5b5d57"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" aria-label="Tìm từ hoặc cụm từ" placeholder="Tìm từ hoặc cụm từ…" style="padding-left:42px">
+</label>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+<select aria-label="Lọc chủ đề"><option>Mọi chủ đề</option><option>Meetings</option><option>Travel</option><option>Work</option></select>
+<select aria-label="Lọc mức độ ghi nhớ"><option>Mọi mức độ</option><option>Chưa học</option><option>Đang học</option><option>Quen thuộc</option><option>Thành thạo</option></select>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<p style="margin:0;font-weight:700">12 nghĩa từ<span style="font-weight:500;color:#5b5d57"> · Foundation</span></p>
+<label style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid #e4e1d8;background:#fff;font-weight:700;font-size:14px;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:0;accent-color:#3d57e6">Đã lưu</label>
+</div>
+</div>
+
+<article class="w">
+<div class="top">
+<input type="checkbox" aria-label="Chọn postpone để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">postpone</h2><p style="margin:0;font-size:13px;color:#5b5d57">/pəˈspoʊn/ · verb</p></div>
+<span class="m" style="background:#e6f8ec;color:#17703a">Thành thạo</span>
+<button class="ib" type="button" aria-label="Nghe phát âm postpone"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="true" aria-label="Bỏ lưu postpone" style="color:#3d57e6"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<p style="margin:0">To arrange for something to happen at a later time.</p>
+<blockquote style="margin:4px 0 0;padding:10px 12px;border-radius:12px;background:#f7f6f1;border-left:4px solid #3d57e6">We need to postpone the workshop until Friday.</blockquote>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px"><span style="padding:4px 10px;border-radius:999px;background:#e9edff;color:#2a3fb8;font-size:13px;font-weight:700">postpone a meeting</span><span style="padding:4px 10px;border-radius:999px;background:#e9edff;color:#2a3fb8;font-size:13px;font-weight:700">postpone a decision</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px">
+<span style="font-size:13px;color:#5b5d57">Meetings</span>
+<button type="button" aria-expanded="true" style="min-height:44px;background:none;border:0;padding:0;font:700 14px 'DM Sans',sans-serif;color:#2a3fb8;cursor:pointer">Ẩn nghĩa tiếng Việt</button>
+</div>
+<p lang="vi" style="margin:0;padding:10px 12px;border-radius:12px;background:#fff7dc;color:#4d3a00">hoãn đến một thời điểm muộn hơn</p>
+</article>
+
+<article class="w">
+<div class="top">
+<input type="checkbox" aria-label="Chọn agenda để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">agenda</h2><p style="margin:0;font-size:13px;color:#5b5d57">/əˈdʒendə/ · noun</p></div>
+<span class="m" style="background:#e6f8ec;color:#17703a">Thành thạo</span>
+<button class="ib" type="button" aria-label="Nghe phát âm agenda"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="false" aria-label="Lưu agenda"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<div style="display:flex;align-items:center;gap:6px"><p style="flex:1;margin:0;font-size:14px;color:#3f4139">A list of topics to discuss at a meeting.</p><button class="ib" type="button" aria-expanded="false" aria-label="Xem chi tiết agenda"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+</article>
+
+<article class="w sel">
+<div class="top">
+<input type="checkbox" checked="checked" aria-label="Chọn attend để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">attend</h2><p style="margin:0;font-size:13px;color:#5b5d57">/əˈtend/ · verb</p></div>
+<span class="m" style="background:#eef1ff;color:#2a3fb8">Quen thuộc</span>
+<button class="ib" type="button" aria-label="Nghe phát âm attend"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="false" aria-label="Lưu attend"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<div style="display:flex;align-items:center;gap:6px"><p style="flex:1;margin:0;font-size:14px;color:#3f4139">To go to an event and be there.</p><button class="ib" type="button" aria-expanded="false" aria-label="Xem chi tiết attend"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+</article>
+
+<article class="w">
+<div class="top">
+<input type="checkbox" aria-label="Chọn confirm để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">confirm</h2><p style="margin:0;font-size:13px;color:#5b5d57">/kənˈfɜːrm/ · verb</p></div>
+<span class="m" style="background:#eef1ff;color:#2a3fb8">Quen thuộc</span>
+<button class="ib" type="button" aria-label="Nghe phát âm confirm"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="false" aria-label="Lưu confirm"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<div style="display:flex;align-items:center;gap:6px"><p style="flex:1;margin:0;font-size:14px;color:#3f4139">To say that a plan or arrangement is certain.</p><button class="ib" type="button" aria-expanded="false" aria-label="Xem chi tiết confirm"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+</article>
+
+<article class="w">
+<div class="top">
+<input type="checkbox" aria-label="Chọn reservation để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">reservation</h2><p style="margin:0;font-size:13px;color:#5b5d57">/ˌrezərˈveɪʃn/ · noun</p></div>
+<span class="m" style="background:#fff7dc;color:#7a5a00">Đang học</span>
+<button class="ib" type="button" aria-label="Nghe phát âm reservation"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="false" aria-label="Lưu reservation"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<div style="display:flex;align-items:center;gap:6px"><p style="flex:1;margin:0;font-size:14px;color:#3f4139">An arrangement to keep a room, seat, or table for someone.</p><button class="ib" type="button" aria-expanded="false" aria-label="Xem chi tiết reservation"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+</article>
+
+<article class="w">
+<div class="top">
+<input type="checkbox" aria-label="Chọn itinerary để luyện">
+<div style="flex:1;min-width:0"><h2 style="margin:0;font:800 19px Manrope,sans-serif">itinerary</h2><p style="margin:0;font-size:13px;color:#5b5d57">/aɪˈtɪnəreri/ · noun</p></div>
+<span class="m" style="background:#eef1ff;color:#2a3fb8">Quen thuộc</span>
+<button class="ib" type="button" aria-label="Nghe phát âm itinerary"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+<button class="ib" type="button" aria-pressed="false" aria-label="Lưu itinerary"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></button>
+</div>
+<div style="display:flex;align-items:center;gap:6px"><p style="flex:1;margin:0;font-size:14px;color:#3f4139">A plan of the places and times for a journey.</p><button class="ib" type="button" aria-expanded="false" aria-label="Xem chi tiết itinerary"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+</article>
+</main>
+
+<div role="region" aria-label="Từ đã chọn" style="position:absolute;left:0;right:0;bottom:68px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:#fff;border-top:2px solid #ece9e1;box-shadow:0 -6px 16px rgba(23,24,26,0.06)">
+<div><p role="status" style="margin:0;font-weight:700">2 đã chọn</p><button type="button" style="min-height:28px;background:none;border:0;padding:0;font:700 13px 'DM Sans',sans-serif;color:#2a3fb8;cursor:pointer">Bỏ chọn</button></div>
+<a class="b1" href="M-Session.dc.html">Luyện 2 từ<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+
+<nav aria-label="Điều hướng chính" style="position:absolute;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:2px solid #ece9e1">
+<a class="tabi" href="M-Home.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .7-1.5l7-6a2 2 0 0 1 2.6 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Hôm nay</a>
+<a class="tabi" href="M-Learn.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span>Lộ trình</a>
+<a class="tabi" href="M-Practice.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M21 5h-4"/></svg></span>Luyện tập</a>
+<a class="tabi on" href="M-Library.dc.html" aria-current="page"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 6 4 14M12 6v14M8 8v12M4 4v16"/></svg></span>Kho từ</a>
+<a class="tabi" href="M-Progress.dc.html"><span class="p"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16v5M16 14v7M20 10v11M4 18v3M8 14v7"/><path d="m22 3-8.6 8.6a.5.5 0 0 1-.7 0L9.4 8.4a.5.5 0 0 0-.7 0L2 15"/></svg></span>Tiến độ</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

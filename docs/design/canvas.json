@@ -1,0 +1,544 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-25T04:20:00Z"
+ },
+ "title": "ReflexVocab Screens",
+ "launch": {
+  "view": "canvas",
+  "page": "dashboard"
+ },
+ "pages": [
+  {
+   "id": "onboarding",
+   "name": "Đăng nhập & Onboarding"
+  },
+  {
+   "id": "dashboard",
+   "name": "Dashboard · Desktop"
+  },
+  {
+   "id": "learn",
+   "name": "Học & Luyện tập · Desktop"
+  },
+  {
+   "id": "session",
+   "name": "Phiên học · Desktop"
+  },
+  {
+   "id": "mobile",
+   "name": "Mobile"
+  },
+  {
+   "id": "states",
+   "name": "Trạng thái"
+  }
+ ],
+ "boards": {
+  "Login.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Đăng nhập",
+   "page": "onboarding",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "OB-Time.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Onboarding 1/3 · thời lượng (MVP)",
+   "page": "onboarding",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "OB-NewWords.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Onboarding 2/3 · từ mới mỗi ngày (MVP)",
+   "page": "onboarding",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "OB-Topic.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Onboarding 3/3 · chủ đề đầu tiên (MVP)",
+   "page": "onboarding",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1100,
+   "title": "Hôm nay · /",
+   "page": "dashboard",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Learn.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1400,
+   "title": "Lộ trình · /learn",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Practice.dc.html": {
+   "x": 0,
+   "y": 1520,
+   "w": 1440,
+   "h": 1350,
+   "title": "Luyện tập · /practice",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Library.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1200,
+   "title": "Kho từ · /library",
+   "page": "dashboard",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Progress.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 1200,
+   "title": "Tiến độ · /progress",
+   "page": "dashboard",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Settings.dc.html": {
+   "x": 0,
+   "y": 1320,
+   "w": 1440,
+   "h": 1200,
+   "title": "Cài đặt · /settings",
+   "page": "dashboard",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-Intro.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Giới thiệu từ mới (MVP · M02)",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-Definition.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Chọn định nghĩa · đã chọn",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-ClozeHint.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Chọn từ điền câu · mở gợi ý",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-Typing.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Gõ từ còn thiếu",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-Sentence.dc.html": {
+   "x": 0,
+   "y": 1020,
+   "w": 1440,
+   "h": 900,
+   "title": "Sắp xếp câu",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Feedback-Correct.dc.html": {
+   "x": 1520,
+   "y": 1020,
+   "w": 1440,
+   "h": 900,
+   "title": "Phản hồi đúng · đã lưu",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Feedback-Incorrect.dc.html": {
+   "x": 3040,
+   "y": 1020,
+   "w": 1440,
+   "h": 900,
+   "title": "Phản hồi sai · đang lưu",
+   "page": "session",
+   "expand": "fill"
+  },
+  "Feedback-SyncError.dc.html": {
+   "x": 4560,
+   "y": 1020,
+   "w": 1440,
+   "h": 900,
+   "title": "Lưu lỗi · thử lại",
+   "page": "session",
+   "expand": "fill"
+  },
+  "Session-Summary.dc.html": {
+   "x": 0,
+   "y": 2040,
+   "w": 1440,
+   "h": 900,
+   "title": "Kết thúc phiên",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "M-Home.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 1500,
+   "title": "Hôm nay",
+   "page": "mobile"
+  },
+  "M-Learn.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 1400,
+   "title": "Lộ trình",
+   "page": "mobile"
+  },
+  "M-Practice.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 1250,
+   "title": "Luyện tập",
+   "page": "mobile"
+  },
+  "M-Library.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 1500,
+   "title": "Kho từ",
+   "page": "mobile"
+  },
+  "M-Progress.dc.html": {
+   "x": 1880,
+   "y": 0,
+   "w": 390,
+   "h": 1500,
+   "title": "Tiến độ",
+   "page": "mobile"
+  },
+  "M-Settings.dc.html": {
+   "x": 2350,
+   "y": 0,
+   "w": 390,
+   "h": 1150,
+   "title": "Cài đặt",
+   "page": "mobile"
+  },
+  "M-Login.dc.html": {
+   "x": 0,
+   "y": 1620,
+   "w": 390,
+   "h": 844,
+   "title": "Đăng nhập",
+   "page": "mobile"
+  },
+  "M-Onboarding.dc.html": {
+   "x": 470,
+   "y": 1620,
+   "w": 390,
+   "h": 844,
+   "title": "Onboarding 1/3 (MVP)",
+   "page": "mobile"
+  },
+  "M-Session.dc.html": {
+   "x": 940,
+   "y": 1620,
+   "w": 390,
+   "h": 844,
+   "title": "Ghép cụm từ",
+   "page": "mobile"
+  },
+  "M-Sentence.dc.html": {
+   "x": 1410,
+   "y": 1620,
+   "w": 390,
+   "h": 844,
+   "title": "Sắp xếp câu",
+   "page": "mobile"
+  },
+  "M-Feedback.dc.html": {
+   "x": 1880,
+   "y": 1620,
+   "w": 390,
+   "h": 960,
+   "title": "Phản hồi sai",
+   "page": "mobile"
+  },
+  "M-Summary.dc.html": {
+   "x": 2350,
+   "y": 1620,
+   "w": 390,
+   "h": 844,
+   "title": "Kết thúc phiên",
+   "page": "mobile"
+  },
+  "States-Dashboard.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1280,
+   "h": 1560,
+   "title": "Trạng thái dashboard",
+   "page": "states"
+  },
+  "States-Session.dc.html": {
+   "x": 1360,
+   "y": 0,
+   "w": 1280,
+   "h": 1400,
+   "title": "Trạng thái phiên học",
+   "page": "states"
+  },
+  "Lesson.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1250,
+   "title": "Chi tiết bài học (MVP · M02)",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Lesson-Complete.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Hoàn thành bài (MVP · M02)",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Practice-Session.dc.html": {
+   "x": 1520,
+   "y": 1520,
+   "w": 1440,
+   "h": 900,
+   "title": "Phiên “Thử lại từ từng sai”",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Practice-Summary.dc.html": {
+   "x": 3040,
+   "y": 1520,
+   "w": 1440,
+   "h": 1000,
+   "title": "Kết quả phiên luyện tập",
+   "page": "learn",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Session-Collocation.dc.html": {
+   "x": 1520,
+   "y": 2040,
+   "w": 1440,
+   "h": 900,
+   "title": "Ghép cụm từ",
+   "page": "session",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "M-Lesson.dc.html": {
+   "x": 0,
+   "y": 2700,
+   "w": 390,
+   "h": 1500,
+   "title": "Chi tiết bài (MVP)",
+   "page": "mobile"
+  },
+  "M-LessonComplete.dc.html": {
+   "x": 470,
+   "y": 2700,
+   "w": 390,
+   "h": 844,
+   "title": "Hoàn thành bài (MVP)",
+   "page": "mobile"
+  },
+  "M-PracticeSummary.dc.html": {
+   "x": 940,
+   "y": 2700,
+   "w": 390,
+   "h": 1100,
+   "title": "Kết quả luyện tập",
+   "page": "mobile"
+  }
+ },
+ "order": [
+  "Login.dc.html",
+  "OB-Time.dc.html",
+  "OB-NewWords.dc.html",
+  "OB-Topic.dc.html",
+  "Main.dc.html",
+  "Library.dc.html",
+  "Progress.dc.html",
+  "Settings.dc.html",
+  "Learn.dc.html",
+  "Lesson.dc.html",
+  "Lesson-Complete.dc.html",
+  "Practice.dc.html",
+  "Practice-Session.dc.html",
+  "Practice-Summary.dc.html",
+  "Session-Intro.dc.html",
+  "Session-Definition.dc.html",
+  "Session-ClozeHint.dc.html",
+  "Session-Typing.dc.html",
+  "Session-Sentence.dc.html",
+  "Feedback-Correct.dc.html",
+  "Feedback-Incorrect.dc.html",
+  "Feedback-SyncError.dc.html",
+  "Session-Summary.dc.html",
+  "Session-Collocation.dc.html",
+  "M-Home.dc.html",
+  "M-Learn.dc.html",
+  "M-Practice.dc.html",
+  "M-Library.dc.html",
+  "M-Progress.dc.html",
+  "M-Settings.dc.html",
+  "M-Login.dc.html",
+  "M-Onboarding.dc.html",
+  "M-Session.dc.html",
+  "M-Sentence.dc.html",
+  "M-Feedback.dc.html",
+  "M-Summary.dc.html",
+  "States-Dashboard.dc.html",
+  "States-Session.dc.html",
+  "M-Lesson.dc.html",
+  "M-LessonComplete.dc.html",
+  "M-PracticeSummary.dc.html"
+ ],
+ "notes": {
+  "tOnb": {
+   "x": 0,
+   "y": -300,
+   "text": "Đăng nhập → onboarding 3 bước → phiên đầu tiên",
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "onboarding"
+  },
+  "sOnb": {
+   "x": 0,
+   "y": 1020,
+   "w": 560,
+   "page": "onboarding",
+   "fill": "yellow",
+   "size": "m",
+   "text": "Onboarding = luồng MVP trong FLOW §2 (đăng nhập → chọn thời lượng/từ mới → học). Base hiện chưa có.\n\n• Mỗi bước ghi vào setting thật: dailyMinutes, newPerDay; bước 3 chỉ chọn chủ đề cho phiên đầu (SessionConfig.topic).\n• Luôn có “Bỏ qua, dùng mặc định”; không hỏi điểm TOEIC, không placement.\n• Học từ flow welcome của Brilliant: progress bar trên cùng, một câu hỏi, thẻ lựa chọn lớn, nút Tiếp tục 3D cố định vị trí."
+  },
+  "tDash": {
+   "x": 0,
+   "y": -300,
+   "text": "Dashboard — sáng, sặc sỡ, top nav (hướng Brilliant)",
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "dashboard"
+  },
+  "sDash": {
+   "x": 0,
+   "y": 2640,
+   "w": 560,
+   "page": "dashboard",
+   "fill": "purple",
+   "size": "m",
+   "text": "Phạm vi nhãn\n• Không ghi chú = hành vi đã có trong base (src/pages); chỉ đổi hình thức.\n• MVP = mục tiêu trong REQUIREMENTS / TASKS M02–M05, chưa có code.\n• ĐỀ XUẤT = UI_UX_REQUIREMENTS §4, chưa vào scope.\n\nTrên các màn này:\n• Hôm nay: dòng giải thích phiên đề xuất = ĐỀ XUẤT.\n• Lộ trình và Luyện tập: xem trang “Học & Luyện tập”.\n• Kho từ: mở chi tiết trong hàng = ĐỀ XUẤT.\n• Tiến độ: retention quan sát + mốc thành thạo = MVP (M03/M05).\n\nMàu chủ đề (xanh/ cam/ tím) chỉ để nhận diện chủ đề, luôn kèm tên. Số liệu minh họa theo sample pack 12 nghĩa từ / 3 chủ đề."
+  },
+  "tSession": {
+   "x": 0,
+   "y": -300,
+   "text": "Phiên học — một câu mỗi lượt, phản hồi ngay",
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "session"
+  },
+  "sSession": {
+   "x": 3040,
+   "y": 2040,
+   "w": 560,
+   "page": "session",
+   "fill": "green",
+   "size": "m",
+   "text": "Luồng prototype (Play): Giới thiệu → Chọn định nghĩa → Kiểm tra → Phản hồi đúng → Tiếp tục → …\n\n• Năm dạng bài dùng chung một renderer; collocation dùng cùng danh sách đáp án như chọn định nghĩa (xem board Ghép cụm từ).\n• Lưu xong mới mở Tiếp tục; nhãn trạng thái lưu luôn nằm cạnh nút.\n• Lộ đáp án = lượt có hỗ trợ, không tô như bằng chứng nhớ.\n• MVP: màn giới thiệu từ mới (M02), dòng “Gặp lại sau vài câu” và “Lần học sau” ở summary."
+  },
+  "tMobile": {
+   "x": 0,
+   "y": -300,
+   "text": "Mobile 390 — tab bar dưới, phiên học không điều hướng phụ",
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "mobile"
+  },
+  "tStates": {
+   "x": 0,
+   "y": -300,
+   "text": "Trạng thái: rỗng, đang tải, lỗi, conflict",
+   "kind": "title1",
+   "maxW": 2640,
+   "page": "states"
+  },
+  "tLearn": {
+   "x": 0,
+   "y": -300,
+   "text": "Học & Luyện tập — Lộ trình → Bài học → Hoàn thành bài · Luyện tập → Phiên → Kết quả",
+   "kind": "title1",
+   "maxW": 4480,
+   "page": "learn"
+  },
+  "sLearn": {
+   "x": 0,
+   "y": 2990,
+   "w": 620,
+   "page": "learn",
+   "fill": "yellow",
+   "size": "m",
+   "text": "Cấu trúc theo REQUIREMENTS R03–R04: Khóa → Cấp độ → Chủ đề → Bài → Nghĩa từ.\n\n• Lộ trình: mọi bài đều mở, không khóa. “Hoàn thành bài” (đã gặp mọi nghĩa từ) và “thành thạo” hiển thị tách riêng. Lớp Bài + Gợi ý tiếp = MVP (M02); base hiện chỉ có danh sách chủ đề.\n• Chi tiết bài + Hoàn thành bài = MVP (M02). Sample pack có 1 bài/chủ đề, bài chuẩn sau M04 nhắm 8–10 nghĩa từ.\n• Luyện tập: preset và phần tự chọn giữ đúng SessionConfig của base (preset, topic, kind, count, senseIds); chỉ đổi dropdown thành thẻ chọn.\n• Phiên “Thử lại từ từng sai”: chip chế độ + “Ngữ cảnh mới” = MVP (R06/FLOW §4).\n• Kết quả luyện tập: thông điệp lịch ôn theo Qualified Learning Evidence (R09–R10).\n\nPrototype: Lộ trình → Xem bài → Tiếp tục bài học → phiên học. Luyện tập → Thử lại từ từng sai → Kiểm tra → Kết quả."
+  }
+ },
+ "designSystems": []
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Onboarding · Thời lượng</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border-radius:14px;background:#17181a;color:#fff;font:700 17px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.opt{display:flex;align-items:center;gap:16px;width:100%;min-height:76px;padding:14px 18px;box-sizing:border-box;border-radius:18px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 4px 0 #e4e1d8;color:#17181a;cursor:pointer}
+.opt:hover{border-color:#cfcbbf}
+.opt.on{border-color:#3d57e6;background:#eef1ff;box-shadow:0 4px 0 #3d57e6}
+.opt input{width:22px;height:22px;margin:0 0 0 auto;accent-color:#3d57e6;flex-shrink:0}
+.tile{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex-shrink:0}
+.tile svg{width:28px;height:28px}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:900px;display:flex;flex-direction:column;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55">
+
+<header style="width:100%;max-width:880px;margin:0 auto;box-sizing:border-box;padding:20px 24px 0;display:flex;align-items:center;gap:18px">
+<a href="Login.dc.html" aria-label="Quay lại" style="width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#5b5d57"><svg class="i" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div role="progressbar" aria-label="Thiết lập ban đầu" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="Bước 1 trên 3" style="flex:1;height:14px;border-radius:99px;background:#e4e1d8;overflow:hidden"><div style="width:33.3%;height:100%;border-radius:99px;background:#d2f55d;box-shadow:inset 0 -4px 0 #b5d93a"><div style="margin:3px 8px 0;height:3px;border-radius:99px;background:#eefaa8"></div></div></div>
+<span style="min-width:32px;font-weight:700;color:#5b5d57">1/3</span>
+<a href="Main.dc.html" style="min-height:44px;display:inline-flex;align-items:center;padding:0 6px;font-weight:700;color:#2a3fb8">Bỏ qua, dùng mặc định</a>
+</header>
+
+<main style="flex:1;width:100%;max-width:640px;margin:0 auto;box-sizing:border-box;padding:56px 24px 40px">
+<span style="display:inline-block;padding:5px 12px;border-radius:99px;background:#fff7dc;color:#7a5a00;font-size:13px;font-weight:700;letter-spacing:.06em">THÓI QUEN HỌC</span>
+<h1 id="q" style="margin:14px 0 0;font:800 40px/1.12 Manrope,sans-serif;letter-spacing:-0.04em">Mỗi ngày bạn muốn học bao lâu?</h1>
+<p style="margin:12px 0 0;font-size:17px;color:#5b5d57">Chọn nhịp vừa sức để giữ chuỗi ngày học. Có thể đổi trong Cài đặt bất kỳ lúc nào.</p>
+
+<fieldset aria-labelledby="q" style="margin:32px 0 0;padding:0;border:0;display:flex;flex-direction:column;gap:14px">
+<label class="opt"><span class="tile" aria-hidden="true" style="background:#fff7dc;color:#c99a10"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12V5a7 7 0 0 1 7 7z" fill="currentColor"/></svg></span><span><strong style="display:block;font:800 19px Manrope,sans-serif">5 phút</strong><span style="color:#5b5d57">Khởi động nhẹ mỗi ngày</span></span><input type="radio" name="minutes" value="5"></label>
+<label class="opt on"><span class="tile" aria-hidden="true" style="background:#d2f55d;color:#17181a;box-shadow:0 3px 0 #a9c93a"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12V5a7 7 0 0 1 0 14z" fill="currentColor"/></svg></span><span><strong style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif">10 phút<span style="padding:2px 10px;border-radius:99px;background:#3d57e6;color:#fff;font:700 12px 'DM Sans',sans-serif;letter-spacing:.04em">Gợi ý</span></strong><span style="color:#5b5d57">Nhịp đều đặn, dễ duy trì</span></span><input type="radio" name="minutes" value="10" checked="checked"></label>
+<label class="opt"><span class="tile" aria-hidden="true" style="background:#3d57e6;color:#fff"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12V5a7 7 0 1 1-7 7z" fill="currentColor"/></svg></span><span><strong style="display:block;font:800 19px Manrope,sans-serif">15 phút</strong><span style="color:#5b5d57">Tập trung hơn một chút</span></span><input type="radio" name="minutes" value="15"></label>
+<label class="opt"><span class="tile" aria-hidden="true" style="background:#8a5cf0;color:#fff"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor"/></svg></span><span><strong style="display:block;font:800 19px Manrope,sans-serif">20 phút</strong><span style="color:#5b5d57">Học sâu khi bạn có thời gian</span></span><input type="radio" name="minutes" value="20"></label>
+</fieldset>
+</main>
+
+<footer style="background:#fff;border-top:2px solid #ece9e1">
+<div style="max-width:640px;margin:0 auto;box-sizing:border-box;padding:18px 24px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px">
+<span style="font-size:14px;color:#5b5d57">Lưu vào mục tiêu mỗi ngày.</span>
+<a class="b1" href="OB-NewWords.dc.html">Tiếp tục<svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

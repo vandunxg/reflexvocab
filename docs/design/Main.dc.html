@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Hôm nay</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+a:hover{color:#17181a}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tab{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;color:#55584f;font-weight:700;font-size:15px}
+.tab:hover{background:#efede6}
+.tab.on{background:#e9f7b8;color:#17181a}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:14px;background:#17181a;color:#fff;font:700 16px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b1:hover{color:#fff;transform:translateY(-1px)}
+.bw{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;background:#fff;color:#17181a;font:700 16px 'DM Sans',sans-serif;box-shadow:0 4px 0 #1f2f99;border:0;cursor:pointer}
+.bw:hover{transform:translateY(-1px)}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.b2:hover{border-color:#cfcbbf;box-shadow:0 4px 0 #cfcbbf}
+.chip{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:2px solid #e4e1d8;background:#fff;color:#3f4139;font:700 14px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#17181a;border-color:#17181a;color:#fff}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1100px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 32px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="Main.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif;letter-spacing:-0.04em">
+<span aria-hidden="true" style="width:34px;height:34px;border-radius:10px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 20px Manrope,sans-serif;line-height:1">r.</span>reflexvocab</a>
+<nav aria-label="Điều hướng chính" style="display:flex;flex-wrap:wrap;gap:4px">
+<a class="tab on" href="Main.dc.html" aria-current="page">Hôm nay</a>
+<a class="tab" href="Learn.dc.html">Lộ trình</a>
+<a class="tab" href="Practice.dc.html">Luyện tập</a>
+<a class="tab" href="Library.dc.html">Kho từ</a>
+<a class="tab" href="Progress.dc.html">Tiến độ</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;border-radius:999px;color:#55584f"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="max-width:1100px;margin:0 auto;box-sizing:border-box;padding:36px 32px 56px;display:flex;flex-direction:column;gap:28px">
+
+<div>
+<h1 style="margin:0;font:800 34px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Hôm nay</h1>
+<p style="margin:8px 0 0;color:#5b5d57">Ôn lại từ đã học và tiếp tục với những chủ đề của bạn.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<section aria-labelledby="resume-title" style="flex:2 1 520px;min-width:0;position:relative;overflow:hidden;box-sizing:border-box;padding:28px;border-radius:24px;background:#3d57e6;color:#fff;box-shadow:0 6px 0 #2a3fb8;display:flex;flex-direction:column;gap:18px">
+<svg aria-hidden="true" width="230" height="200" viewBox="0 0 230 200" style="position:absolute;right:-10px;top:-6px">
+<circle cx="150" cy="70" r="54" fill="#d2f55d"/>
+<rect x="60" y="96" width="70" height="70" rx="14" fill="#ff76d6" transform="rotate(-14 95 131)"/>
+<path d="M170 128l40 70h-80z" fill="#ffcf3d"/>
+</svg>
+<p style="position:relative;margin:0;font-size:13px;font-weight:700;letter-spacing:0.06em">PHIÊN ĐANG DỞ</p>
+<div style="position:relative;max-width:420px">
+<h2 id="resume-title" style="margin:0;font:800 28px/1.2 Manrope,sans-serif;letter-spacing:-0.03em">Phiên hằng ngày</h2>
+<p style="margin:8px 0 0;color:#e6eaff">Gồm 4 nghĩa từ đến hạn, 2 từ mới và 2 từ cần củng cố. Đã lưu đến câu 4.</p>
+</div>
+<div style="position:relative;display:flex;align-items:center;gap:12px;max-width:420px">
+<div role="progressbar" aria-label="Tiến độ phiên đang dở" aria-valuemin="0" aria-valuemax="10" aria-valuenow="4" style="flex:1;height:12px;border-radius:99px;background:#2a3fb8;overflow:hidden"><div style="width:40%;height:100%;border-radius:99px;background:#d2f55d"></div></div>
+<span style="font-weight:700">4/10</span>
+</div>
+<div style="position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+<a class="bw" href="Session-Definition.dc.html">Tiếp tục phiên học<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<span style="font-size:14px;color:#e6eaff">Mục tiêu 10 phút mỗi ngày</span>
+</div>
+</section>
+
+<section aria-labelledby="goal-title" style="flex:1 1 280px;min-width:0;box-sizing:border-box;padding:24px;border-radius:24px;background:#fff;border:2px solid #ece9e1;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;align-items:center;gap:12px">
+<span aria-hidden="true" style="width:48px;height:48px;border-radius:14px;background:#fff1e3;display:grid;place-items:center"><svg class="i" width="26" height="26" viewBox="0 0 24 24" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+<div><h2 id="goal-title" style="margin:0;font:800 22px Manrope,sans-serif;letter-spacing:-0.03em">4 ngày liên tiếp</h2><p style="margin:2px 0 0;font-size:14px;color:#5b5d57">6 lượt thực hành hôm nay</p></div>
+</div>
+<div role="group" aria-label="Hoạt động bảy ngày, múi giờ Asia/Ho_Chi_Minh" style="display:flex;justify-content:space-between;gap:4px">
+<span role="img" aria-label="Thứ năm 19/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">T5<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+<span role="img" aria-label="Thứ sáu 20/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">T6<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+<span role="img" aria-label="Thứ bảy 21/11: chưa có lượt học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">T7<span style="width:28px;height:28px;border-radius:99px;border:2px dashed #cfcbbf"></span></span>
+<span role="img" aria-label="Chủ nhật 22/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">CN<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+<span role="img" aria-label="Thứ hai 23/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">T2<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+<span role="img" aria-label="Thứ ba 24/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#5b5d57">T3<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+<span role="img" aria-label="Hôm nay, thứ tư 25/11: đã học" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#17181a">T4<span style="width:32px;height:32px;border-radius:99px;background:#d2f55d;outline:2px solid #17181a;outline-offset:2px;display:grid;place-items:center;color:#17181a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+</div>
+<dl style="margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-top:16px;border-top:2px solid #f0eee8">
+<div><dt style="font-size:12px;color:#5b5d57">Đến hạn</dt><dd style="margin:2px 0 0;font:800 22px Manrope,sans-serif">4</dd></div>
+<div><dt style="font-size:12px;color:#5b5d57">Đã bắt đầu</dt><dd style="margin:2px 0 0;font:800 22px Manrope,sans-serif">10<span style="font:500 13px 'DM Sans',sans-serif;color:#5b5d57">/12</span></dd></div>
+<div><dt style="font-size:12px;color:#5b5d57">Thành thạo</dt><dd style="margin:2px 0 0;font:800 22px Manrope,sans-serif">2</dd></div>
+</dl>
+</section>
+</div>
+
+<section aria-labelledby="topics-title" style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+<h2 id="topics-title" style="margin:0;font:800 22px Manrope,sans-serif;letter-spacing:-0.03em">Chủ đề của bạn</h2>
+<a href="Learn.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#2a3fb8">Xem lộ trình<svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<div role="group" aria-label="Lọc từ trong các chủ đề" style="display:flex;flex-wrap:wrap;gap:8px">
+<button class="chip on" type="button" aria-pressed="true">Tất cả<span style="opacity:.75">12</span></button>
+<button class="chip" type="button" aria-pressed="false">Đến hạn<span style="color:#5b5d57">4</span></button>
+<button class="chip" type="button" aria-pressed="false">Chưa học<span style="color:#5b5d57">2</span></button>
+<button class="chip" type="button" aria-pressed="false">Cần củng cố<span style="color:#5b5d57">8</span></button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+
+<article style="border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1;overflow:hidden;display:flex;flex-direction:column">
+<div aria-hidden="true" style="height:92px;background:#e9edff;position:relative;overflow:hidden"><span style="position:absolute;left:22px;top:22px;width:48px;height:48px;border-radius:99px;background:#3d57e6"></span><span style="position:absolute;left:58px;top:40px;width:40px;height:40px;border-radius:10px;background:#d2f55d;transform:rotate(12deg)"></span></div>
+<div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Meetings</h3><span style="font-size:12px;font-weight:700;color:#2a3fb8">Foundation</span></div>
+<p style="margin:0;font-size:14px;color:#5b5d57">postpone · agenda · attend · confirm</p>
+<div role="progressbar" aria-label="Meetings: 4 trên 4 nghĩa từ đã bắt đầu" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4" style="height:10px;border-radius:99px;background:#f0eee8;overflow:hidden"><div style="width:100%;height:100%;background:#3d57e6;border-radius:99px"></div></div>
+<p style="margin:0;font-size:13px;color:#5b5d57">4/4 đã bắt đầu · 2 thành thạo</p>
+<a class="b2" href="Session-Definition.dc.html" style="margin-top:auto;align-self:flex-start">Luyện tập</a>
+</div>
+</article>
+
+<article style="border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1;overflow:hidden;display:flex;flex-direction:column">
+<div aria-hidden="true" style="height:92px;background:#fff1e3;position:relative;overflow:hidden"><span style="position:absolute;left:22px;top:24px;width:0;height:0;border-left:28px solid transparent;border-right:28px solid transparent;border-bottom:48px solid #ff9238"></span><span style="position:absolute;left:70px;top:30px;width:38px;height:38px;border-radius:99px;background:#ff76d6"></span></div>
+<div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Travel</h3><span style="font-size:12px;font-weight:700;color:#a14e0a">Foundation</span></div>
+<p style="margin:0;font-size:14px;color:#5b5d57">reservation · itinerary · luggage · depart</p>
+<div role="progressbar" aria-label="Travel: 4 trên 4 nghĩa từ đã bắt đầu" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4" style="height:10px;border-radius:99px;background:#f0eee8;overflow:hidden"><div style="width:100%;height:100%;background:#ff9238;border-radius:99px"></div></div>
+<p style="margin:0;font-size:13px;color:#5b5d57">4/4 đã bắt đầu · 0 thành thạo</p>
+<a class="b2" href="Session-Definition.dc.html" style="margin-top:auto;align-self:flex-start">Luyện tập</a>
+</div>
+</article>
+
+<article style="border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1;overflow:hidden;display:flex;flex-direction:column">
+<div aria-hidden="true" style="height:92px;background:#f1eaff;position:relative;overflow:hidden"><span style="position:absolute;left:22px;top:22px;width:46px;height:46px;border-radius:12px;background:#8a5cf0"></span><span style="position:absolute;left:64px;top:36px;width:44px;height:22px;border-radius:99px;background:#ffcf3d"></span></div>
+<div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Work</h3><span style="font-size:12px;font-weight:700;color:#5b33c7">Foundation</span></div>
+<p style="margin:0;font-size:14px;color:#5b5d57">invoice · submit · deadline · approve</p>
+<div role="progressbar" aria-label="Work: 2 trên 4 nghĩa từ đã bắt đầu" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" style="height:10px;border-radius:99px;background:#f0eee8;overflow:hidden"><div style="width:50%;height:100%;background:#8a5cf0;border-radius:99px"></div></div>
+<p style="margin:0;font-size:13px;color:#5b5d57">2/4 đã bắt đầu · 0 thành thạo</p>
+<a class="b2" href="Session-Intro.dc.html" style="margin-top:auto;align-self:flex-start">Học từ mới</a>
+</div>
+</article>
+
+</div>
+</section>
+
+<p style="margin:0;font-size:13px;color:#5b5d57">Hoạt động và chuỗi ngày dựa trên tối đa 1.000 lượt gần nhất được tải. <a href="Progress.dc.html" style="font-weight:700;color:#2a3fb8">Xem tiến độ</a></p>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

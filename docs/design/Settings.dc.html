@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Cài đặt</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+a:hover{color:#17181a}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tab{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:999px;color:#55584f;font-weight:700;font-size:15px}
+.tab:hover{background:#efede6}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:14px;background:#17181a;color:#fff;font:700 16px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.b2:hover{border-color:#cfcbbf;box-shadow:0 4px 0 #cfcbbf}
+.row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:18px 0;border-top:2px solid #f0eee8}
+select{height:52px;min-width:260px;padding:0 14px;border-radius:14px;border:2px solid #e4e1d8;background:#fff;color:#17181a;font:500 15px 'DM Sans',sans-serif}
+input[type=range]{width:260px;accent-color:#3d57e6}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1200px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 32px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="Main.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:34px;height:34px;border-radius:10px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 20px Manrope,sans-serif;line-height:1">r.</span>reflexvocab</a>
+<nav aria-label="Điều hướng chính" style="display:flex;flex-wrap:wrap;gap:4px">
+<a class="tab" href="Main.dc.html">Hôm nay</a><a class="tab" href="Learn.dc.html">Lộ trình</a><a class="tab" href="Practice.dc.html">Luyện tập</a><a class="tab" href="Library.dc.html">Kho từ</a><a class="tab" href="Progress.dc.html">Tiến độ</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="Settings.dc.html" aria-label="Cài đặt" aria-current="page" style="width:44px;height:44px;display:grid;place-items:center;border-radius:999px;background:#e9f7b8;color:#17181a"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="max-width:800px;margin:0 auto;box-sizing:border-box;padding:36px 32px 56px;display:flex;flex-direction:column;gap:22px">
+
+<div>
+<h1 style="margin:0;font:800 34px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Cài đặt</h1>
+<p style="margin:8px 0 0;color:#5b5d57">Điều chỉnh vừa đủ để mỗi phiên học dễ bắt đầu hơn.</p>
+</div>
+
+<form style="display:flex;flex-direction:column;gap:22px">
+<section aria-labelledby="habit-title" style="padding:8px 24px 6px;border-radius:24px;background:#fff;border:2px solid #ece9e1">
+<h2 id="habit-title" style="display:flex;align-items:center;gap:12px;margin:14px 0 12px;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em"><span aria-hidden="true" style="width:36px;height:36px;border-radius:10px;background:#ffcf3d;display:grid;place-items:center"><svg class="i" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Thói quen học</h2>
+<label class="row"><span><strong style="display:block">Mục tiêu mỗi ngày</strong><span style="font-size:14px;color:#5b5d57">Dùng cho phiên hằng ngày.</span></span><select><option>5 phút</option><option selected="selected">10 phút</option><option>15 phút</option><option>20 phút</option></select></label>
+<label class="row"><span><strong style="display:block">Giới hạn từ mới mỗi ngày</strong><span style="font-size:14px;color:#5b5d57">Số nghĩa từ mới tối đa trong một ngày.</span></span><select><option>4</option><option>6</option><option selected="selected">8</option><option>10</option></select></label>
+<label class="row"><span><strong style="display:block">Múi giờ</strong><span style="font-size:14px;color:#5b5d57">Dùng cho chuỗi ngày và lịch hoạt động.</span></span><select><option selected="selected">Asia/Ho_Chi_Minh</option><option>Asia/Tokyo</option><option>Europe/London</option><option>America/New_York</option><option>UTC</option></select></label>
+</section>
+
+<section aria-labelledby="voice-title" style="padding:8px 24px 18px;border-radius:24px;background:#fff;border:2px solid #ece9e1">
+<h2 id="voice-title" style="display:flex;align-items:center;gap:12px;margin:14px 0 12px;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em"><span aria-hidden="true" style="width:36px;height:36px;border-radius:10px;background:#3d57e6;color:#fff;display:grid;place-items:center"><svg class="i" width="20" height="20" viewBox="0 0 24 24"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></span>Giọng đọc tiếng Anh</h2>
+<label class="row"><strong>Voice</strong><select><option selected="selected">Giọng tiếng Anh khả dụng mặc định</option><option>Samantha · en-US</option><option>Daniel · en-GB</option></select></label>
+<label class="row"><strong>Tốc độ: 0.9×</strong><input type="range" min="0.6" max="1.2" step="0.1" value="0.9"></label>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding-top:18px;border-top:2px solid #f0eee8">
+<button class="b2" type="button">Nghe thử giọng đọc</button>
+<p style="flex:1 1 300px;margin:0;font-size:14px;color:#5b5d57">Giọng đọc phụ thuộc trình duyệt và thiết bị. Nếu giọng đã chọn không có, ứng dụng sẽ thử giọng tiếng Anh khác.</p>
+</div>
+</section>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+<button class="b1" type="submit">Lưu cài đặt</button>
+<p role="status" style="display:inline-flex;align-items:center;gap:8px;margin:0;padding:6px 12px;border-radius:99px;background:#e6f8ec;color:#17703a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đã lưu cài đặt.</p>
+</div>
+</form>
+
+<section aria-labelledby="account-title" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:20px 24px;border-radius:24px;background:#fff;border:2px solid #ece9e1">
+<div><h2 id="account-title" style="margin:0;font:800 18px Manrope,sans-serif">Tài khoản</h2><p style="margin:2px 0 0;font-size:14px;color:#5b5d57">Đăng nhập bằng tài khoản được cấp. Tiến độ lưu theo tài khoản này.</p></div>
+<button class="b2" type="button">Đăng xuất</button>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

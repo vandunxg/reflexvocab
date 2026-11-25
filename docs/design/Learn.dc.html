@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Lộ trình</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tab{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:999px;color:#55584f;font-weight:700;font-size:15px}
+.tab:hover{background:#efede6}
+.tab.on{background:#e9f7b8;color:#17181a}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:14px;background:#17181a;color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.b2:hover{border-color:#cfcbbf;box-shadow:0 4px 0 #cfcbbf}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.unit{position:relative;display:grid;grid-template-columns:104px minmax(0,1fr);gap:0 24px;padding-bottom:32px}
+.unit:not(:last-child)::before{content:"";position:absolute;left:50px;top:106px;bottom:2px;border-left:4px dashed #cfcbbf}
+.node{position:relative;z-index:1;width:92px;height:92px;margin:4px 6px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 28px Manrope,sans-serif}
+.card{padding:22px 24px;border-radius:24px;background:#fff;border:2px solid #ece9e1}
+.ey{margin:0;font-size:12px;font-weight:700;letter-spacing:.08em;color:#5b5d57}
+.h{margin:4px 0 0;font:800 23px/1.2 Manrope,sans-serif;letter-spacing:-0.025em}
+.st{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:13px;font-weight:700}
+.bar{height:10px;border-radius:99px;background:#efede6;overflow:hidden}
+.bar>span{display:block;height:100%;border-radius:99px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 8px;border-radius:99px;background:#f7f6f1;border:2px solid #ece9e1;font-size:14px;font-weight:700}
+.d{width:13px;height:13px;border-radius:50%;border:2px solid currentColor;box-sizing:border-box;flex-shrink:0}
+.d1{color:#8a8c84}
+.d2{color:#c99a10;background:conic-gradient(#c99a10 0 50%,transparent 0)}
+.d3{color:#3d57e6;background:conic-gradient(#3d57e6 0 75%,transparent 0)}
+.d4{color:#2fc66b;background:#2fc66b}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1400px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 32px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="Main.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:34px;height:34px;border-radius:10px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 20px Manrope,sans-serif;line-height:1">r.</span>reflexvocab</a>
+<nav aria-label="Điều hướng chính" style="display:flex;flex-wrap:wrap;gap:4px">
+<a class="tab" href="Main.dc.html">Hôm nay</a><a class="tab on" href="Learn.dc.html" aria-current="page">Lộ trình</a><a class="tab" href="Practice.dc.html">Luyện tập</a><a class="tab" href="Library.dc.html">Kho từ</a><a class="tab" href="Progress.dc.html">Tiến độ</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;border-radius:999px;color:#3f4139"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="max-width:1200px;margin:0 auto;box-sizing:border-box;padding:32px 32px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:28px;align-items:start">
+
+<div style="grid-column:1/-1;position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;padding:28px 32px;border-radius:28px;background:#17181a;color:#fff">
+<div aria-hidden="true">
+<span style="position:absolute;width:180px;height:180px;border-radius:50%;background:#3d57e6;right:-40px;top:-70px"></span>
+<span style="position:absolute;width:90px;height:90px;background:#ff76d6;clip-path:polygon(50% 0,100% 100%,0 100%);right:230px;bottom:-18px;transform:rotate(10deg)"></span>
+<span style="position:absolute;width:52px;height:52px;border-radius:14px;background:#ffcf3d;right:300px;top:18px;transform:rotate(-14deg)"></span>
+</div>
+<span aria-hidden="true" style="position:relative;width:72px;height:72px;border-radius:20px;background:#d2f55d;color:#17181a;box-shadow:0 5px 0 #a9c93a;display:grid;place-items:center"><svg class="i" width="36" height="36" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+<div style="position:relative;flex:1 1 380px">
+<p class="ey" style="color:#d2f55d">TOEIC · SAMPLE PACK</p>
+<h1 style="margin:4px 0 0;font:800 34px/1.12 Manrope,sans-serif;letter-spacing:-0.035em">Tiếng Anh trong công việc</h1>
+<p style="margin:6px 0 0;max-width:560px;color:#cfcbbf">Hiểu từ qua các tình huống hằng ngày, từ cuộc họp đến chuyến công tác. Mọi bài đều mở — học theo gợi ý hoặc chọn bài bạn muốn.</p>
+</div>
+<dl style="position:relative;display:flex;gap:10px;margin:0">
+<div style="padding:10px 16px;border-radius:16px;background:#2b2d30;display:flex;flex-direction:column-reverse"><dt style="font-size:13px;color:#cfcbbf">đã bắt đầu</dt><dd style="margin:0;font:800 24px Manrope,sans-serif">10/12</dd></div>
+<div style="padding:10px 16px;border-radius:16px;background:#2b2d30;display:flex;flex-direction:column-reverse"><dt style="font-size:13px;color:#cfcbbf">thành thạo</dt><dd style="margin:0;font:800 24px Manrope,sans-serif">2/12</dd></div>
+</dl>
+</div>
+
+<section aria-labelledby="lv" style="min-width:0">
+<div class="row" style="justify-content:space-between;margin-bottom:26px">
+<div><p class="ey">CẤP ĐỘ 1</p><h2 id="lv" style="margin:2px 0 0;font:800 26px Manrope,sans-serif;letter-spacing:-0.03em">Foundation</h2></div>
+<span class="st" style="background:#fff;border:2px solid #ece9e1;color:#3f4139">3 chủ đề · 3 bài · 12 nghĩa từ</span>
+</div>
+
+<ol style="margin:0;padding:0;list-style:none">
+
+<li class="unit">
+<div class="node" aria-hidden="true" style="background:#3d57e6;box-shadow:0 6px 0 #2a3fb8"><svg class="i" width="40" height="40" viewBox="0 0 24 24" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></div>
+<article class="card" aria-labelledby="u1">
+<div class="row" style="justify-content:space-between;align-items:flex-start"><div><p class="ey">CHỦ ĐỀ 01 · <span style="color:#2a3fb8">MEETINGS</span></p><h3 id="u1" class="h">Bài 1 · Họp và lịch trình</h3></div><span class="st" style="background:#e6f8ec;color:#17703a"><svg class="i" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Đã hoàn thành</span></div>
+<div class="row" style="margin-top:14px"><div style="flex:1 1 220px"><div class="bar" role="img" aria-label="Đã gặp 4 trên 4 nghĩa từ"><span style="width:100%;background:#3d57e6"></span></div></div><span style="font-size:14px;color:#5b5d57">Đã gặp 4/4</span><span class="st" style="background:#e6f8ec;color:#17703a">2 thành thạo</span></div>
+<div class="chips" style="margin-top:14px" lang="en"><span class="chip"><span class="d d4" aria-hidden="true"></span>postpone<span class="sr" lang="vi">: Thành thạo</span></span><span class="chip"><span class="d d4" aria-hidden="true"></span>agenda<span class="sr" lang="vi">: Thành thạo</span></span><span class="chip"><span class="d d3" aria-hidden="true"></span>attend<span class="sr" lang="vi">: Quen thuộc</span></span><span class="chip"><span class="d d3" aria-hidden="true"></span>confirm<span class="sr" lang="vi">: Quen thuộc</span></span></div>
+<div class="row" style="margin-top:18px"><a class="b2" href="Lesson.dc.html">Xem bài</a><a class="b2" href="Session-Definition.dc.html">Ôn bài này</a></div>
+</article>
+</li>
+
+<li class="unit">
+<div class="node" aria-hidden="true" style="background:#ff9238;box-shadow:0 6px 0 #c96a16"><svg class="i" width="40" height="40" viewBox="0 0 24 24" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></div>
+<article class="card" aria-labelledby="u2">
+<div class="row" style="justify-content:space-between;align-items:flex-start"><div><p class="ey">CHỦ ĐỀ 02 · <span style="color:#a14e0a">TRAVEL</span></p><h3 id="u2" class="h">Bài 1 · Đặt chỗ và di chuyển</h3></div><span class="st" style="background:#e6f8ec;color:#17703a"><svg class="i" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Đã hoàn thành</span></div>
+<div class="row" style="margin-top:14px"><div style="flex:1 1 220px"><div class="bar" role="img" aria-label="Đã gặp 4 trên 4 nghĩa từ"><span style="width:100%;background:#ff9238"></span></div></div><span style="font-size:14px;color:#5b5d57">Đã gặp 4/4</span><span class="st" style="background:#f0eee8;color:#3f4139">0 thành thạo</span></div>
+<div class="chips" style="margin-top:14px" lang="en"><span class="chip"><span class="d d2" aria-hidden="true"></span>reservation<span class="sr" lang="vi">: Đang học</span></span><span class="chip"><span class="d d2" aria-hidden="true"></span>luggage<span class="sr" lang="vi">: Đang học</span></span><span class="chip"><span class="d d3" aria-hidden="true"></span>itinerary<span class="sr" lang="vi">: Quen thuộc</span></span><span class="chip"><span class="d d3" aria-hidden="true"></span>depart<span class="sr" lang="vi">: Quen thuộc</span></span></div>
+<div class="row" style="margin-top:18px"><a class="b2" href="Lesson.dc.html">Xem bài</a><a class="b2" href="Session-Definition.dc.html">Ôn bài này</a></div>
+</article>
+</li>
+
+<li class="unit">
+<div style="position:relative">
+<a href="Lesson.dc.html" style="position:absolute;z-index:2;left:52px;top:-46px;transform:translateX(-50%);white-space:nowrap;padding:6px 14px;border-radius:12px;background:#fff;border:2px solid #3d57e6;box-shadow:0 3px 0 #3d57e6;color:#2a3fb8;font-weight:800;font-size:14px">Tiếp tục · 2/4<span aria-hidden="true" style="position:absolute;left:50%;bottom:-8px;width:12px;height:12px;background:#fff;border-right:2px solid #3d57e6;border-bottom:2px solid #3d57e6;transform:translateX(-50%) rotate(45deg)"></span></a>
+<div class="node" aria-hidden="true" style="background:#8a5cf0;box-shadow:0 6px 0 #5b33c7,0 0 0 9px #f1eaff">03</div>
+</div>
+<article class="card" aria-labelledby="u3" style="border-color:#3d57e6;box-shadow:0 5px 0 #3d57e6">
+<div class="row" style="justify-content:space-between;align-items:flex-start"><div><p class="ey">CHỦ ĐỀ 03 · <span style="color:#5b33c7">WORK</span></p><h3 id="u3" class="h">Bài 1 · Hạn chót và giấy tờ</h3></div><span class="st" style="background:#3d57e6;color:#fff">Gợi ý tiếp</span></div>
+<p style="margin:6px 0 0;color:#5b5d57;font-size:14px">Còn 2 nghĩa từ mới · nằm trong giới hạn 8 từ mới hôm nay.</p>
+<div class="row" style="margin-top:14px"><div style="flex:1 1 220px"><div class="bar" role="img" aria-label="Đã gặp 2 trên 4 nghĩa từ"><span style="width:50%;background:#8a5cf0"></span></div></div><span style="font-size:14px;color:#5b5d57">Đã gặp 2/4</span><span class="st" style="background:#f0eee8;color:#3f4139">0 thành thạo</span></div>
+<div class="chips" style="margin-top:14px" lang="en"><span class="chip"><span class="d d2" aria-hidden="true"></span>invoice<span class="sr" lang="vi">: Đang học</span></span><span class="chip"><span class="d d2" aria-hidden="true"></span>submit<span class="sr" lang="vi">: Đang học</span></span><span class="chip" style="border-style:dashed"><span class="d d1" aria-hidden="true"></span>deadline<span class="sr" lang="vi">: Chưa học</span></span><span class="chip" style="border-style:dashed"><span class="d d1" aria-hidden="true"></span>approve<span class="sr" lang="vi">: Chưa học</span></span></div>
+<div class="row" style="margin-top:18px"><a class="b1" href="Session-Intro.dc.html">Tiếp tục bài học<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="b2" href="Lesson.dc.html">Xem bài</a></div>
+</article>
+</li>
+
+<li class="unit" style="padding-bottom:0">
+<div aria-hidden="true" style="width:92px;height:92px;margin:4px 6px;border-radius:50%;border:4px dashed #cfcbbf;box-sizing:border-box;display:grid;place-items:center;color:#8a8c84"><svg class="i" width="34" height="34" viewBox="0 0 24 24"><path d="M4 22V4M4 4h12l-2 4 2 4H4"/></svg></div>
+<div style="align-self:center;padding:16px 20px;border-radius:20px;border:2px dashed #cfcbbf">
+<strong style="display:block">Hết Foundation trong sample pack</strong>
+<span style="font-size:14px;color:#5b5d57">Bài và cấp độ mới được thêm theo từng batch nội dung đã kiểm duyệt. Bài chuẩn nhắm 8–10 nghĩa từ.</span>
+</div>
+</li>
+</ol>
+</section>
+
+<aside style="display:flex;flex-direction:column;gap:18px">
+<section aria-labelledby="today" class="card" style="padding:20px">
+<h2 id="today" style="margin:0 0 12px;font:800 18px Manrope,sans-serif">Nhịp hôm nay</h2>
+<dl style="margin:0;display:grid;gap:10px">
+<div style="display:flex;justify-content:space-between;gap:10px"><dt style="color:#5b5d57">Giới hạn từ mới</dt><dd style="margin:0;font-weight:700">8 / ngày</dd></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><dt style="color:#5b5d57">Nghĩa từ chưa học</dt><dd style="margin:0;font-weight:700">2</dd></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><dt style="color:#5b5d57">Đến hạn ôn</dt><dd style="margin:0;font-weight:700">4</dd></div>
+</dl>
+<p style="margin:14px 0 0;padding:10px 12px;border-radius:14px;background:#eef1ff;color:#2a3fb8;font-size:14px;font-weight:700">Phiên hằng ngày ưu tiên mục đến hạn, rồi mới thêm từ mới.</p>
+<a class="b2" href="Main.dc.html" style="margin-top:14px;width:100%;box-sizing:border-box">Về phiên hôm nay</a>
+</section>
+
+<section aria-labelledby="legend" class="card" style="padding:20px">
+<h2 id="legend" style="margin:0 0 6px;font:800 18px Manrope,sans-serif">Đọc lộ trình</h2>
+<p style="margin:0 0 12px;font-size:14px;color:#5b5d57"><strong style="color:#17181a">Hoàn thành bài</strong> = đã gặp mọi nghĩa từ trong bài. <strong style="color:#17181a">Thành thạo</strong> = nhớ đúng qua nhiều ngày. Hai số này đi riêng.</p>
+<ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px;font-weight:700">
+<li style="display:flex;align-items:center;gap:10px"><span class="d d1" aria-hidden="true"></span>Chưa học</li>
+<li style="display:flex;align-items:center;gap:10px"><span class="d d2" aria-hidden="true"></span>Đang học</li>
+<li style="display:flex;align-items:center;gap:10px"><span class="d d3" aria-hidden="true"></span>Quen thuộc</li>
+<li style="display:flex;align-items:center;gap:10px"><span class="d d4" aria-hidden="true"></span>Thành thạo</li>
+</ul>
+</section>
+</aside>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

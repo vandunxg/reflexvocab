@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tiến độ học tập</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+a:hover{color:#17181a}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tab{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:999px;color:#55584f;font-weight:700;font-size:15px}
+.tab:hover{background:#efede6}
+.tab.on{background:#e9f7b8;color:#17181a}
+.card{border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1}
+.h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:14px 20px;border-top:2px solid #f0eee8}
+.ok{display:inline-flex;align-items:center;gap:6px;width:136px;padding:4px 10px;border-radius:99px;background:#e6f8ec;color:#17703a;font-size:13px;font-weight:700;box-sizing:border-box}
+.no{display:inline-flex;align-items:center;gap:6px;width:136px;padding:4px 10px;border-radius:99px;background:#fff1e3;color:#a14e0a;font-size:13px;font-weight:700;box-sizing:border-box}
+.d{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#5b5d57}
+.dc{width:44px;height:44px;border-radius:99px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;color:#17181a}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1200px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 32px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="Main.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:34px;height:34px;border-radius:10px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 20px Manrope,sans-serif;line-height:1">r.</span>reflexvocab</a>
+<nav aria-label="Điều hướng chính" style="display:flex;flex-wrap:wrap;gap:4px">
+<a class="tab" href="Main.dc.html">Hôm nay</a><a class="tab" href="Learn.dc.html">Lộ trình</a><a class="tab" href="Practice.dc.html">Luyện tập</a><a class="tab" href="Library.dc.html">Kho từ</a><a class="tab on" href="Progress.dc.html" aria-current="page">Tiến độ</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;border-radius:999px;color:#55584f"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="max-width:1100px;margin:0 auto;box-sizing:border-box;padding:36px 32px 56px;display:flex;flex-direction:column;gap:26px">
+
+<div>
+<h1 style="margin:0;font:800 34px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Tiến độ học tập</h1>
+<p style="margin:8px 0 0;color:#5b5d57">Hoàn thành bài học và ghi nhớ dài hạn là hai cột mốc khác nhau.</p>
+</div>
+
+<div>
+<dl aria-label="Chỉ số học tập" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:4px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:12px;background:#e9f7b8;display:grid;place-items:center;margin-bottom:8px"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M7 20h10M10 20c5.5-2.5.8-6.4 3-10M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8zM14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><dt style="font-size:14px;color:#5b5d57">Nghĩa từ đã bắt đầu</dt><dd style="margin:0;font:800 32px Manrope,sans-serif">10<span style="font:500 16px 'DM Sans',sans-serif;color:#5b5d57"> / 12</span></dd><dd style="margin:0;font-size:13px;color:#5b5d57">Tiến độ hoạt động</dd></div>
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:4px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:12px;background:#e6f8ec;color:#17703a;display:grid;place-items:center;margin-bottom:8px"><svg class="i" width="22" height="22" viewBox="0 0 24 24" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg></span><dt style="font-size:14px;color:#5b5d57">Nghĩa từ thành thạo</dt><dd style="margin:0;font:800 32px Manrope,sans-serif">2</dd><dd style="margin:0;font-size:13px;color:#5b5d57">Nhớ độc lập qua ≥3 ngày</dd></div>
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:4px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:12px;background:#eef1ff;color:#2a3fb8;display:grid;place-items:center;margin-bottom:8px"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span><dt style="font-size:14px;color:#5b5d57">Đúng khi không gợi ý*</dt><dd style="margin:0;font:800 32px Manrope,sans-serif">78%</dd><dd style="margin:0;font-size:13px;color:#5b5d57">32/41 lượt đầu, không gợi ý</dd></div>
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:4px"><span aria-hidden="true" style="width:40px;height:40px;border-radius:12px;background:#fff1e3;display:grid;place-items:center;margin-bottom:8px"><svg class="i" width="22" height="22" viewBox="0 0 24 24" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><dt style="font-size:14px;color:#5b5d57">Ngày học liên tiếp*</dt><dd style="margin:0;font:800 32px Manrope,sans-serif">4</dd><dd style="margin:0;font-size:13px;color:#5b5d57">Tính ngày có trả lời bài</dd></div>
+</dl>
+<p style="margin:12px 0 0;font-size:13px;color:#5b5d57">* Dựa trên tối đa 1.000 lượt gần nhất được tải. Tỷ lệ đúng không phải retention và không quy đổi thành điểm TOEIC.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<section class="card" aria-labelledby="mastery-title" style="flex:3 1 420px;min-width:0;padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+<h2 id="mastery-title" style="margin:0;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em">Mức độ ghi nhớ<span style="margin-left:10px;font:500 14px 'DM Sans',sans-serif;color:#5b5d57">12 nghĩa từ</span></h2>
+<div aria-hidden="true" style="display:flex;height:18px;border-radius:99px;overflow:hidden;gap:3px"><span style="flex:2;background:#cfcbbf"></span><span style="flex:4;background:#ffcf3d"></span><span style="flex:4;background:#3d57e6"></span><span style="flex:2;background:#2fc66b"></span></div>
+<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px">
+<li style="display:flex;align-items:center;gap:10px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;background:#cfcbbf"></span><span style="flex:1">Chưa học</span><strong>2</strong></li>
+<li style="display:flex;align-items:center;gap:10px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;background:#ffcf3d"></span><span style="flex:1">Đang học</span><strong>4</strong></li>
+<li style="display:flex;align-items:center;gap:10px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;background:#3d57e6"></span><span style="flex:1">Quen thuộc</span><strong>4</strong></li>
+<li style="display:flex;align-items:center;gap:10px"><span aria-hidden="true" style="width:14px;height:14px;border-radius:4px;background:#2fc66b"></span><span style="flex:1">Thành thạo</span><strong>2</strong></li>
+</ul>
+</section>
+<section class="card" aria-labelledby="retention-title" style="flex:2 1 300px;min-width:0;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+<h2 id="retention-title" style="margin:0;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em">Ghi nhớ dài hạn</h2>
+<div><p style="margin:0;font-size:13px;color:#5b5d57">Retention quan sát</p><p style="margin:2px 0 0;font-weight:700">Chưa đủ dữ liệu</p><p style="margin:2px 0 0;font-size:13px;color:#5b5d57">Cần thêm lượt ôn đến hạn đủ điều kiện để tính.</p></div>
+<div style="padding-top:14px;border-top:2px solid #f0eee8"><p style="margin:0;font-size:13px;color:#5b5d57">Mốc tiếp theo</p><p style="margin:2px 0 8px;font-weight:700">5 nghĩa từ thành thạo · còn 3</p><div role="progressbar" aria-label="Mốc 5 nghĩa từ thành thạo: 2 trên 5" aria-valuemin="0" aria-valuemax="5" aria-valuenow="2" style="height:10px;border-radius:99px;background:#f0eee8;overflow:hidden"><div style="width:40%;height:100%;border-radius:99px;background:#2fc66b"></div></div></div>
+</section>
+</div>
+
+<section class="card" aria-labelledby="week-title" style="padding:22px 24px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:16px">
+<h2 id="week-title" style="margin:0;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em">Bảy ngày gần đây</h2>
+<span style="font-size:13px;color:#5b5d57">Theo múi giờ Asia/Ho_Chi_Minh</span>
+</div>
+<div role="group" aria-label="Hoạt động bảy ngày" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px">
+<span class="d" role="img" aria-label="Thứ năm 19/11: đã học">T5<span class="dc"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>19</span>
+<span class="d" role="img" aria-label="Thứ sáu 20/11: đã học">T6<span class="dc"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>20</span>
+<span class="d" role="img" aria-label="Thứ bảy 21/11: chưa có lượt học">T7<span style="width:40px;height:40px;border-radius:99px;border:2px dashed #cfcbbf;margin:2px 0 1px"></span>21</span>
+<span class="d" role="img" aria-label="Chủ nhật 22/11: đã học">CN<span class="dc"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>22</span>
+<span class="d" role="img" aria-label="Thứ hai 23/11: đã học">T2<span class="dc"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>23</span>
+<span class="d" role="img" aria-label="Thứ ba 24/11: đã học">T3<span class="dc"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>24</span>
+<span class="d" role="img" aria-label="Hôm nay, thứ tư 25/11: đã học" style="color:#17181a">T4<span class="dc" style="outline:2px solid #17181a;outline-offset:3px"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>Hôm nay</span>
+</div>
+</section>
+
+<section class="card" aria-labelledby="history-title" style="overflow:hidden;box-shadow:none">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px">
+<h2 id="history-title" style="margin:0;font:800 20px Manrope,sans-serif;letter-spacing:-0.02em">Những lần thực hành gần đây</h2>
+<a href="Practice.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#2a3fb8">Luyện thêm<svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<div class="h"><span class="ok"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đúng</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">luggage</strong><span style="flex:1 1 220px;color:#5b5d57">Chọn từ điền câu · Luyện lại</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:44</span></div>
+<div class="h"><span class="ok"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đúng</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">postpone</strong><span style="flex:1 1 220px;color:#5b5d57">Chọn định nghĩa</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:42</span></div>
+<div class="h"><span class="no"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Cần củng cố</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">luggage</strong><span style="flex:1 1 220px;color:#5b5d57">Gõ từ còn thiếu</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:41</span></div>
+<div class="h"><span class="ok"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đúng</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">itinerary</strong><span style="flex:1 1 220px;color:#5b5d57">Sắp xếp câu · Có gợi ý</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:40</span></div>
+<div class="h"><span class="no"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Cần củng cố</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">reservation</strong><span style="flex:1 1 220px;color:#5b5d57">Ghép cụm từ · Đã xem đáp án</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:38</span></div>
+<div class="h"><span class="ok"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đúng</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">agenda</strong><span style="flex:1 1 220px;color:#5b5d57">Gõ từ còn thiếu</span><span style="font-size:14px;color:#5b5d57">Hôm nay 08:37</span></div>
+<div class="h"><span class="ok"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2.6"><path d="M20 6 9 17l-5-5"/></svg>Đúng</span><strong style="flex:0 0 140px;font:800 16px Manrope,sans-serif">confirm</strong><span style="flex:1 1 220px;color:#5b5d57">Chọn từ điền câu</span><span style="font-size:14px;color:#5b5d57">24/11 21:05</span></div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

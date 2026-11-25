@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Luyện tập</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+a:hover{color:#17181a}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tab{display:inline-flex;align-items:center;height:40px;padding:0 14px;border-radius:999px;color:#55584f;font-weight:700;font-size:15px}
+.tab:hover{background:#efede6}
+.tab.on{background:#e9f7b8;color:#17181a}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;background:#17181a;color:#fff;font:700 16px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b1:hover{color:#fff;transform:translateY(-1px)}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.b2:hover{border-color:#cfcbbf;box-shadow:0 4px 0 #cfcbbf}
+.fs{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:10px}
+.fs legend{padding:0;margin-bottom:10px;font:800 16px Manrope,sans-serif}
+.pill{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:999px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 3px 0 #e4e1d8;font-weight:700;cursor:pointer}
+.pill.on{border-color:#3d57e6;background:#eef1ff;box-shadow:0 3px 0 #3d57e6}
+.dot{width:12px;height:12px;border-radius:4px}
+.cnt{padding:1px 8px;border-radius:99px;background:#f0eee8;color:#3f4139;font-size:12px}
+.kind{position:relative;display:flex;align-items:center;gap:12px;min-height:72px;padding:12px 14px;border-radius:16px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.kind.on{border-color:#3d57e6;background:#eef1ff;box-shadow:0 4px 0 #3d57e6}
+.kind strong{display:block;font-size:15px}
+.kind small{display:block;font-size:13px;color:#5b5d57}
+.kt{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.seg{position:relative;display:inline-grid;place-items:center;min-width:64px;min-height:44px;border-radius:12px;font:800 16px Manrope,sans-serif;color:#3f4139;cursor:pointer}
+.seg.on{background:#fff;color:#17181a;box-shadow:0 3px 0 #cfcbbf}
+.pill input,.kind input,.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.pill:focus-within,.kind:focus-within,.seg:focus-within{outline:3px solid #3d57e6;outline-offset:3px}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1350px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 32px;background:#fff;border-bottom:2px solid #ece9e1">
+<a href="Main.dc.html" aria-label="ReflexVocab — Trang chủ" style="display:flex;align-items:center;gap:10px;font:800 19px Manrope,sans-serif;letter-spacing:-0.04em"><span aria-hidden="true" style="width:34px;height:34px;border-radius:10px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 20px Manrope,sans-serif;line-height:1">r.</span>reflexvocab</a>
+<nav aria-label="Điều hướng chính" style="display:flex;flex-wrap:wrap;gap:4px">
+<a class="tab" href="Main.dc.html">Hôm nay</a><a class="tab" href="Learn.dc.html">Lộ trình</a><a class="tab on" href="Practice.dc.html" aria-current="page">Luyện tập</a><a class="tab" href="Library.dc.html">Kho từ</a><a class="tab" href="Progress.dc.html">Tiến độ</a>
+</nav>
+<div style="display:flex;align-items:center;gap:8px">
+<span role="img" aria-label="4 ngày học liên tiếp" style="display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;background:#fff1e3;color:#a14e0a;font-weight:700"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#ff9238;fill:#ff9238"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>4</span>
+<a href="Settings.dc.html" aria-label="Cài đặt" style="width:44px;height:44px;display:grid;place-items:center;border-radius:999px;color:#55584f"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+</div>
+</header>
+
+<main style="max-width:1000px;margin:0 auto;box-sizing:border-box;padding:36px 32px 56px;display:flex;flex-direction:column;gap:28px">
+
+<div>
+<h1 style="margin:0;font:800 34px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Luyện tập</h1>
+<p style="margin:8px 0 0;color:#5b5d57">Chọn một phiên gợi ý hoặc tập trung vào điều bạn muốn giỏi hơn.</p>
+</div>
+
+<div role="status" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:14px 18px;border-radius:16px;background:#eef1ff;border:2px solid #c9d2ff">
+<span aria-hidden="true" style="width:12px;height:12px;border-radius:99px;background:#3d57e6"></span>
+<p style="flex:1 1 320px;margin:0;color:#1f2f99">Bạn có phiên đang dở (4/10 câu). Bắt đầu phiên mới sẽ kết thúc phiên đó; các câu đã lưu vẫn được giữ.</p>
+<a href="Session-Definition.dc.html" style="font-weight:700;color:#2a3fb8;text-decoration:underline;text-underline-offset:3px">Tiếp tục phiên dở</a>
+</div>
+
+<section aria-labelledby="presets-title" style="display:flex;flex-direction:column;gap:16px">
+<h2 id="presets-title" style="margin:0;font:800 22px Manrope,sans-serif;letter-spacing:-0.03em">Phiên gợi ý<span style="margin-left:10px;font:500 14px 'DM Sans',sans-serif;color:#5b5d57">10 câu mỗi phiên</span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px">
+
+<article style="display:flex;gap:18px;align-items:flex-start;padding:22px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1">
+<span aria-hidden="true" style="width:56px;height:56px;border-radius:16px;background:#ffcf3d;box-shadow:0 4px 0 #c99a10;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Luyện nhanh</h3>
+<p style="margin:0;color:#5b5d57">Một phiên ngắn để khởi động trí nhớ.</p>
+<p style="margin:0;font-size:13px;color:#5b5d57">Trộn đến hạn, mới và cần củng cố</p>
+<a class="b2" href="Session-Definition.dc.html" style="align-self:flex-start;margin-top:8px">Bắt đầu</a>
+</div>
+</article>
+
+<article style="display:flex;gap:18px;align-items:flex-start;padding:22px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1">
+<span aria-hidden="true" style="width:56px;height:56px;border-radius:16px;background:#3d57e6;box-shadow:0 4px 0 #2a3fb8;color:#fff;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="26" height="26" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Đến giờ ôn</h3>
+<p style="margin:0;color:#5b5d57">Gặp lại các từ đúng lúc cần củng cố.</p>
+<p style="margin:0;font-size:13px;font-weight:700;color:#2a3fb8">4 nghĩa từ đến hạn</p>
+<a class="b2" href="Session-ClozeHint.dc.html" style="align-self:flex-start;margin-top:8px">Bắt đầu</a>
+</div>
+</article>
+
+<article style="display:flex;gap:18px;align-items:flex-start;padding:22px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1">
+<span aria-hidden="true" style="width:56px;height:56px;border-radius:16px;background:#ff9238;box-shadow:0 4px 0 #c96a16;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="26" height="26" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4M3 7l2 2 4-4M13 6h8M13 12h8M13 18h8"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Thử lại từ từng sai</h3>
+<p style="margin:0;color:#5b5d57">Một ngữ cảnh khác, một cơ hội hiểu rõ hơn.</p>
+<p style="margin:0;font-size:13px;font-weight:700;color:#a14e0a">3 nghĩa từ từng sai</p>
+<a class="b2" href="Practice-Session.dc.html" style="align-self:flex-start;margin-top:8px">Bắt đầu</a>
+</div>
+</article>
+
+<article style="display:flex;gap:18px;align-items:flex-start;padding:22px;border-radius:20px;background:#fff;border:2px solid #ece9e1;box-shadow:0 4px 0 #ece9e1">
+<span aria-hidden="true" style="width:56px;height:56px;border-radius:16px;background:#8a5cf0;box-shadow:0 4px 0 #5b33c7;color:#fff;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+<h3 style="margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em">Củng cố từ đang học</h3>
+<p style="margin:0;color:#5b5d57">Dành thêm thời gian cho điều chưa chắc.</p>
+<p style="margin:0;font-size:13px;font-weight:700;color:#5b33c7">8 nghĩa từ đang học</p>
+<a class="b2" href="Session-Typing.dc.html" style="align-self:flex-start;margin-top:8px">Bắt đầu</a>
+</div>
+</article>
+
+</div>
+</section>
+
+<section aria-labelledby="custom-title" style="position:relative;overflow:hidden;display:flex;flex-direction:column;gap:20px;padding:28px;border-radius:24px;background:#fff;border:2px solid #ece9e1">
+<svg aria-hidden="true" width="150" height="110" viewBox="0 0 150 110" style="position:absolute;right:18px;top:14px"><circle cx="40" cy="40" r="26" fill="#d2f55d"/><rect x="72" y="22" width="44" height="44" rx="10" fill="#ff76d6" transform="rotate(16 94 44)"/><path d="M110 70l22 36H88z" fill="#ffcf3d"/></svg>
+<div style="position:relative;max-width:560px">
+<h2 id="custom-title" style="margin:0;font:800 24px Manrope,sans-serif;letter-spacing:-0.03em">Một phiên dành riêng cho bạn</h2>
+<p style="margin:6px 0 0;color:#5b5d57">Chọn chủ đề, dạng bài và số câu. Hệ thống chỉ dùng nội dung phù hợp đã có, không lấy câu ngoài bộ lọc.</p>
+</div>
+<form style="position:relative;display:flex;flex-direction:column;gap:22px">
+
+<fieldset class="fs">
+<legend>1 · Chủ đề</legend>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<label class="pill"><input type="radio" name="topic">Tất cả chủ đề<span class="cnt">12</span></label>
+<label class="pill"><input type="radio" name="topic"><span class="dot" style="background:#3d57e6"></span>Meetings<span class="cnt">4</span></label>
+<label class="pill"><input type="radio" name="topic"><span class="dot" style="background:#ff9238"></span>Travel<span class="cnt">4</span></label>
+<label class="pill on"><input type="radio" name="topic" checked="checked"><span class="dot" style="background:#8a5cf0"></span>Work<span class="cnt">4</span></label>
+</div>
+</fieldset>
+
+<fieldset class="fs">
+<legend>2 · Dạng bài</legend>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+<label class="kind"><input type="radio" name="kind"><span class="kt" style="background:#17181a;color:#fff"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><span><strong>Phối hợp nhiều dạng</strong><small>Mặc định</small></span></label>
+<label class="kind"><input type="radio" name="kind"><span class="kt" style="background:#eef1ff;color:#2a3fb8"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></span><span><strong>Chọn định nghĩa</strong><small>Đọc nghĩa tiếng Anh</small></span></label>
+<label class="kind"><input type="radio" name="kind"><span class="kt" style="background:#fff7dc;color:#7a5a00"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><path d="M3 12h4M17 12h4"/><rect x="9" y="8" width="6" height="8" rx="2"/></svg></span><span><strong>Chọn từ điền câu</strong><small>Một chỗ trống, bốn lựa chọn</small></span></label>
+<label class="kind on"><input type="radio" name="kind" checked="checked"><span class="kt" style="background:#3d57e6;color:#fff"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M8 10v4M12 10v4"/></svg></span><span><strong>Gõ từ còn thiếu</strong><small>Nhớ lại không gợi ý</small></span></label>
+<label class="kind"><input type="radio" name="kind"><span class="kt" style="background:#f1eaff;color:#5b33c7"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/></svg></span><span><strong>Ghép cụm từ</strong><small>Từ đi cùng từ</small></span></label>
+<label class="kind"><input type="radio" name="kind"><span class="kt" style="background:#fff1e3;color:#a14e0a"><svg class="i" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="5" width="8" height="5" rx="2"/><rect x="13" y="5" width="8" height="5" rx="2"/><rect x="3" y="14" width="12" height="5" rx="2"/></svg></span><span><strong>Sắp xếp câu</strong><small>Chạm các cụm theo thứ tự</small></span></label>
+</div>
+</fieldset>
+
+<fieldset class="fs">
+<legend>3 · Số câu</legend>
+<div style="display:inline-flex;flex-wrap:wrap;gap:6px;padding:5px;border-radius:16px;background:#efede6">
+<label class="seg"><input type="radio" name="count">5</label>
+<label class="seg on"><input type="radio" name="count" checked="checked">10</label>
+<label class="seg"><input type="radio" name="count">15</label>
+<label class="seg"><input type="radio" name="count">20</label>
+</div>
+</fieldset>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;padding:16px 18px;border-radius:18px;background:#f7f6f1;border:2px dashed #e4e1d8">
+<p style="margin:0"><span style="display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:#5b5d57">PHIÊN CỦA BẠN</span><strong style="font:800 18px Manrope,sans-serif">Work · Gõ từ còn thiếu · 10 câu</strong></p>
+<a class="b1" href="Session-Typing.dc.html">Tạo phiên luyện tập<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</form>
+</section>
+
+<section aria-labelledby="pick-title" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;padding:22px 24px;border-radius:24px;background:#eef1ff;border:2px solid #c9d2ff">
+<span aria-hidden="true" style="width:56px;height:56px;border-radius:16px;background:#fff;box-shadow:0 4px 0 #c9d2ff;color:#2a3fb8;display:grid;place-items:center;flex-shrink:0"><svg class="i" width="26" height="26" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="m9 10 2 2 4-4"/></svg></span>
+<div style="flex:1 1 360px">
+<h2 id="pick-title" style="margin:0;font:800 19px Manrope,sans-serif;color:#17181a">Luyện đúng những từ bạn chọn</h2>
+<p style="margin:4px 0 0;color:#1f2f99">Đánh dấu nghĩa từ trong Kho từ rồi bấm “Luyện từ đã chọn”. Đang chọn: <span lang="en" style="font-weight:700">attend, deadline</span>.</p>
+</div>
+<a class="b2" href="Library.dc.html">Mở Kho từ</a>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1350}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

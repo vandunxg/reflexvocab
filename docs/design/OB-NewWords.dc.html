@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Onboarding · Từ mới mỗi ngày</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border-radius:14px;background:#17181a;color:#fff;font:700 17px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.opt{position:relative;display:flex;flex-direction:column;gap:12px;min-height:150px;padding:18px 20px;box-sizing:border-box;border-radius:18px;border:2px solid #e4e1d8;background:#fff;box-shadow:0 4px 0 #e4e1d8;color:#17181a;cursor:pointer}
+.opt:hover{border-color:#cfcbbf}
+.opt.on{border-color:#3d57e6;background:#eef1ff;box-shadow:0 4px 0 #3d57e6}
+.opt input{position:absolute;top:18px;right:18px;width:22px;height:22px;margin:0;accent-color:#3d57e6}
+.n{font:800 44px/1 Manrope,sans-serif;letter-spacing:-0.04em}
+.dots{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.dots span{width:14px;height:14px;border-radius:4px}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:900px;display:flex;flex-direction:column;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55">
+
+<header style="width:100%;max-width:880px;margin:0 auto;box-sizing:border-box;padding:20px 24px 0;display:flex;align-items:center;gap:18px">
+<a href="OB-Time.dc.html" aria-label="Quay lại" style="width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#5b5d57"><svg class="i" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div role="progressbar" aria-label="Thiết lập ban đầu" aria-valuemin="0" aria-valuemax="3" aria-valuenow="2" aria-valuetext="Bước 2 trên 3" style="flex:1;height:14px;border-radius:99px;background:#e4e1d8;overflow:hidden"><div style="width:66.6%;height:100%;border-radius:99px;background:#d2f55d;box-shadow:inset 0 -4px 0 #b5d93a"><div style="margin:3px 8px 0;height:3px;border-radius:99px;background:#eefaa8"></div></div></div>
+<span style="min-width:32px;font-weight:700;color:#5b5d57">2/3</span>
+<a href="Main.dc.html" style="min-height:44px;display:inline-flex;align-items:center;padding:0 6px;font-weight:700;color:#2a3fb8">Bỏ qua, dùng mặc định</a>
+</header>
+
+<main style="flex:1;width:100%;max-width:640px;margin:0 auto;box-sizing:border-box;padding:56px 24px 40px">
+<span style="display:inline-block;padding:5px 12px;border-radius:99px;background:#f1eaff;color:#5b33c7;font-size:13px;font-weight:700;letter-spacing:.06em">TỪ MỚI</span>
+<h1 id="q" style="margin:14px 0 0;font:800 40px/1.12 Manrope,sans-serif;letter-spacing:-0.04em">Mỗi ngày học tối đa bao nhiêu từ mới?</h1>
+<p style="margin:12px 0 0;font-size:17px;color:#5b5d57">Đây là giới hạn nghĩa từ mới trong một ngày. Ít hơn giúp nhớ chắc hơn.</p>
+
+<fieldset aria-labelledby="q" style="margin:32px 0 0;padding:0;border:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px">
+<label class="opt"><span class="n">4</span><span style="font-weight:700;color:#5b5d57">từ mới / ngày · Nhẹ nhàng</span><span class="dots" aria-hidden="true"><span style="background:#ffcf3d"></span><span style="background:#ffcf3d"></span><span style="background:#ffcf3d"></span><span style="background:#ffcf3d"></span></span><input type="radio" name="new" value="4" aria-label="4 từ mới mỗi ngày"></label>
+<label class="opt"><span class="n">6</span><span style="font-weight:700;color:#5b5d57">từ mới / ngày · Vừa phải</span><span class="dots" aria-hidden="true"><span style="background:#ff9238"></span><span style="background:#ff9238"></span><span style="background:#ff9238"></span><span style="background:#ff9238"></span><span style="background:#ff9238"></span><span style="background:#ff9238"></span></span><input type="radio" name="new" value="6" aria-label="6 từ mới mỗi ngày"></label>
+<label class="opt on"><span class="n" style="display:flex;align-items:center;gap:12px">8<span style="padding:2px 10px;border-radius:99px;background:#3d57e6;color:#fff;font:700 12px 'DM Sans',sans-serif;letter-spacing:.04em">Mặc định</span></span><span style="font-weight:700;color:#2a3fb8">từ mới / ngày · Cân bằng</span><span class="dots" aria-hidden="true"><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span><span style="background:#3d57e6"></span></span><input type="radio" name="new" value="8" checked="checked" aria-label="8 từ mới mỗi ngày, mặc định"></label>
+<label class="opt"><span class="n">10</span><span style="font-weight:700;color:#5b5d57">từ mới / ngày · Tăng tốc</span><span class="dots" aria-hidden="true"><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span><span style="background:#8a5cf0"></span></span><input type="radio" name="new" value="10" aria-label="10 từ mới mỗi ngày"></label>
+</fieldset>
+
+<p style="display:flex;align-items:center;gap:10px;margin:24px 0 0;padding:12px 16px;border-radius:14px;background:#efede6;color:#3f4139;font-size:15px"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Có thể đổi trong Cài đặt bất kỳ lúc nào.</p>
+</main>
+
+<footer style="background:#fff;border-top:2px solid #ece9e1">
+<div style="max-width:640px;margin:0 auto;box-sizing:border-box;padding:18px 24px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px">
+<span style="font-size:14px;color:#5b5d57">Lưu vào giới hạn từ mới mỗi ngày.</span>
+<a class="b1" href="OB-Topic.dc.html">Tiếp tục<svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

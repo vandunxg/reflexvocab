@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Trạng thái · Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:14px;background:#17181a;color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:14px;background:#fff;color:#17181a;font:700 15px 'DM Sans',sans-serif;border:2px solid #e4e1d8;box-shadow:0 4px 0 #e4e1d8;cursor:pointer}
+.sc{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:24px;background:#fff;border:2px solid #ece9e1}
+.cap{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.cap h2{margin:0;font:800 17px Manrope,sans-serif;letter-spacing:-0.01em;flex:1 1 auto}
+.where{padding:3px 10px;border-radius:99px;background:#f0eee8;color:#3f4139;font-size:12px;font-weight:700}
+.prop{padding:3px 10px;border-radius:99px;background:#f1eaff;color:#5b33c7;font-size:12px;font-weight:700}
+.pv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:190px;padding:22px;border-radius:16px;background:#f7f6f1;text-align:center;box-sizing:border-box}
+.pv h3{margin:0;font:800 19px Manrope,sans-serif;letter-spacing:-0.02em}
+.pv p{margin:0;max-width:320px;color:#5b5d57;font-size:14px}
+.art{position:relative;width:64px;height:52px;margin-bottom:4px}
+.art span{position:absolute}
+.note{margin:0;font-size:13px;color:#5b5d57}
+.alert{display:flex;align-items:flex-start;gap:10px;width:100%;box-sizing:border-box;padding:12px 14px;border-radius:14px;background:#fff1e3;border:2px solid #ff9238;color:#a14e0a;font-weight:700;text-align:left;font-size:14px}
+.sk{display:block;border-radius:10px;background:#e4e1d8}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:1560px;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;padding:36px 32px 48px;box-sizing:border-box">
+
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:24px">
+<div>
+<h1 style="margin:0;font:800 32px/1.15 Manrope,sans-serif;letter-spacing:-0.035em">Trạng thái · Dashboard</h1>
+<p style="margin:6px 0 0;color:#5b5d57">Rỗng, đang tải, lỗi và xác nhận. Copy bám theo chuỗi trong code hiện tại; nhãn <span class="prop">ĐỀ XUẤT</span> là phần chưa có trong base.</p>
+</div>
+<p style="display:flex;gap:14px;margin:0;font-size:13px;color:#5b5d57"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:4px;background:#ff9238"></span>Lỗi / cần làm lại</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border-radius:4px;background:#3d57e6"></span>Thông tin / focus</span></p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px">
+
+<section class="sc" aria-labelledby="s1">
+<div class="cap"><h2 id="s1">Bộ lọc không có mục</h2><span class="where">Hôm nay · Cần củng cố</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:40px;height:40px;border-radius:50%;background:#d2f55d;left:0;top:6px"></span><span style="width:30px;height:30px;border-radius:8px;background:#3d57e6;right:0;top:0;transform:rotate(14deg)"></span></div>
+<p>Chưa có từ cần củng cố trong bộ lọc này.</p>
+<button class="b2" type="button">Xem tất cả</button>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s2">
+<div class="cap"><h2 id="s2">Không có mục đến hạn</h2><span class="where">Luyện tập · Đến giờ ôn</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:44px;height:44px;border-radius:50%;background:#e6f8ec;border:3px solid #2fc66b;box-sizing:border-box;left:10px;top:4px"></span><svg class="i" width="22" height="22" viewBox="0 0 24 24" style="position:absolute;left:21px;top:15px;color:#17703a;stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></div>
+<h3>Chưa có mục đến hạn</h3>
+<p>Chưa có từ đến hạn ôn. Bạn có thể khám phá nội dung mới hoặc quay lại sau.</p>
+<a class="b2" href="Learn.dc.html">Về Lộ trình</a>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s3">
+<div class="cap"><h2 id="s3">Không tìm thấy từ</h2><span class="where">Kho từ · tìm kiếm</span></div>
+<div class="pv" style="justify-content:flex-start">
+<div style="display:flex;align-items:center;gap:10px;width:100%;height:46px;padding:0 14px;box-sizing:border-box;border-radius:14px;border:2px solid #3d57e6;background:#fff;text-align:left"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color:#5b5d57"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span lang="en" style="font-weight:500">schedule</span></div>
+<h3 style="margin-top:8px">Chưa tìm thấy từ phù hợp</h3>
+<p>Thử từ khóa khác hoặc giảm bộ lọc.</p>
+<button class="b2" type="button">Xóa lọc <span class="prop" style="margin-left:4px">ĐỀ XUẤT</span></button>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s4">
+<div class="cap"><h2 id="s4">Chưa có dữ liệu tiến độ</h2><span class="where">Tiến độ · lần đầu</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:12px;height:18px;border-radius:4px;background:#e4e1d8;left:8px;bottom:0"></span><span style="width:12px;height:30px;border-radius:4px;background:#e4e1d8;left:26px;bottom:0"></span><span style="width:12px;height:44px;border-radius:4px;background:#d2f55d;left:44px;bottom:0"></span></div>
+<h3>Bắt đầu từ lần thử đầu tiên</h3>
+<p>Tiến độ của bạn sẽ xuất hiện sau khi hoàn thành câu hỏi.</p>
+<a class="b2" href="Learn.dc.html">Khám phá bài học</a>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s5">
+<div class="cap"><h2 id="s5">Đang tải</h2><span class="where">Toàn app · khởi động</span></div>
+<div class="pv" aria-busy="true" style="align-items:stretch">
+<div style="display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700"><span aria-hidden="true" style="width:30px;height:30px;border-radius:9px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 17px Manrope,sans-serif">r.</span>Đang kết nối…</div>
+<span class="sk" style="height:64px;border-radius:16px;background:#e9edff" aria-hidden="true"></span>
+<span style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px" aria-hidden="true"><span class="sk" style="height:44px"></span><span class="sk" style="height:44px"></span><span class="sk" style="height:44px"></span></span>
+</div>
+<p class="note">Khối xám chỉ trang trí (aria-hidden); nội dung đọc được là “Đang kết nối…”.</p>
+</section>
+
+<section class="sc" aria-labelledby="s6">
+<div class="cap"><h2 id="s6">Chưa kết nối được</h2><span class="where">Toàn app · lỗi tải</span></div>
+<div class="pv">
+<div class="art" aria-hidden="true"><span style="width:46px;height:46px;border-radius:12px;background:#ff9238;left:9px;top:2px;transform:rotate(45deg)"></span><span style="position:absolute;left:28px;top:12px;color:#fff;font:800 24px Manrope,sans-serif">!</span></div>
+<h3>Chưa kết nối được</h3>
+<p role="alert">Không tải được dữ liệu học. Kiểm tra kết nối và cấu hình Supabase.</p>
+<button class="b1" type="button">Thử lại</button>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s7">
+<div class="cap"><h2 id="s7">Thiếu cấu hình</h2><span class="where">Toàn app · setup</span></div>
+<div class="pv" style="align-items:flex-start;text-align:left">
+<span aria-hidden="true" style="width:40px;height:40px;border-radius:12px;background:#d2f55d;box-shadow:0 3px 0 #a9c93a;display:grid;place-items:center;font:800 22px Manrope,sans-serif">r.</span>
+<h3>Cấu hình ReflexVocab</h3>
+<p>Thêm URL và publishable key của Supabase theo README để bắt đầu.</p>
+<p>Bản dùng thử chạy trên máy của bạn bằng <code style="padding:2px 6px;border-radius:6px;background:#efede6;color:#17181a">npm run dev</code> với file <code style="padding:2px 6px;border-radius:6px;background:#efede6;color:#17181a">.env.example</code>.</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s8">
+<div class="cap"><h2 id="s8">Lưu cài đặt lỗi</h2><span class="where">Cài đặt</span></div>
+<div class="pv" style="align-items:stretch">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+<button class="b1" type="button">Lưu cài đặt</button>
+<button class="b1" type="button" disabled="disabled" style="background:#cfcbbf;color:#3f4139;box-shadow:none;cursor:default">Đang lưu…</button>
+</div>
+<p role="alert" class="alert"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Chưa lưu được cài đặt. Hãy thử lại.</p>
+<p role="alert" class="alert" style="margin:0"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Không phát được giọng đọc. Hãy thử lựa chọn khác.</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s9">
+<div class="cap"><h2 id="s9">Đánh dấu không lưu được</h2><span class="where">Kho từ</span><span class="prop">ĐỀ XUẤT copy</span></div>
+<div class="pv" style="align-items:stretch">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#fff;border:2px solid #ece9e1;text-align:left"><strong lang="en" style="flex:1">invoice</strong><button type="button" aria-label="Bỏ lưu invoice" aria-pressed="true" style="width:40px;height:40px;display:grid;place-items:center;border-radius:12px;border:2px solid #ff9238;background:#fff1e3;color:#a14e0a;cursor:pointer"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button></div>
+<p role="alert" class="alert" style="margin:0">Chưa lưu được đánh dấu. Trạng thái đã trả về như cũ, hãy thử lại.</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s10">
+<div class="cap"><h2 id="s10">Trình duyệt không đọc to</h2><span class="where">Kho từ · Cài đặt · Phiên</span></div>
+<div class="pv" style="align-items:stretch">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#fff;border:2px solid #ece9e1;text-align:left"><span style="flex:1"><strong lang="en" style="display:block">postpone</strong><span style="font-size:13px;color:#5b5d57">/pəʊstˈpəʊn/ · động từ</span></span><button type="button" disabled="disabled" aria-label="Nghe postpone — trình duyệt không hỗ trợ" style="width:40px;height:40px;display:grid;place-items:center;border-radius:12px;border:2px dashed #cfcbbf;background:#f0eee8;color:#8a8c84;cursor:not-allowed"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg></button></div>
+<p style="margin:0;padding:10px 14px;border-radius:14px;background:#eef1ff;color:#2a3fb8;font-size:14px;font-weight:700;text-align:left">Trình duyệt không hỗ trợ đọc văn bản</p>
+</div>
+</section>
+
+<section class="sc" aria-labelledby="s11" style="grid-column:span 2">
+<div class="cap"><h2 id="s11">Xác nhận phiên mới</h2><span class="where">Hôm nay · Luyện tập</span><span class="prop">ĐỀ XUẤT: dialog thay window.confirm</span></div>
+<div class="pv" style="position:relative;overflow:hidden;background:#d9d6cd">
+<div role="dialog" aria-modal="true" aria-labelledby="dlg-t" style="width:100%;max-width:440px;padding:24px;box-sizing:border-box;border-radius:24px;background:#fff;box-shadow:0 8px 0 #bdb9ad;text-align:left">
+<div aria-hidden="true" style="display:flex;gap:6px;margin-bottom:14px"><span style="width:22px;height:22px;border-radius:50%;background:#3d57e6"></span><span style="width:22px;height:22px;border-radius:6px;background:#d2f55d"></span><span style="width:22px;height:22px;background:#ff9238;clip-path:polygon(50% 0,100% 100%,0 100%)"></span></div>
+<h3 id="dlg-t" style="font-size:22px">Bắt đầu phiên mới?</h3>
+<p style="max-width:none;margin-top:6px">Các câu đã lưu vẫn được giữ, phiên dở (4/10) sẽ được kết thúc.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:18px"><button class="b2" type="button">Tiếp tục phiên dở</button><button class="b1" type="button">Bắt đầu phiên mới</button></div>
+</div>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

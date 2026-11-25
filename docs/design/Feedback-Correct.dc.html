@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Phản hồi đúng</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Manrope:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#f7f6f1}
+a{color:inherit;text-decoration:none}
+a:hover{color:#17181a}
+.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.b1{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;background:#17181a;color:#fff;font:700 16px 'DM Sans',sans-serif;box-shadow:0 4px 0 #45473f;border:0;cursor:pointer}
+.b1:hover{color:#fff;transform:translateY(-1px)}
+.ib{width:44px;height:44px;display:inline-grid;place-items:center;border-radius:12px;border:2px solid #e4e1d8;background:#fff;color:#17181a;box-shadow:0 3px 0 #e4e1d8;cursor:pointer;flex-shrink:0}
+.opt{display:flex;align-items:center;gap:14px;min-height:64px;padding:14px 18px;box-sizing:border-box;border-radius:14px;border:2px solid #ece9e1;background:#fff;font:500 17px 'DM Sans',sans-serif;color:#5b5d57}
+.num{width:30px;height:30px;border-radius:8px;border:2px solid #e4e1d8;display:grid;place-items:center;font-size:13px;font-weight:700;color:#5b5d57;flex-shrink:0;box-sizing:border-box}
+:focus-visible{outline:3px solid #3d57e6;outline-offset:3px}
+</style>
+</helmet>
+<div style="min-height:900px;display:flex;flex-direction:column;background:#f7f6f1;color:#17181a;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55">
+
+<header style="width:100%;max-width:760px;margin:0 auto;box-sizing:border-box;padding:20px 20px 0;display:flex;align-items:center;gap:18px">
+<a href="Main.dc.html" aria-label="Tạm dừng và về trang chủ" style="width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#5b5d57"><svg class="i" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+<div role="progressbar" aria-label="Tiến độ phiên học" aria-valuemin="0" aria-valuemax="10" aria-valuenow="5" style="flex:1;height:14px;border-radius:99px;background:#e4e1d8;overflow:hidden"><div style="width:50%;height:100%;border-radius:99px;background:#d2f55d;box-shadow:inset 0 -4px 0 #b5d93a"><div style="margin:3px 8px 0;height:3px;border-radius:99px;background:#eefaa8"></div></div></div>
+<span style="min-width:40px;font-weight:700;color:#5b5d57">5/10</span>
+</header>
+
+<main style="flex:1;width:100%;max-width:720px;margin:0 auto;box-sizing:border-box;padding:48px 20px 32px;display:flex;flex-direction:column;gap:20px">
+
+<span style="align-self:flex-start;display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:999px;background:#eef1ff;color:#2a3fb8;font-size:12px;font-weight:700;letter-spacing:0.06em">CHỌN ĐỊNH NGHĨA</span>
+
+<p style="margin:0;font:700 22px/1.4 Manrope,sans-serif;letter-spacing:-0.02em;color:#3f4139">We need to postpone the workshop until Friday. What does “postpone” mean here?</p>
+
+<ol aria-label="Các đáp án" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+<li class="opt"><span class="num">1</span>To finish something earlier than planned.</li>
+<li class="opt" style="border-color:#2fc66b;background:#e6f8ec;color:#17181a;box-shadow:0 4px 0 #2fc66b"><span class="num" style="background:#2fc66b;border-color:#2fc66b;color:#17181a">2</span><span style="flex:1">To arrange for something to happen at a later time.</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#17703a"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Bạn chọn · Đúng</span></li>
+<li class="opt"><span class="num">3</span>To invite someone to an event.</li>
+<li class="opt"><span class="num">4</span>To explain a difficult idea.</li>
+</ol>
+
+</main>
+
+<footer role="status" style="background:#e6f8ec;border-top:3px solid #2fc66b">
+<div style="max-width:720px;margin:0 auto;box-sizing:border-box;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:12px;color:#17703a">
+<span aria-hidden="true" style="width:40px;height:40px;border-radius:99px;background:#2fc66b;display:grid;place-items:center;color:#17181a"><svg class="i" width="22" height="22" viewBox="0 0 24 24" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg></span>
+<h1 style="margin:0;font:800 26px Manrope,sans-serif;letter-spacing:-0.03em">Bạn đã hiểu đúng.</h1>
+</div>
+<p style="margin:0;font:800 19px/1.4 Manrope,sans-serif">To arrange for something to happen at a later time.</p>
+<p style="margin:0;color:#3f4139">postpone: To arrange for something to happen at a later time. They will postpone the meeting because the manager is away.</p>
+<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#fff;border:2px solid #c9ecd4">
+<div style="flex:1;min-width:0"><span style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:#17703a">TRONG NGỮ CẢNH</span><p style="margin:2px 0 0">They will postpone the meeting because the manager is away.</p></div>
+<button class="ib" type="button" aria-label="Nghe câu ví dụ"><svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6a1.4 1.4 0 0 1-1 .4H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6M19.4 18.4a9 9 0 0 0 0-12.8"/></svg></button>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:12px 18px;padding-top:4px">
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#17703a"><svg class="i" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:3"><path d="M20 6 9 17l-5-5"/></svg>Đã lưu tiến độ</span>
+<a class="b1" href="Session-ClozeHint.dc.html">Tiếp tục<svg class="i" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
