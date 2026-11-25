@@ -9,3 +9,7 @@ playwright-report/
 *.tsbuildinfo
 *.log
 .DS_Store
+
+# Local tooling state
+.codegraph/
+.history/
