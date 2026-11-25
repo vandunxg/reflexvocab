@@ -43,6 +43,8 @@ export function SessionPage() {
   const [answered, setAnswered] = useState<Answered | null>(null);
   const [introduced, setIntroduced] = useState<string | null>(null);
   const [dialog, setDialog] = useState<'exit' | 'reload' | null>(null);
+  // Set once the learner moves on, so only later cards slide in (not the first one on arrival).
+  const [advancing, setAdvancing] = useState(false);
   const unsaved = answered !== null && answered.save !== 'saved';
 
   // Closing the tab cannot keep an unsaved answer; ask the browser to warn first.
@@ -160,7 +162,7 @@ export function SessionPage() {
   }
 
   return (
-    <div className="session-screen">
+    <div className={advancing ? 'session-screen is-advancing' : 'session-screen'}>
       <SessionHeader answered={session.cursor} total={session.queue.length} onExit={exit} />
       {showIntro ? (
         <IntroCard
@@ -168,7 +170,7 @@ export function SessionPage() {
           sense={sense}
           contexts={contexts}
           topicLabel={(lesson && index.topics.get(lesson.topicId)?.title) ?? null}
-          onContinue={() => setIntroduced(itemKey)}
+          onContinue={() => { setAdvancing(true); setIntroduced(itemKey); }}
         />
       ) : (
         <Question
@@ -187,7 +189,7 @@ export function SessionPage() {
             onSignIn: () => void auth.signOut(),
           }}
           onCheck={check}
-          onContinue={() => setAnswered((current) => current?.save === 'saved' ? null : current)}
+          onContinue={() => { setAdvancing(true); setAnswered((current) => current?.save === 'saved' ? null : current); }}
         />
       )}
       <ConfirmDialog

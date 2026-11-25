@@ -37,6 +37,9 @@
   --font-body: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
   --page-width: 1100px;
   --bottom-nav-height: 64px;
+  /* Motion: things settle into place (ease-out) and leave faster than they arrive (ease-in). */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
 }
 
 *,
@@ -138,17 +141,12 @@ p {
   font: 700 16px var(--font-body);
   text-align: center;
   cursor: pointer;
-  transition: transform 80ms ease;
-}
-
-.btn:active:not(:disabled) {
-  transform: translateY(2px);
 }
 
 .btn-primary {
   background: var(--ink);
   color: #fff;
-  box-shadow: 0 4px 0 var(--ink-shadow);
+  box-shadow: 0 var(--depth, 4px) 0 var(--ink-shadow);
 }
 
 .btn-secondary {
@@ -158,19 +156,19 @@ p {
   color: var(--ink);
   font-size: 15px;
   border: 2px solid var(--border);
-  box-shadow: 0 4px 0 var(--border);
+  box-shadow: 0 var(--depth, 4px) 0 var(--border);
 }
 
 .btn-secondary:hover:not(:disabled) {
   border-color: var(--border-strong);
-  box-shadow: 0 4px 0 var(--border-strong);
+  box-shadow: 0 var(--depth, 4px) 0 var(--border-strong);
 }
 
 .btn-white {
   min-height: 52px;
   background: var(--surface);
   color: var(--ink);
-  box-shadow: 0 4px 0 var(--blue-deep);
+  box-shadow: 0 var(--depth, 4px) 0 var(--blue-deep);
 }
 
 .btn-quiet {
@@ -564,6 +562,185 @@ p {
   }
 }
 
+/*
+ * Motion. Only transform, opacity and colours move; nothing bounces or overshoots. Pages and cards
+ * do not fade in on load: motion answers an action (press, open, check, next question).
+ */
+.btn,
+.tab,
+.icon-button,
+.bottom-tab,
+.bottom-tab-pill,
+.text-button,
+.option,
+.option-key,
+.chunk,
+.choice-card,
+.speak-button,
+.icon-toggle,
+.session-exit,
+.select-trigger,
+.select-option,
+.field input,
+.settings-control,
+.library-check,
+.library-saved input,
+.library-row {
+  transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-out);
+}
+
+/* Raised controls sink into their own shadow, so the bottom edge stays put. */
+.btn:active:not(:disabled),
+.option:active:not(:disabled),
+.chunk:active:not(:disabled, .is-used),
+.choice-card:active {
+  --depth: 2px;
+  transform: translateY(2px);
+  transition-duration: 60ms;
+}
+
+.select-trigger > span:last-child,
+.library-expand .icon {
+  transition: transform 200ms var(--ease-out);
+}
+
+.select-trigger[data-state='open'] > span:last-child {
+  transform: rotate(180deg);
+}
+
+/* Menus grow out of their trigger. Radix removes a closed menu at once, so only opening animates. */
+.select-menu[data-state='open'] {
+  transform-origin: var(--radix-select-content-transform-origin);
+  animation: menu-in 150ms var(--ease-out);
+}
+
+.select-menu[data-side='top'] {
+  --menu-from: 4px;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--menu-from, -4px)) scale(0.96);
+  }
+}
+
+/* Dialog: 150ms in, 100ms out. Browsers without discrete transitions simply skip the closing fade. */
+.confirm-dialog,
+.confirm-dialog::backdrop {
+  transition-property: opacity, transform, overlay, display;
+  transition-duration: 100ms;
+  transition-timing-function: var(--ease-in);
+  transition-behavior: allow-discrete;
+}
+
+.confirm-dialog:not([open]) {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.confirm-dialog:not([open])::backdrop {
+  opacity: 0;
+}
+
+.confirm-dialog[open],
+.confirm-dialog[open]::backdrop {
+  transition-duration: 150ms;
+  transition-timing-function: var(--ease-out);
+}
+
+@starting-style {
+  .confirm-dialog[open] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  .confirm-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* Revealed content unfolds from the control that opened it. */
+.hint-panel,
+.library-details {
+  animation: reveal-in 200ms var(--ease-out);
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* A checked typed answer replaces the input in place, so it only fades. */
+.typed-answer {
+  animation: fade-in 160ms var(--ease-out);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.4;
+  }
+}
+
+.chunk-picked {
+  animation: chunk-in 160ms var(--ease-out);
+}
+
+@keyframes chunk-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* Clip (not hide, which would break the sticky footer) so a sliding card adds no scrollbar. */
+.session-screen {
+  overflow: clip;
+}
+
+/* Checking an answer: the feedback rises from the bottom edge and its icon settles in. */
+.feedback {
+  animation: feedback-in 300ms var(--ease-out);
+}
+
+@keyframes feedback-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+.feedback-icon,
+.option.is-correct .option-key .icon {
+  animation: icon-in 240ms var(--ease-out) 80ms backwards;
+}
+
+@keyframes icon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* The next card slides in from the side; the first card of a visit appears without motion. */
+.session-screen.is-advancing .session-main {
+  animation: card-in 260ms var(--ease-out);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+.session-progress-fill {
+  transition: width 320ms var(--ease-out);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -572,7 +749,10 @@ p {
     animation: none !important;
   }
 
-  .btn:active:not(:disabled) {
+  .btn:active:not(:disabled),
+  .option:active:not(:disabled),
+  .chunk:active:not(:disabled, .is-used),
+  .choice-card:active {
     transform: none;
   }
 }
@@ -967,7 +1147,6 @@ p {
   border-radius: 99px;
   background: var(--lime);
   box-shadow: inset 0 -4px 0 #b5d93a;
-  transition: width 200ms ease;
 }
 
 .session-position {
@@ -1099,7 +1278,7 @@ p {
   border-radius: var(--radius-control);
   border: 2px solid var(--border);
   background: var(--surface);
-  box-shadow: 0 4px 0 var(--border);
+  box-shadow: 0 var(--depth, 4px) 0 var(--border);
   font: 500 17px var(--font-body);
   text-align: left;
   cursor: pointer;
@@ -1141,7 +1320,7 @@ p {
 .option.is-selected {
   border-color: var(--blue);
   background: var(--blue-tint);
-  box-shadow: 0 4px 0 var(--blue);
+  box-shadow: 0 var(--depth, 4px) 0 var(--blue);
 }
 
 .option.is-selected .option-key {
@@ -1264,7 +1443,7 @@ p {
   border-radius: var(--radius-control);
   border: 2px solid var(--border);
   background: var(--surface);
-  box-shadow: 0 4px 0 var(--border);
+  box-shadow: 0 var(--depth, 4px) 0 var(--border);
   font: 700 17px var(--font-body);
   cursor: pointer;
 }
@@ -1272,7 +1451,7 @@ p {
 .chunk-picked {
   border-color: var(--blue);
   background: var(--blue-tint);
-  box-shadow: 0 4px 0 var(--blue);
+  box-shadow: 0 var(--depth, 4px) 0 var(--blue);
 }
 
 .chunk-picked:disabled {
@@ -2164,7 +2343,7 @@ p {
   border-radius: 18px;
   border: 2px solid var(--border);
   background: var(--surface);
-  box-shadow: 0 4px 0 var(--border);
+  box-shadow: 0 var(--depth, 4px) 0 var(--border);
   cursor: pointer;
 }
 
@@ -2175,7 +2354,7 @@ p {
 .choice-card.is-checked {
   border-color: var(--blue);
   background: var(--blue-tint);
-  box-shadow: 0 4px 0 var(--blue);
+  box-shadow: 0 var(--depth, 4px) 0 var(--blue);
 }
 
 .choice-card:has(.choice-radio:focus-visible) {
