@@ -6,6 +6,7 @@ import type { AttemptCommit, LearningSession, UserSettings } from '../domain/mod
 import type { PrivateAuth } from '../lib/auth';
 import { loadCatalog, type Catalog } from '../lib/catalog';
 import { createLearningRepository } from '../lib/repository';
+import { LoadingScreen } from '../components/LoadingScreen';
 import { StatePanel } from '../components/StatePanel';
 
 export type LearningRepository = ReturnType<typeof createLearningRepository>;
@@ -104,11 +105,7 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
   } : null, [auth, repository, state, load, applySession, applyCommit, applySettings, applyBookmark]);
 
   if (state.status === 'loading') {
-    return (
-      <main className="center-screen">
-        <p role="status" className="muted">{t('account.loading')}</p>
-      </main>
-    );
+    return <LoadingScreen label={t('account.loading')} />;
   }
   if (state.status === 'error') {
     const ended = state.code === 'unauthenticated';

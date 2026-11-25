@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { createPrivateAuth, PrivateAuth } from '../lib/auth';
 import { SignInPage } from '../pages/SignInPage';
+import { LoadingScreen } from '../components/LoadingScreen';
 import { StatePanel } from '../components/StatePanel';
 import { LearningProvider } from './LearningProvider';
 
@@ -29,11 +30,7 @@ function AccountGate({ auth, children }: { auth: PrivateAuth; children: ReactNod
   useEffect(() => auth.subscribeAccount(setAccountId), [auth]);
 
   if (accountId === undefined) {
-    return (
-      <main className="center-screen">
-        <p role="status" className="muted">{t('common.loading')}</p>
-      </main>
-    );
+    return <LoadingScreen label={t('common.loading')} />;
   }
   if (accountId === null) return <SignInPage auth={auth} />;
   return (

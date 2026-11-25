@@ -6,7 +6,10 @@ import { Icon } from '../../components/Icon';
 import { LessonAction } from './LessonAction';
 import { lessonHref, padNumber } from './path';
 
-/** One lesson on the path: coverage, per-sense memory level and open actions. Nothing is locked. */
+/**
+ * One lesson on the path: coverage, per-sense memory level and open actions. Nothing is locked.
+ * Cards keep one size: the sense chips show a single row and the lesson page lists them all.
+ */
 export function LessonUnit({ item, suggested, stages, newLimit }: {
   item: PathLesson;
   suggested: boolean;

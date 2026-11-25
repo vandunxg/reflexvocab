@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
@@ -5,10 +6,22 @@ import { attemptMetrics, recentAttempts } from '../domain/progress';
 import type { MasteryStage } from '../domain/model';
 import { useLearningPath } from '../features/learn/path';
 import { studyActivity } from '../domain/activity';
+import { Icon, type IconName } from '../components/Icon';
 import { ActivityCalendar } from '../features/today/ActivityCalendar';
 import { useClock } from '../features/today/useClock';
 
 const STAGES: MasteryStage[] = ['new', 'learning', 'familiar', 'mastered'];
+const RESULT_ICONS: Record<'correct' | 'incorrect' | 'revealed', IconName> = { correct: 'check', incorrect: 'retry', revealed: 'hint' };
+
+/** A headline number with the coloured icon tile from the Progress board. */
+function Stat({ icon, tone, label, children }: { icon: IconName; tone: string; label: string; children: ReactNode }) {
+  return (
+    <div>
+      <dt><span className={`progress-stat-icon progress-tone-${tone}`} aria-hidden="true"><Icon name={icon} size={22} /></span>{label}</dt>
+      <dd>{children}</dd>
+    </div>
+  );
+}
 
 export function ProgressPage() {
   const { t, i18n } = useTranslation();
@@ -37,21 +50,33 @@ export function ProgressPage() {
     <div className="page progress-page">
       <div className="page-heading"><h1>{t('progress.title')}</h1><p>{t('progress.intro')}</p></div>
       <dl className="progress-stats">
-        <div><dt>{t('progress.started')}</dt><dd>{catalog.senses.filter((sense) => cards.has(sense.id)).length} / {catalog.senses.length}</dd></div>
-        <div><dt>{t('progress.mastered')}</dt><dd>{stages.find((item) => item.stage === 'mastered')?.count ?? 0}</dd></div>
-        <div><dt>{t('progress.lessons')}</dt><dd>{lessons.filter((item) => item.status === 'complete').length} / {lessons.length}</dd></div>
-        <div><dt>{t('progress.due')}</dt><dd>{due}</dd></div>
+        <Stat icon="sprout" tone="lime" label={t('progress.started')}>
+          {catalog.senses.filter((sense) => cards.has(sense.id)).length}<small> / {catalog.senses.length}</small>
+        </Stat>
+        <Stat icon="check" tone="green" label={t('progress.mastered')}>{stages.find((item) => item.stage === 'mastered')?.count ?? 0}</Stat>
+        <Stat icon="learn" tone="blue" label={t('progress.lessons')}>
+          {lessons.filter((item) => item.status === 'complete').length}<small> / {lessons.length}</small>
+        </Stat>
+        <Stat icon="retry" tone="orange" label={t('progress.due')}>{due}</Stat>
       </dl>
       <p className="muted">{t('progress.scope', { limit: snapshot.attemptHistoryLimit, count: metrics.attempts })}</p>
       <div className="progress-panels">
         <section className="progress-panel" aria-labelledby="progress-memory">
-          <h2 id="progress-memory">{t('progress.memory')}</h2>
-          <ul className="progress-stages">
+          <div className="progress-panel-head">
+            <h2 id="progress-memory">{t('progress.memory')}</h2>
+            <span className="muted">{t('learn.senseCount', { count: catalog.senses.length })}</span>
+          </div>
+          {/* The legend carries the numbers; the stacked bar is their picture. */}
+          <div className="progress-stack" aria-hidden="true">
+            {stages.filter(({ count }) => count > 0).map(({ stage, count }) => (
+              <span key={stage} className={`progress-stage-${stage}`} style={{ flexGrow: count }} />
+            ))}
+          </div>
+          <ul className="progress-legend">
             {stages.map(({ stage, count }) => (
               <li key={stage}>
+                <span className={`progress-swatch progress-stage-${stage}`} aria-hidden="true" />
                 <span>{t(`mastery.${stage}`)}</span>
-                <div className="progress-stage-bar" aria-hidden="true"><span className={`progress-stage-${stage}`}
-                  style={{ width: `${catalog.senses.length ? count / catalog.senses.length * 100 : 0}%` }} /></div>
                 <strong>{count}</strong>
               </li>
             ))}
@@ -79,14 +104,17 @@ export function ProgressPage() {
         <div className="progress-history-head"><h2 id="progress-history">{t('progress.history')}</h2><Link to="/practice">{t('progress.practice')}</Link></div>
         {history.length === 0 ? <p className="muted">{t('progress.empty')}</p> : (
           <ul className="progress-history">
-            {history.map((attempt) => (
-              <li key={attempt.id}>
-                <span className="tag">{t(`practice.result.${attempt.answerRevealed ? 'revealed' : attempt.outcome}`)}</span>
-                <strong lang="en">{senses.get(attempt.senseId)?.headword ?? t('practice.result.unknownWord')}</strong>
-                <span>{t(`session.kinds.${attempt.exerciseKind}`)}{attempt.hintUsed && !attempt.answerRevealed ? ` · ${t('practice.result.hint')}` : ''}{attempt.isRetry ? ` · ${t('practice.result.retry')}` : ''}</span>
-                <time dateTime={attempt.attemptedAt}>{format.format(new Date(attempt.attemptedAt))}</time>
-              </li>
-            ))}
+            {history.map((attempt) => {
+              const result = attempt.answerRevealed ? 'revealed' : attempt.outcome;
+              return (
+                <li key={attempt.id}>
+                  <span className={`tag progress-result progress-result-${result}`}><Icon name={RESULT_ICONS[result]} size={14} />{t(`practice.result.${result}`)}</span>
+                  <strong lang="en">{senses.get(attempt.senseId)?.headword ?? t('practice.result.unknownWord')}</strong>
+                  <span>{t(`session.kinds.${attempt.exerciseKind}`)}{attempt.hintUsed && !attempt.answerRevealed ? ` · ${t('practice.result.hint')}` : ''}{attempt.isRetry ? ` · ${t('practice.result.retry')}` : ''}</span>
+                  <time dateTime={attempt.attemptedAt}>{format.format(new Date(attempt.attemptedAt))}</time>
+                </li>
+              );
+            })}
           </ul>
         )}
       </section>

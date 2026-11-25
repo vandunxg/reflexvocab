@@ -24,7 +24,7 @@ export function TopicCard({ stats }: { stats: TopicStats }) {
       <div className="topic-card-art" aria-hidden="true"><span /><span /></div>
       <div className="topic-card-body">
         <div className="topic-card-title">
-          <h3 lang="en">{topic.title}</h3>
+          <h3 lang="en" title={topic.title}>{topic.title}</h3>
           <span className="topic-card-level">{levelName}</span>
         </div>
         <p className="topic-card-sample" lang="en">{sample.join(' · ')}</p>

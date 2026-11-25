@@ -5,9 +5,11 @@ import type { MasteryStage } from '../domain/model';
 import { buildQueue, MAX_QUESTION_BUDGET } from '../domain/session';
 import { Select } from '../components/Select';
 import { Icon } from '../components/Icon';
+import { LoadMore, useIncremental } from '../components/LoadMore';
 import { StartPractice } from '../components/StartPractice';
 import { LibraryRow, type LibraryEntry } from '../features/library/LibraryRow';
 import { levelName } from '../i18n';
+import { foldText } from '../lib/text';
 
 const STAGES: MasteryStage[] = ['new', 'learning', 'familiar', 'mastered'];
 const toggled = (set: Set<string>, id: string, present: boolean) => {
@@ -16,8 +18,7 @@ const toggled = (set: Set<string>, id: string, present: boolean) => {
   else next.delete(id);
   return next;
 };
-// Case- and diacritic-insensitive matching, so "hoan" finds "hoãn".
-const fold = (text: string) => text.normalize('NFD').replace(/\p{M}/gu, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+const ROW_STEP = 30;
 
 /** Library (`/library`): search, inspect, listen, save and pick senses to practise. Browsing records no evidence. */
 export function LibraryPage() {
@@ -43,21 +44,22 @@ export function LibraryPage() {
       return [{
         sense, contexts, topicTitle: topic.topic.title, topicIndex: topic.index,
         stage: stages.get(sense.id) ?? 'new', topicId: topic.topic.id, levelId: topic.topic.levelId,
-        search: fold([sense.headword, sense.definition, sense.viGloss ?? '', ...sense.collocations].join(' ')),
+        search: foldText([sense.headword, sense.definition, sense.viGloss ?? '', ...sense.collocations].join(' ')),
       }];
     }).sort((a, b) => a.sense.headword.localeCompare(b.sense.headword, 'en'));
   }, [catalog, snapshot.cards]);
   const savedIds = useMemo(() => new Set(snapshot.bookmarks.map((bookmark) => bookmark.senseId)), [snapshot.bookmarks]);
   const levels = [...new Set(catalog.topics.map((topic) => topic.levelId))];
 
-  const needle = fold(query.trim());
+  const needle = foldText(query.trim());
   const shown = entries.filter((entry) => (!needle || entry.search.includes(needle))
     && (!topicId || entry.topicId === topicId)
     && (!levelId || entry.levelId === levelId)
     && (!stage || entry.stage === stage)
     && (!savedOnly || savedIds.has(entry.sense.id)));
-  const shownLevels = [...new Set(shown.map((entry) => entry.levelId))];
+  const shownLevels = levels.filter((id) => shown.some((entry) => entry.levelId === id));
   const filtered = Boolean(needle || topicId || levelId || stage || savedOnly);
+  const { count, showMore } = useIncremental(ROW_STEP, [needle, topicId, levelId, stage, savedOnly].join('|'));
 
   async function toggleSaved(senseId: string) {
     const desired = !savedIds.has(senseId);
@@ -96,21 +98,21 @@ export function LibraryPage() {
         <p>{t('library.subtitle')}</p>
       </div>
 
-      <div className="library-toolbar" role="search" aria-label={t('library.filtersLabel')}>
-        <label className="library-search">
+      <div className="filter-toolbar" role="search" aria-label={t('library.filtersLabel')}>
+        <label className="filter-search">
           <span className="visually-hidden">{t('library.searchLabel')}</span>
           <Icon name="search" size={20} />
           <input type="search" value={query} placeholder={t('library.searchPlaceholder')} onChange={(event) => setQuery(event.target.value)} />
         </label>
-        <Select className="library-select" aria-label={t('library.topicLabel')} value={topicId} onValueChange={setTopicId}>
+        <Select className="filter-select" aria-label={t('library.topicLabel')} value={topicId} onValueChange={setTopicId}>
           <option value="">{t('library.allTopics')}</option>
           {catalog.topics.map((topic) => <option key={topic.id} value={topic.id} lang="en">{topic.title}</option>)}
         </Select>
-        <Select className="library-select" aria-label={t('library.levelLabel')} value={levelId} onValueChange={setLevelId}>
+        <Select className="filter-select" aria-label={t('library.levelLabel')} value={levelId} onValueChange={setLevelId}>
           <option value="">{t('library.allLevels')}</option>
           {levels.map((id) => <option key={id} value={id}>{levelName(t, id)}</option>)}
         </Select>
-        <Select className="library-select" aria-label={t('library.stageLabel')} value={stage} onValueChange={(value) => setStage(value as MasteryStage | '')}>
+        <Select className="filter-select" aria-label={t('library.stageLabel')} value={stage} onValueChange={(value) => setStage(value as MasteryStage | '')}>
           <option value="">{t('library.allStages')}</option>
           {STAGES.map((value) => <option key={value} value={value}>{t(`mastery.${value}`)}</option>)}
         </Select>
@@ -146,7 +148,7 @@ export function LibraryPage() {
           </div>
         ) : (
           <ul className="library-list">
-            {shown.map((entry) => (
+            {shown.slice(0, count).map((entry) => (
               <LibraryRow
                 key={entry.sense.id}
                 entry={entry}
@@ -160,6 +162,7 @@ export function LibraryPage() {
             ))}
           </ul>
         )}
+        <LoadMore shown={Math.min(count, shown.length)} total={shown.length} onMore={showMore} />
       </section>
     </div>
   );

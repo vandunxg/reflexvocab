@@ -29,7 +29,7 @@ export function LibraryRow({ entry, selected, saved, saving, failed, onSelect, o
   const detailsId = `library-${sense.id}`;
   const word = sense.headword;
   return (
-    <li className={selected ? 'library-row is-selected' : 'library-row'}>
+    <li className={['library-row', selected && 'is-selected', open && 'is-open'].filter(Boolean).join(' ')}>
       <div className="library-row-main">
         <input
           type="checkbox"
@@ -39,11 +39,11 @@ export function LibraryRow({ entry, selected, saved, saving, failed, onSelect, o
           aria-label={t('library.select', { word })}
         />
         <div className="library-word">
-          <span className="library-headword" lang="en">{word}</span>
+          <span className="library-headword" lang="en" title={word}>{word}</span>
           <span className="muted library-meta" lang="en">{[sense.ipa, sense.partOfSpeech].filter(Boolean).join(' · ')}</span>
         </div>
-        <p className="library-definition" lang="en">{sense.definition}</p>
-        <span className={`library-topic topic-tone-${topicIndex % 3}`} lang="en">{topicTitle}</span>
+        <p className="library-definition" lang="en" title={sense.definition}>{sense.definition}</p>
+        <span className={`library-topic topic-tone-${topicIndex % 3}`} lang="en" title={topicTitle}>{topicTitle}</span>
         <span className={`stage-pill stage-${stage}`}>{t(`mastery.${stage}`)}</span>
         <div className="library-actions">
           <SpeakButton text={word} label={t('library.listen', { word })} small />
