@@ -93,6 +93,19 @@ before using CLI migration commands there; blindly replaying these files will
 fail on existing objects. The new SQL functions were checked with rolled-back
 fixtures, not a full application flow.
 
+To check the repository through the hosted Data API, add the test-account
+variables `TEST_EMAIL_1`, `TEST_PASSWORD_1`, `TEST_EMAIL_2` and
+`TEST_PASSWORD_2` to `.env.local`, then run:
+
+```bash
+set -a && . ./.env.local && set +a
+node scripts/hosted-check.ts
+psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/reset-test-accounts.sql
+```
+
+The check writes a session and attempt for test account 1; the reset script
+removes learning data only for the two dedicated test accounts.
+
 For the future integration, the implementer will:
 
 1. Choose the authorized development environment. A local stack can use the [Supabase CLI and Docker workflow](https://supabase.com/docs/guides/local-development/cli/getting-started); a hosted development project will use the owner's chosen Supabase project. Docker will not be needed for the bare React starter.
