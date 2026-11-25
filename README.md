@@ -11,7 +11,7 @@ A docs-first foundation for a private, English-first vocabulary learning applica
 - One progress and handoff file: [docs/PROGRESS.md](docs/PROGRESS.md).
 - Project instructions and six small, repository-local skill guides for working with AI agents.
 
-The repository also includes TypeScript learning contracts, SQL migrations, a private Auth boundary, and starter content outside the browser bundle. The frontend still renders no product screens. See [PROGRESS](docs/PROGRESS.md) for current implementation and verification status.
+The repository also includes TypeScript learning contracts, SQL migrations, a private Auth boundary, starter content outside the browser bundle, and the application shell with `en`/`vi` interface copy. See [PROGRESS](docs/PROGRESS.md) for current implementation and verification status.
 
 ## Run the blank starter
 
@@ -22,7 +22,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL reported by Vite. A blank page is expected until the product screens are implemented. No Supabase credentials are needed for the blank frontend. To exercise the Auth integration, follow [SETUP](docs/SETUP.md#4-supabase-provisioning) and keep secrets out of all `VITE_*` variables.
+Open the local URL reported by Vite. Without Supabase configuration the app shows a configuration message instead of sign-in. To exercise the Auth integration, follow [SETUP](docs/SETUP.md#4-supabase-provisioning) and keep secrets out of all `VITE_*` variables.
 
 ```bash
 npm run check

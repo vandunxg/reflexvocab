@@ -8,12 +8,12 @@ This is the **only execution/status tracker** for this starter. Requirements, PL
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Last updated           | 25 November 2026                                                                                                                                                                                            |
 | Current phase          | [P03 — Learning experience](phases/PHASE_03_LEARNING_EXPERIENCE.md); [P01-T02](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t02) remains blocked on hosted signup configuration |
-| Current task           | [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01) |
-| Last completed task    | [P01-T03 — Learning repository and atomic writes](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t03) |
-| Work stopped after     | Verified the repository against hosted development through the Data API with two dedicated test accounts (`scripts/hosted-check.ts`) and added the authenticated catalog read. |
-| Next task              | [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01) |
-| Next action            | Add tokens, i18n with `en`/`vi` catalogs, the sign-in surface and navigation shell from the supplied boards; verify account switching for P01-T02. |
-| Product implementation | 7 of 25 product tasks complete |
+| Current task           | [P03-T02 — Five exercise interactions](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t02) |
+| Last completed task    | [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01) |
+| Work stopped after     | Tokens, fonts, i18next with typed `en`/`vi` catalogs, sign-in (Login/M-Login boards), account-keyed loading of catalog and learning state, saved-locale application, top/bottom navigation, Settings account section with sign-out, and a not-found route. |
+| Next task              | [P03-T02 — Five exercise interactions](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t02) |
+| Next action            | Compose the session question renderer for all five kinds from the Session-* boards, with introduction, hints/reveal metadata and double-submit protection. |
+| Product implementation | 8 of 25 product tasks complete |
 
 ## Status meanings
 
@@ -41,7 +41,7 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | [P02-T02 — Scheduling and mastery](phases/PHASE_02_LEARNING_CORE.md#p02-t02)                          | `DONE`        |
 | [P02-T03 — Sessions and recovery](phases/PHASE_02_LEARNING_CORE.md#p02-t03)                           | `DONE`        |
 | [P02-T04 — Consistent answer transition](phases/PHASE_02_LEARNING_CORE.md#p02-t04)                    | `DONE`        |
-| [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01)       | `NOT_STARTED` |
+| [P03-T01 — Visual, i18n and application shell](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t01)       | `DONE`        |
 | [P03-T02 — Five exercise interactions](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t02)                | `NOT_STARTED` |
 | [P03-T03 — Saving and resume](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t03)                         | `NOT_STARTED` |
 | [P03-T04 — Browser TTS](phases/PHASE_03_LEARNING_EXPERIENCE.md#p03-t04)                               | `NOT_STARTED` |
@@ -94,6 +94,8 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | P01-T04 | `loadCatalog` (`src/lib/catalog.ts`) read through an authenticated test account's Data API session; `npm run build` followed by a search of `dist/`. | Returned 1 topic, 3 senses and 6 exercises covering all five kinds; the production bundle contains no catalog text or exercise IDs. Seed validation plus schema constraints reject broken references, missing answer keys, duplicate IDs and invalid option/chunk sets; the owner confirmed the editorial review. |
 | P01-T02 | Hosted Auth settings endpoint read with the publishable key. | **Failed requirement:** `disable_signup` is `false` (email provider enabled, `mailer_autoconfirm` false), so public signup is open on hosted development. No Supabase CLI or access token is available to change project Auth settings. |
 | P01-T03 | `node scripts/hosted-check.ts` against hosted development with two dedicated test accounts, then `scripts/reset-test-accounts.sql`. | Passed through the real Data API: session start retried without duplication; a wrong answer from `submitAnswer` was saved with its retry; two concurrent deliveries of the same commit stored one attempt; a fresh stale write returned `conflict`; the exact replay after the cursor advanced was acknowledged. Account 2 could not read account 1's session or attempt, and replaying account 1's payload was rejected without writing. |
+| P03-T01 | `npm run check`, `node --test tests/*.test.ts` (locale parity included) and a Playwright Chromium run against `vite` with hosted development at 1440×900 and 390×844. | Passed. Catalog keys, non-empty text and interpolation variables match; sign-in matches the Login/M-Login boards; empty and wrong-password submissions show localized errors; account 1's saved `vi` locale switches copy and `html[lang]`; the first Tab focuses the visible skip link; an unknown direct route shows a localized not-found page. Signing out returns to English sign-in, and signing in as account 2 (saved `en`) replaces account-bound state. The only console error was the expected 400 from the wrong-password attempt. Unsupported locales resolve to English through `normalizeLocale` and `fallbackLng`. |
+| P01-T02 | Same Playwright run. | Account switching through the app remounts account-bound state; missing/invalid configuration renders a localized message. The hosted signup setting remains the only open item. |
 
 The source/configuration review found no useful further scaffold refactor. Formatting left executable source and configuration unchanged after the passing checks; later documentation edits reused that evidence. The fixed delivery report is [VERIFICATION.md](VERIFICATION.md).
 

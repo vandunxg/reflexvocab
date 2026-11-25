@@ -38,7 +38,7 @@ npm ci
 npm run dev
 ```
 
-The frontend still renders a **blank page** because product screens are not present. Blank Supabase environment values are acceptable for the scaffold; the client is initialized only with valid public configuration.
+Without valid public Supabase values the frontend shows a localized configuration message; with them it shows sign-in for provisioned accounts. Browser checks use Playwright's Chromium build: run `npx playwright install chromium` once after `npm ci`.
 
 Installing the SDK does not create a Supabase project. The browser Auth boundary uses these two variables:
 

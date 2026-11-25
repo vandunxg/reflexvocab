@@ -1,7 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/dm-sans';
+import './i18n';
 import './styles.css';
+import App from './App';
 
 const root = document.getElementById('root');
 
