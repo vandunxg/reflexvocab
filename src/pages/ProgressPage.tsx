@@ -4,6 +4,9 @@ import { useLearning } from '../app/LearningProvider';
 import { attemptMetrics, recentAttempts } from '../domain/progress';
 import type { MasteryStage } from '../domain/model';
 import { useLearningPath } from '../features/learn/path';
+import { studyActivity } from '../domain/activity';
+import { ActivityCalendar } from '../features/today/ActivityCalendar';
+import { useClock } from '../features/today/useClock';
 
 const STAGES: MasteryStage[] = ['new', 'learning', 'familiar', 'mastered'];
 
@@ -19,7 +22,8 @@ export function ProgressPage() {
   const recent = recentAttempts(snapshot.attempts, snapshot.attemptHistoryLimit);
   const metrics = attemptMetrics(recent);
   const history = recent.slice(0, 10);
-  const now = new Date();
+  const now = useClock();
+  const activity = studyActivity(snapshot.attempts, snapshot.attemptHistoryLimit, now, settings.timezone);
   const senses = new Map(catalog.senses.map((sense) => [sense.id, sense]));
   const due = catalog.senses.filter((sense) => {
     const card = cards.get(sense.id);
@@ -60,6 +64,12 @@ export function ProgressPage() {
           <p className="muted">{t('progress.retentionNote')}</p>
         </section>
       </div>
+      <section className="progress-panel" aria-labelledby="progress-week">
+        <h2 id="progress-week">{t('activity.week')}</h2>
+        <p className="muted">{t('activity.timezone', { timezone: settings.timezone })}</p>
+        <ActivityCalendar activity={activity} timezone={settings.timezone} />
+        <p>{activity.streakLowerBound ? t('activity.streakAtLeast', { count: activity.streak }) : t('activity.streak', { count: activity.streak })}</p>
+      </section>
       <section className="progress-panel" aria-labelledby="progress-accuracy">
         <h2 id="progress-accuracy">{t('progress.accuracy')}</h2>
         <p>{metrics.firstUnassisted ? t('progress.ratio', { correct: metrics.firstCorrect, total: metrics.firstUnassisted }) : t('progress.insufficient')}</p>

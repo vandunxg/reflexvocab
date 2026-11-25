@@ -2,8 +2,6 @@
 
 This is the **only execution/status tracker** for this starter. Requirements, PLAN and phase files describe intended behavior and tasks; they do not record completion. Update this file at a meaningful task handoff, not after every keystroke.
 
-**Working-tree limitation:** The implementations for P04-T05, P04-T06, P05-T01 and P05-T02 remain uncommitted; their recorded evidence applies to the current working tree, not to a clean checkout of the committed history.
-
 ## Current handoff
 
 | Field                  | Value                                                                                                                                                                                                       |
@@ -14,7 +12,7 @@ This is the **only execution/status tracker** for this starter. Requirements, PL
 | Last completed task    | [P05-T04 — End-to-end usability gaps](phases/PHASE_05_MVP_COMPLETION.md#p05-t04) |
 | Work stopped after     | The owner approved the four-sense follow-up batch; it was imported into hosted development and exercised in the existing learning UI. P05 journey checks passed against the expanded catalog. |
 | Next task              | [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) |
-| Next action            | Resolve the uncommitted implementation history, then read [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) and identify the authorized private deployment target; hosted signup must still be disabled. |
+| Next action            | Read [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) and identify the authorized private deployment target; hosted signup must still be disabled. |
 | Product implementation | 21 of 25 product tasks complete |
 
 ## Status meanings

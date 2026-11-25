@@ -319,6 +319,20 @@ export const vi: MessageCatalog = {
     emptyBody: 'Thử từ khác hoặc xóa bộ lọc.',
     clearFilters: 'Xóa bộ lọc',
   },
+  activity: {
+    week: 'Bảy ngày gần đây',
+    timezone: 'Ngày theo múi giờ {{timezone}}',
+    calendarLabel: 'Hoạt động học bảy ngày gần đây, múi giờ {{timezone}}',
+    streak_one: '{{count}} ngày liên tiếp',
+    streak_other: '{{count}} ngày liên tiếp',
+    streakAtLeast_one: 'Ít nhất {{count}} ngày liên tiếp',
+    streakAtLeast_other: 'Ít nhất {{count}} ngày liên tiếp',
+    day: {
+      active: '{{date}}: có lượt học đã lưu',
+      inactive: '{{date}}: chưa có lượt học đã lưu',
+      unknown: '{{date}}: ngoài lịch sử đã tải',
+    },
+  },
   progress: {
     title: 'Tiến độ học tập',
     intro: 'Hoàn thành bài học và ghi nhớ lâu dài là hai cột mốc khác nhau.',

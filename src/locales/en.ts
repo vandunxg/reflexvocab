@@ -317,6 +317,20 @@ export const en = {
     emptyBody: 'Try another word or clear the filters.',
     clearFilters: 'Clear filters',
   },
+  activity: {
+    week: 'Last seven days',
+    timezone: 'Dates in {{timezone}}',
+    calendarLabel: 'Learning activity for the past seven days, timezone {{timezone}}',
+    streak_one: '{{count}} day in a row',
+    streak_other: '{{count}} days in a row',
+    streakAtLeast_one: 'At least {{count}} day in a row',
+    streakAtLeast_other: 'At least {{count}} days in a row',
+    day: {
+      active: '{{date}}: saved learning activity',
+      inactive: '{{date}}: no saved learning activity',
+      unknown: '{{date}}: outside loaded history',
+    },
+  },
   progress: {
     title: 'Learning progress',
     intro: 'Completing lessons and remembering over time are different milestones.',

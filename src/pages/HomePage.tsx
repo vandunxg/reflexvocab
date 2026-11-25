@@ -2,12 +2,14 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
-import { localDay } from '../domain/mastery';
+import { studyActivity } from '../domain/activity';
 import type { QueueEntry, SessionConfig } from '../domain/model';
 import { buildQueue, categorize, questionBudgetFor } from '../domain/session';
 import { Icon } from '../components/Icon';
 import { StartPractice } from '../components/StartPractice';
 import { TopicCard, type TopicStats } from '../features/today/TopicCard';
+import { ActivityCalendar } from '../features/today/ActivityCalendar';
+import { useClock } from '../features/today/useClock';
 import { levelName } from '../i18n';
 
 type Filter = 'all' | 'due' | 'new' | 'weak';
@@ -20,10 +22,11 @@ const ATTEMPT_WINDOW = 1000;
 export function HomePage() {
   const { t } = useTranslation();
   const { catalog, snapshot, settings } = useLearning();
-  const [now] = useState(() => new Date());
+  const now = useClock();
   const [filter, setFilter] = useState<Filter>('all');
   const current = snapshot.currentSession?.status === 'current' ? snapshot.currentSession : null;
   const budget = questionBudgetFor(settings.dailyMinutes);
+  const activity = studyActivity(snapshot.attempts, snapshot.attemptHistoryLimit, now, settings.timezone);
 
   const data = useMemo(() => {
     const plan = (config: SessionConfig) => buildQueue({
@@ -65,10 +68,8 @@ export function HomePage() {
       },
       started: snapshot.cards.length,
       mastered: snapshot.cards.filter((card) => card.masteryStage === 'mastered').length,
-      attemptsToday: snapshot.attempts.filter((attempt) =>
-        localDay(new Date(attempt.attemptedAt), settings.timezone) === localDay(now, settings.timezone)).length,
     };
-  }, [catalog, snapshot.cards, snapshot.attempts, settings.timezone, settings.newPerDay, budget, now, t]);
+  }, [catalog, snapshot.cards, settings.timezone, settings.newPerDay, budget, now, t]);
 
   const mix = (queue: QueueEntry[]) => MIX
     .map((source) => ({ source, count: queue.filter((entry) => entry.source === source).length }))
@@ -152,10 +153,13 @@ export function HomePage() {
           <div className="today-stats-head">
             <span className="today-stats-icon" aria-hidden="true"><Icon name="calendar" size={24} /></span>
             <div>
-              <h2 id="today-stats-title">{t('today.activityTitle')}</h2>
-              <p>{data.attemptsToday > 0 ? t('today.attemptsToday', { count: data.attemptsToday }) : t('today.noAttemptsToday')}</p>
+              <h2 id="today-stats-title">{activity.streakLowerBound
+                ? t('activity.streakAtLeast', { count: activity.streak }) : t('activity.streak', { count: activity.streak })}</h2>
+              <p>{activity.todayAttempts > 0 ? t('today.attemptsToday', { count: activity.todayAttempts }) : t('today.noAttemptsToday')}</p>
             </div>
           </div>
+          <ActivityCalendar activity={activity} timezone={settings.timezone} />
+          {!current && data.daily.length === 0 && <p className="muted">{t('today.goal', { minutes: settings.dailyMinutes })}</p>}
           <dl className="today-stats-list">
             <div><dt>{t('today.stats.due')}</dt><dd>{data.counts.due}</dd></div>
             <div><dt>{t('today.stats.started')}</dt><dd>{data.started}<span>/{data.counts.all}</span></dd></div>

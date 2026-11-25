@@ -1528,6 +1528,12 @@ p {
   font-size: 17px;
 }
 
+.activity-calendar { display: flex; justify-content: space-between; gap: 4px; margin: 12px 0; }
+.activity-day { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; font-size: 12px; font-weight: 700; color: var(--muted); }
+.activity-dot { display: grid; place-items: center; width: 32px; height: 32px; border: 2px dashed var(--border); border-radius: 50%; }
+.activity-active { border: 0; background: #d2f55d; color: #17181a; }
+.activity-unknown { border-style: solid; }
+.activity-dot.is-today { outline: 2px solid #17181a; outline-offset: 2px; }
 .progress-page { display: grid; gap: 20px; }
 .progress-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
 .progress-stats > div, .progress-panel {
