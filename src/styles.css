@@ -1310,6 +1310,18 @@ p {
   --feedback-line: #f6d6b5;
 }
 
+.feedback-info {
+  background: var(--blue-tint);
+  border-color: var(--blue);
+  --feedback-text: var(--blue-strong);
+  --feedback-accent: var(--blue);
+  --feedback-line: #cfd7ff;
+}
+
+.feedback-info .feedback-icon {
+  color: #fff;
+}
+
 .feedback-inner {
   display: flex;
   flex-direction: column;
@@ -1394,6 +1406,205 @@ p {
   justify-content: flex-end;
   gap: 12px 18px;
   padding-top: 4px;
+}
+
+/* Save state and sync errors */
+.save-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3f4139;
+}
+
+.save-saved {
+  color: var(--correct-text);
+}
+
+.save-failed {
+  color: var(--warn-text);
+}
+
+.save-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--warn);
+}
+
+.sync-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 2px solid var(--warn);
+  background: var(--surface);
+  color: var(--warn-text);
+}
+
+.sync-error-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #3f4139;
+  font-size: 15px;
+}
+
+.sync-error-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.sync-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: 10px;
+}
+
+/* Confirmation dialog */
+.confirm-dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 24px;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 6px 0 var(--border);
+}
+
+.confirm-dialog::backdrop {
+  background: rgb(23 24 26 / 0.35);
+}
+
+.confirm-dialog h2 {
+  font-size: 22px;
+}
+
+.confirm-dialog p {
+  margin-top: 6px;
+}
+
+.confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Completion summary */
+.summary {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.summary h1 {
+  font-size: 40px;
+  letter-spacing: -0.04em;
+}
+
+.summary-body {
+  font-size: 17px;
+}
+
+.summary-stats {
+  width: 100%;
+  margin: 20px 0 4px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 22px 12px;
+  border-radius: 18px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 4px 0 var(--border);
+}
+
+.summary-stat dt {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.summary-stat dd {
+  margin: 0;
+  font: 800 34px/1.1 var(--font-heading);
+}
+
+.summary-stat-correct {
+  border-color: #bfe8cd;
+  background: var(--correct-tint);
+  box-shadow: 0 4px 0 #bfe8cd;
+}
+
+.summary-stat-correct dt,
+.summary-stat-correct dd {
+  color: var(--correct-text);
+}
+
+.summary-stat-recovery {
+  border-color: #f6d6b5;
+  background: var(--warn-tint);
+  box-shadow: 0 4px 0 #f6d6b5;
+}
+
+.summary-stat-recovery dt,
+.summary-stat-recovery dd {
+  color: var(--warn-text);
+}
+
+.summary-note {
+  max-width: 34em;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.summary-due {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--blue-tint);
+  color: var(--blue-strong);
+  font-weight: 700;
+}
+
+/* Session entry on Today */
+.session-entry .btn,
+.start-practice {
+  margin-top: 16px;
+}
+
+.start-practice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.start-practice .btn {
+  margin-top: 0;
 }
 
 /* Intro */
@@ -1531,6 +1742,18 @@ p {
 
   .intro-card {
     padding: 24px 20px;
+  }
+
+  .summary h1 {
+    font-size: 32px;
+  }
+
+  .summary-stats {
+    gap: 10px;
+  }
+
+  .summary-stat dd {
+    font-size: 28px;
   }
 
   .intro-word {

@@ -4,7 +4,7 @@ import type { Evidence } from '../../domain/answers';
 import type { Exercise, VocabularyContext, VocabularySense } from '../../domain/model';
 import { Icon } from '../../components/Icon';
 import { correctAnswerText, feedbackHeading, hintItems, shuffle, splitOnWord, type HintItem } from './content';
-import { FeedbackPanel } from './FeedbackPanel';
+import { FeedbackPanel, type SaveControls } from './FeedbackPanel';
 
 export interface CheckInput {
   answer: string | string[] | null;
@@ -28,12 +28,14 @@ type Option = { id: string; text: string };
  * One question from first view to feedback. Keyed by queue position, so every question starts
  * with fresh answer, hint and timing state.
  */
-export function Question({ exercise, sense, context, isRetry, retryNewContext, onCheck, onContinue }: {
+export function Question({ exercise, sense, context, isRetry, retryNewContext, save, onCheck, onContinue }: {
   exercise: Exercise;
   sense: VocabularySense;
   context: VocabularyContext | undefined;
   isRetry: boolean;
   retryNewContext: boolean;
+  /** Save progress of the submitted answer; null until the answer is checked. */
+  save: SaveControls | null;
   onCheck: (input: CheckInput) => CheckResult | null;
   onContinue: () => void;
 }) {
@@ -270,15 +272,16 @@ export function Question({ exercise, sense, context, isRetry, retryNewContext, o
         )}
       </main>
 
-      {submitted ? (
+      {submitted && save ? (
         <FeedbackPanel
           exercise={exercise}
           context={context}
           answer={submitted.answer}
           result={submitted.result}
+          save={save}
           onContinue={onContinue}
         />
-      ) : (
+      ) : !submitted && (
         <footer className="session-footer">
           <div className="session-footer-inner">
             <span className="muted session-footer-text">{footerText}</span>

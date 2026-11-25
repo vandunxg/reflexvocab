@@ -48,6 +48,7 @@ The following choices make later MVP implementation concrete. They are adjustabl
 | Audio preferences           | Automatic available English voice, speech rate `0.9`                                                                                                          |
 | Session selection           | Initial budget 1–30 questions; `due → due → new → weak` heuristic, adjusted for available pools rather than exact ratios                                      |
 | Recovery                    | Up to two retries per sense; insert after up to three other questions when possible                                                                           |
+| Session size                | Daily session budget = study minutes × 1.5 questions (about 40 seconds each, including introductions and feedback), clamped to 1–30; it guides size, it is not a timer |
 | Qualified learning evidence | Record all attempts, but only suitable new/due non-retry attempts update scheduling; only later unassisted qualified recalls accumulate mastery evidence      |
 | Mastery threshold           | Three later review days, two contexts, a typing-cloze success, and stability of at least 14 days; reset the current evidence window after a qualified failure |
 | Review rating               | Due wrong/revealed → Again; correct with a non-revealing hint → Hard; correct independent → Good; no automatic Easy from speed                                |

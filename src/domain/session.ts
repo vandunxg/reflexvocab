@@ -8,6 +8,11 @@ import type {
 export const MAX_QUESTION_BUDGET = 30;
 export const RETRY_LIMIT = 2;
 export const RETRY_SPACING = 3;
+// Daily minutes guide session size at about 40 seconds per question (DECISIONS.md); not a countdown.
+export function questionBudgetFor(dailyMinutes: number): number {
+  return Math.min(MAX_QUESTION_BUDGET, Math.max(1, Math.round(dailyMinutes * 1.5)));
+}
+
 const SELECTION_PATTERN = ['due', 'due', 'new', 'weak'] as const;
 
 // Lower numbers give more support (recognition); higher numbers ask for more recall.

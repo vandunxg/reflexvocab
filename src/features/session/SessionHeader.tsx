@@ -1,14 +1,20 @@
+import type { MouseEvent } from 'react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '../../components/Icon';
 
 /** Focus-mode header: exit, session progress and position. No primary navigation. */
-export function SessionHeader({ answered, total }: { answered: number; total: number }) {
+export function SessionHeader({ answered, total, onExit }: {
+  answered: number;
+  total: number;
+  /** May prevent navigation, e.g. to confirm leaving with an unsaved answer. */
+  onExit?: (event: MouseEvent) => void;
+}) {
   const { t } = useTranslation();
   const current = Math.min(answered + 1, total);
   return (
     <header className="session-header">
-      <Link to="/" className="session-exit" aria-label={t('session.exit')}>
+      <Link to="/" className="session-exit" aria-label={t('session.exit')} onClick={onExit}>
         <Icon name="close" size={24} />
       </Link>
       <div

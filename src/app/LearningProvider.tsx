@@ -2,7 +2,7 @@ import { createContext, use, useCallback, useEffect, useMemo, useState, type Rea
 import { useTranslation } from 'react-i18next';
 import { applyLocale } from '../i18n';
 import { DEFAULT_SETTINGS } from '../domain/settings';
-import type { UserSettings } from '../domain/model';
+import type { AttemptCommit, LearningSession, UserSettings } from '../domain/model';
 import type { PrivateAuth } from '../lib/auth';
 import { loadCatalog, type Catalog } from '../lib/catalog';
 import { createLearningRepository } from '../lib/repository';
@@ -20,6 +20,10 @@ interface LearningContextValue {
   settings: UserSettings;
   /** Re-reads authoritative account state without discarding the current screen. */
   refresh: () => Promise<void>;
+  /** Records a session the server has just accepted as the account's current session. */
+  applySession: (session: LearningSession) => void;
+  /** Records an attempt commit the server has acknowledged. */
+  applyCommit: (commit: AttemptCommit) => void;
 }
 
 type LoadState =
@@ -57,6 +61,22 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
     load().catch(() => undefined);
   }, [load]);
 
+  // Acknowledged writes are applied locally; the server state is exactly the accepted payload.
+  const updateSnapshot = useCallback((change: (snapshot: LearningSnapshot) => LearningSnapshot) => {
+    setState((current) => current.status === 'ready' ? { ...current, snapshot: change(current.snapshot) } : current);
+  }, []);
+  const applySession = useCallback((session: LearningSession) => {
+    updateSnapshot((snapshot) => ({ ...snapshot, currentSession: session }));
+  }, [updateSnapshot]);
+  const applyCommit = useCallback((commit: AttemptCommit) => {
+    updateSnapshot((snapshot) => ({
+      ...snapshot,
+      currentSession: commit.session,
+      cards: [...snapshot.cards.filter((card) => card.senseId !== commit.progress.senseId), commit.progress],
+      attempts: [...snapshot.attempts.filter((attempt) => attempt.id !== commit.attempt.id), commit.attempt],
+    }));
+  }, [updateSnapshot]);
+
   const locale = state.status === 'ready' ? state.snapshot.settings?.locale : undefined;
   useEffect(() => {
     applyLocale(locale);
@@ -66,8 +86,8 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
   const value = useMemo(() => state.status === 'ready' ? {
     auth, repository, catalog: state.catalog, snapshot: state.snapshot,
     settings: { ...DEFAULT_SETTINGS, ...state.snapshot.settings },
-    refresh: load,
-  } : null, [auth, repository, state, load]);
+    refresh: load, applySession, applyCommit,
+  } : null, [auth, repository, state, load, applySession, applyCommit]);
 
   if (state.status === 'loading') {
     return (
