@@ -1,6 +1,6 @@
 # System design — planned MVP
 
-This document specifies the system to build. The starter contains the development foundation; the learning application, authentication, database, adapters, content and product screens described here are **not implemented**. [PROGRESS.md](PROGRESS.md) is the sole implementation status and handoff record. [REQUIREMENTS.md](REQUIREMENTS.md) defines product behavior; [PLAN.md](PLAN.md) indexes the detailed phase tasks.
+This document specifies the system to build. [PROGRESS.md](PROGRESS.md) is the sole implementation status and handoff record. [REQUIREMENTS.md](REQUIREMENTS.md) defines product behavior; [PLAN.md](PLAN.md) indexes the detailed phase tasks.
 
 ## 1. Scope and architecture
 
@@ -32,7 +32,7 @@ The supplied design boards under `docs/design/` will be consulted for screen com
 
 ## 3. Logical data model
 
-The following model will guide the first database migration and TypeScript types. It is not an existing SQL schema. Ownership and relationships will use explicit columns and constraints; variable exercise payloads may use JSONB. The implementation will avoid separate tables for every hint, answer option or scheduler parameter.
+The [TypeScript contracts](../src/domain/model.ts) and [initial migration](../supabase/migrations/20261125000000_learning_contracts.sql) use relational columns for ownership and identity, and JSONB for variable payloads. Course and level are stable IDs on a topic; each sense has a primary lesson. Context IDs identify examples within a sense and may be reused by multiple exercise kinds for that sense.
 
 | Logical object      | Identity and relationships                                  | Essential data and meaning                                                                                                                                                                              |
 | ------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,6 +56,10 @@ The initial exercise union will cover:
 - Sentence building: select ordered chunks with undo/reset support.
 
 Content will be authored or prepared ahead of use and reviewed before import. Runtime behavior will select and shuffle valid content, not depend on a generative AI call. Content IDs will remain stable when correcting spelling or explanations. A changed meaning will receive a new sense ID. Imports will not overwrite learner progress. Imported provenance/license information will be retained where applicable.
+
+Keep the exercise ID and bump its version for a wording fix that preserves the sense, context, and kind. For a material change to those identifiers, create a new exercise and deactivate the old one rather than editing historical references. Attempts retain their original answer, outcome, flags, context, and exercise version. A session with recorded attempts cannot be deleted on its own; deleting the account intentionally removes its private records. Queue entries also carry the exercise version; resume must detect replaced or incompatible content rather than silently substituting a question. Full content validation (such as unique option IDs and valid chunk permutations) belongs to the reviewed importer.
+
+The domain uses camelCase; scalar columns use snake_case, while JSONB keeps the domain keys. `exercises.payload` stores only the fields specific to its `kind`. A missing submission after reveal is JSON `null`, not SQL `NULL`. The repository must derive `user_id` from Auth; it is not supplied in domain objects. It will store the full commit request in `attempts.request_payload` for exact replay comparison and validate queue references before writing. A partial unique index makes `(user_id)` unique among `learning_sessions` rows with `status = 'current'`; completed and replaced rows stay available as history. The private access migration grants authenticated reads with RLS; direct browser writes remain denied.
 
 Timestamps will be stored in UTC; calendar-based limits, streaks and day comparisons will use the saved IANA timezone. `firstSeenAt` will distinguish introduction day from later recall. Card date serialization will be handled by the FSRS wrapper, rather than scattered through components.
 
@@ -111,6 +115,8 @@ Curriculum will decide what new content to introduce. Rule-based adaptation will
 Initial grade mapping will be `Again` for an eligible failed/revealed recall, `Hard` for an eligible correct assisted recall, and `Good` for an eligible independent success. Exact mastery thresholds and retry limits will live in [REQUIREMENTS.md](REQUIREMENTS.md), with implementation defaults named in one domain location. They will be product heuristics, not claims of a validated TOEIC score.
 
 The session builder will interleave due, new and weak senses, respect the daily new-sense limit, and avoid duplicate initial entries for the same sense. Retry practice will be bounded and separated by intervening questions where possible. It will prefer another reviewed context when one exists, without fabricating one at runtime. Requested topic/kind/sense filters will not be silently widened to fill a queue.
+
+The [session builder](../src/domain/session.ts) gives each sense exactly one category: new when it has no card; otherwise due, else weak (a recorded mistake while still `learning`, cleared by a later qualified independent recall), else early practice. Daily and Quick sessions rotate due/new/weak; Due Review takes only due cards; Weak Words takes weak senses, including due ones; Review Mistakes takes any sense with a recorded mistake; lesson, topic and custom sessions fill remaining capacity with early practice. When due cards alone exceed the question budget, that session's new allowance is halved (rounded down). Exercise choice starts new and weak senses on the most supported kind and moves one step toward typing recall for each day of independent recall evidence, preferring contexts without evidence. A commit may insert one retry for the answered sense after the cursor; the server rejects other queue changes.
 
 Progress screens will distinguish lesson/session completion, sense mastery, unassisted accuracy, observed eligible-review retention and scheduler estimates. Each metric will have a clear denominator and date/history scope. Paginated or bounded history will not be presented as complete lifetime analytics. Initial reads will use ordinary bounded queries; aggregates or additional caching will be added only when a real screen requires them.
 

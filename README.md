@@ -11,7 +11,7 @@ A docs-first foundation for a private, English-first vocabulary learning applica
 - One progress and handoff file: [docs/PROGRESS.md](docs/PROGRESS.md).
 - Project instructions and six small, repository-local skill guides for working with AI agents.
 
-Product screens, mockups, sample vocabulary, learning algorithms, Supabase client initialization, SQL migrations, and feature tests are not implemented in this starter. The Supabase SDK is included as a stack dependency. All product implementation work starts in Phase 01. The specification describes the intended MVP, not completed functionality.
+The repository also includes TypeScript learning contracts, SQL migrations, a private Auth boundary, and starter content outside the browser bundle. The frontend still renders no product screens. See [PROGRESS](docs/PROGRESS.md) for current implementation and verification status.
 
 ## Run the blank starter
 
@@ -22,14 +22,14 @@ npm ci
 npm run dev
 ```
 
-Open the local URL reported by Vite. A blank page is the expected result; `src/App.tsx` returns `null`. No Supabase credentials are needed to run this scaffold. Copy `.env.example` to `.env.local` when implementing the Supabase integration; keep secrets out of all `VITE_*` variables.
+Open the local URL reported by Vite. A blank page is expected until the product screens are implemented. No Supabase credentials are needed for the blank frontend. To exercise the Auth integration, follow [SETUP](docs/SETUP.md#4-supabase-provisioning) and keep secrets out of all `VITE_*` variables.
 
 ```bash
 npm run check
 npm run build
 ```
 
-`check` runs type checking and ESLint. `build` creates the production bundle. `format` and `format:check` are available as formatting tools. There is no placeholder test command or test suite: add a test tool when a real task needs meaningful regression coverage. See [CONSTRAINTS.md](CONSTRAINTS.md) for checks by change risk.
+`check` runs type checking and ESLint. `build` creates the production bundle. `format` and `format:check` are available as formatting tools. For schema checks, see [SETUP](docs/SETUP.md#4-supabase-provisioning). See [CONSTRAINTS.md](CONSTRAINTS.md) for checks by change risk.
 
 ## Start or resume work
 

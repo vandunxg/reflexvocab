@@ -1,6 +1,6 @@
 # Vocabulary content strategy
 
-The intended dataset combines frequency-informed sequencing with TOEIC topics, contextual meanings, and collocations. The eventual target is approximately 1,000 reviewed learning items. **No vocabulary dataset, sample questions, generated seed, or content-import implementation is included in this starter.**
+The intended dataset combines frequency-informed sequencing with TOEIC topics, contextual meanings, and collocations. The eventual target is approximately 1,000 reviewed learning items. The [starter seed](../supabase/seed.sql) includes three original workplace-English senses and six exercises as development material. It contains no official test questions and makes no frequency or exam-level claim.
 
 This document specifies future authoring work. [PLAN.md](PLAN.md) locates the relevant phase tasks; [PROGRESS.md](PROGRESS.md) tracks execution. Content must satisfy [REQUIREMENTS.md](REQUIREMENTS.md), especially R03, R05, R10, and R21.
 
@@ -24,7 +24,7 @@ Word family information is optional when useful. Do not expand the schema or fil
 
 ## 2. Reviewed exercise content
 
-An exercise needs a stable ID, sense ID, context ID, prompt, explanation, and explicit answer representation. These are design requirements for the future model, not existing TypeScript contracts.
+The [exercise contract](../src/domain/model.ts) requires a stable ID, sense ID, context ID, prompt, explanation, and explicit answer representation.
 
 | Exercise              | Content to prepare                                  | Editorial risk to check                                                  |
 | --------------------- | --------------------------------------------------- | ------------------------------------------------------------------------ |

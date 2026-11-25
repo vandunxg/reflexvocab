@@ -1,6 +1,6 @@
 # Proposed adapter boundaries
 
-All signatures below are **design proposals inside Markdown**. No adapter, factory, domain type, mock repository or scheduler implementation is supplied by this document. Types referenced in examples will be defined by the implementation task when needed. [SDD.md](SDD.md) will define the data and trust boundaries; [PROGRESS.md](PROGRESS.md) will track what has actually been built.
+The adapter signatures below are design proposals. The shared [learning data types](../src/domain/model.ts) are separate from the adapters. [SDD.md](SDD.md) defines the data and trust boundaries; [PROGRESS.md](PROGRESS.md) tracks what has actually been built.
 
 The first product will separate only **audio**, **learning persistence** and a **thin FSRS wrapper**. Ordinary functions and explicit imports will connect them. There will be no generic adapter base class, dependency injection container, provider discovery registry or interface for every feature.
 
@@ -45,13 +45,7 @@ When a real Listening feature needs consistent pronunciation, reviewed recording
 The repository will express learning operations, not generic CRUD. A proposed contract is:
 
 ```ts
-// Proposed contracts; referenced domain types will be designed in their phase.
-interface AttemptCommit {
-  attempt: Attempt;
-  progress: CardProgress;
-  session: LearningSession;
-  expectedRevision: number;
-}
+// Proposed repository using AttemptCommit and other shared learning data types.
 
 interface LearningRepository {
   load(): Promise<LearningSnapshot>;
