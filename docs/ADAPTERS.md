@@ -6,10 +6,9 @@ The first product will separate only **audio**, **learning persistence** and a *
 
 ## 1. Audio boundary
 
-The initial implementation will wrap Browser TTS. A minimal proposed contract is:
+The current implementation wraps Browser TTS in [browser-audio.ts](../src/features/audio/browser-audio.ts); one shared instance lives in [audio.ts](../src/features/audio/audio.ts). Its contract is:
 
 ```ts
-// Proposed contract; not an existing source module.
 interface VoiceOption {
   id: string;
   name: string;
@@ -20,7 +19,7 @@ interface AudioAdapter {
   readonly supported: boolean;
   listVoices(): VoiceOption[];
   subscribeVoices(listener: () => void): () => void;
-  speak(text: string, options?: { voiceId?: string; rate?: number }): Promise<void>;
+  speak(text: string, options?: { voiceId?: string | null; rate?: number }): Promise<void>;
   stop(): void;
 }
 ```

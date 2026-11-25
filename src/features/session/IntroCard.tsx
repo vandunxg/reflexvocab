@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { VocabularyContext, VocabularySense } from '../../domain/model';
 import { Icon } from '../../components/Icon';
+import { SpeakButton } from '../audio/SpeakButton';
 import { splitOnWord } from './content';
 
 /** Introduces an unfamiliar sense in context before its first question (Session-Intro board). */
@@ -26,7 +27,10 @@ export function IntroCard({ sense, contexts, topicLabel, onContinue }: {
             <rect x="22" y="52" width="56" height="56" rx="12" fill="#ff76d6" transform="rotate(14 50 80)" />
             <path d="M126 76l24 44h-48z" fill="#d2f55d" />
           </svg>
-          <h1 id="intro-word" lang="en" className="intro-word">{sense.headword}</h1>
+          <div className="intro-headline">
+            <h1 id="intro-word" lang="en" className="intro-word">{sense.headword}</h1>
+            <SpeakButton text={sense.headword} label={t('audio.listenWord')} />
+          </div>
           <p className="muted intro-meta" lang="en">{[sense.ipa, sense.partOfSpeech].filter(Boolean).join(' · ')}</p>
           <p className="intro-definition" lang="en">{sense.definition}</p>
           {contexts.length > 0 && (
@@ -34,10 +38,13 @@ export function IntroCard({ sense, contexts, topicLabel, onContinue }: {
               <h2 className="eyebrow">{t('session.intro.examples')}</h2>
               <ul className="intro-examples">
                 {contexts.map((context) => (
-                  <li key={context.id} lang="en">
-                    {splitOnWord(context.example, sense.headword).map((part, index) => part.match
-                      ? <strong key={index}>{part.text}</strong>
-                      : <span key={index}>{part.text}</span>)}
+                  <li key={context.id}>
+                    <span lang="en">
+                      {splitOnWord(context.example, sense.headword).map((part, index) => part.match
+                        ? <strong key={index}>{part.text}</strong>
+                        : <span key={index}>{part.text}</span>)}
+                    </span>
+                    <SpeakButton text={context.example} label={t('audio.listenExample')} small />
                   </li>
                 ))}
               </ul>

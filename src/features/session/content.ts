@@ -18,6 +18,11 @@ export function correctAnswerText(exercise: Exercise): string {
   return answerText(exercise, exercise.correctChoiceId)!;
 }
 
+/** Prompt text for speech before answering: blanks become a pause and nothing reveals the answer. */
+export function speakablePrompt(prompt: string): string {
+  return prompt.replace(/_{2,}/g, '…');
+}
+
 /** Splits text around case-insensitive occurrences of a word so the caller can emphasize it. */
 export function splitOnWord(text: string, word: string): { text: string; match: boolean }[] {
   if (!word) return [{ text, match: false }];

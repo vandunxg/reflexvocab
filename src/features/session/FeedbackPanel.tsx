@@ -2,6 +2,7 @@ import { useEffect, useId, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Exercise, VocabularyContext } from '../../domain/model';
 import { Icon } from '../../components/Icon';
+import { SpeakButton } from '../audio/SpeakButton';
 import { answerText, correctAnswerText, feedbackHeading } from './content';
 import type { CheckInput, CheckResult } from './Question';
 
@@ -66,8 +67,11 @@ export function FeedbackPanel({ exercise, context, answer, result, save, onConti
         <p className="feedback-explanation" lang="en">{exercise.explanation}</p>
         {context && (
           <div className="feedback-context">
-            <span className="eyebrow">{t('session.feedback.inContext')}</span>
-            <p lang="en">{context.example}</p>
+            <div className="feedback-context-text">
+              <span className="eyebrow">{t('session.feedback.inContext')}</span>
+              <p lang="en">{context.example}</p>
+            </div>
+            <SpeakButton text={context.example} label={t('audio.listenExample')} small />
           </div>
         )}
         {result.supported && <p className="feedback-note">{t('session.feedback.supportedNote')}</p>}

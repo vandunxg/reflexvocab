@@ -24,6 +24,8 @@ interface LearningContextValue {
   applySession: (session: LearningSession) => void;
   /** Records an attempt commit the server has acknowledged. */
   applyCommit: (commit: AttemptCommit) => void;
+  /** Records settings the server has saved. */
+  applySettings: (changes: Partial<UserSettings>) => void;
 }
 
 type LoadState =
@@ -76,6 +78,9 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
       attempts: [...snapshot.attempts.filter((attempt) => attempt.id !== commit.attempt.id), commit.attempt],
     }));
   }, [updateSnapshot]);
+  const applySettings = useCallback((changes: Partial<UserSettings>) => {
+    updateSnapshot((snapshot) => ({ ...snapshot, settings: { ...DEFAULT_SETTINGS, ...snapshot.settings, ...changes } }));
+  }, [updateSnapshot]);
 
   const locale = state.status === 'ready' ? state.snapshot.settings?.locale : undefined;
   useEffect(() => {
@@ -86,8 +91,8 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
   const value = useMemo(() => state.status === 'ready' ? {
     auth, repository, catalog: state.catalog, snapshot: state.snapshot,
     settings: { ...DEFAULT_SETTINGS, ...state.snapshot.settings },
-    refresh: load, applySession, applyCommit,
-  } : null, [auth, repository, state, load, applySession, applyCommit]);
+    refresh: load, applySession, applyCommit, applySettings,
+  } : null, [auth, repository, state, load, applySession, applyCommit, applySettings]);
 
   if (state.status === 'loading') {
     return (

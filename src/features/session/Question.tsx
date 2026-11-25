@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import type { Evidence } from '../../domain/answers';
 import type { Exercise, VocabularyContext, VocabularySense } from '../../domain/model';
 import { Icon } from '../../components/Icon';
-import { correctAnswerText, feedbackHeading, hintItems, shuffle, splitOnWord, type HintItem } from './content';
+import { SpeakButton } from '../audio/SpeakButton';
+import { correctAnswerText, feedbackHeading, hintItems, shuffle, speakablePrompt, splitOnWord, type HintItem } from './content';
 import { FeedbackPanel, type SaveControls } from './FeedbackPanel';
 
 export interface CheckInput {
@@ -139,6 +140,9 @@ export function Question({ exercise, sense, context, isRetry, retryNewContext, s
           {isRetry && (
             <span className="pill pill-retry"><Icon name="retry" size={14} />{retryNewContext ? t('session.retryBadge') : t('session.retrySameBadge')}</span>
           )}
+          <span className="session-meta-end">
+            <SpeakButton text={speakablePrompt(exercise.prompt)} label={t('audio.listenQuestion')} />
+          </span>
         </div>
 
         <h1 className={result ? 'question-prompt is-answered' : 'question-prompt'} lang="en">

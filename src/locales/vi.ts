@@ -68,6 +68,24 @@ export const vi: MessageCatalog = {
   settings: {
     title: 'Cài đặt',
     subtitle: 'Điều chỉnh vừa đủ để mỗi phiên học dễ bắt đầu hơn.',
+    audio: {
+      title: 'Giọng đọc tiếng Anh',
+      voice: 'Giọng đọc',
+      defaultVoice: 'Giọng tiếng Anh khả dụng mặc định',
+      missingVoice: 'Giọng đã lưu (không có trên thiết bị này)',
+      missingNote: 'Giọng đã lưu không có trên thiết bị này, nên ứng dụng dùng một giọng tiếng Anh khác.',
+      rate: 'Tốc độ: {{rate}}×',
+      try: 'Nghe thử giọng đọc',
+      stop: 'Dừng',
+      note: 'Giọng đọc phụ thuộc trình duyệt và thiết bị. Nếu giọng đã chọn không có, ứng dụng sẽ dùng giọng tiếng Anh khác.',
+      unsupported: 'Trình duyệt này không đọc được văn bản. Bạn vẫn học tiếp bằng chữ.',
+      noVoices: 'Thiết bị này chưa có giọng đọc tiếng Anh. Bạn vẫn học tiếp bằng chữ.',
+      failed: 'Không phát được giọng đọc. Hãy thử giọng khác hoặc tiếp tục học bằng chữ.',
+    },
+    save: 'Lưu cài đặt',
+    saving: 'Đang lưu…',
+    saved: 'Đã lưu cài đặt.',
+    saveFailed: 'Không lưu được cài đặt. Kiểm tra kết nối rồi thử lại.',
     account: {
       title: 'Tài khoản',
       body: 'Bạn đăng nhập bằng tài khoản được cấp. Tiến độ được lưu theo tài khoản này.',
@@ -195,6 +213,13 @@ export const vi: MessageCatalog = {
       dueTomorrow: 'Lần học sau: {{count}} nghĩa từ đến hạn trước hết ngày mai.',
       action: 'Về Hôm nay',
     },
+  },
+  audio: {
+    listenWord: 'Nghe từ',
+    listenExample: 'Nghe câu ví dụ',
+    listenQuestion: 'Nghe câu hỏi',
+    stop: 'Dừng đọc',
+    failed: 'Không phát được âm thanh.',
   },
   notFound: {
     title: 'Không tìm thấy trang',

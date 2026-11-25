@@ -66,6 +66,24 @@ export const en = {
   settings: {
     title: 'Settings',
     subtitle: 'Adjust just enough to make each session easier to start.',
+    audio: {
+      title: 'English voice',
+      voice: 'Voice',
+      defaultVoice: 'Default available English voice',
+      missingVoice: 'Saved voice (not on this device)',
+      missingNote: 'Your saved voice is not available on this device, so another English voice is used.',
+      rate: 'Speed: {{rate}}×',
+      try: 'Try voice',
+      stop: 'Stop',
+      note: 'Voices depend on your browser and device. If the chosen voice is unavailable, the app uses another English voice.',
+      unsupported: 'This browser cannot read text aloud. Learning continues with text.',
+      noVoices: 'No English voice is available on this device. Learning continues with text.',
+      failed: 'The voice could not play. Try another voice or continue with text.',
+    },
+    save: 'Save settings',
+    saving: 'Saving…',
+    saved: 'Settings saved.',
+    saveFailed: 'Settings could not be saved. Check your connection and try again.',
     account: {
       title: 'Account',
       body: 'You are signed in with a provisioned account. Progress is saved to this account.',
@@ -193,6 +211,13 @@ export const en = {
       dueTomorrow: 'Next time: {{count}} due by tomorrow.',
       action: 'Back to Today',
     },
+  },
+  audio: {
+    listenWord: 'Listen to the word',
+    listenExample: 'Listen to the example',
+    listenQuestion: 'Listen to the question',
+    stop: 'Stop audio',
+    failed: 'Audio could not play.',
   },
   notFound: {
     title: 'Page not found',
