@@ -4,6 +4,7 @@ import { AuthGate } from './app/AuthGate';
 import { createPrivateAuth } from './lib/auth';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { SessionPage } from './pages/SessionPage';
 import { SettingsPage } from './pages/SettingsPage';
 
 const auth = createPrivateAuth({
@@ -16,6 +17,7 @@ export default function App() {
     <BrowserRouter>
       <AuthGate auth={auth}>
         <Routes>
+          <Route path="session" element={<SessionPage />} />
           <Route element={<AppShell />}>
             <Route index element={<HomePage />} />
             <Route path="settings" element={<SettingsPage />} />
