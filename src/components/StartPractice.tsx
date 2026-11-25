@@ -7,7 +7,7 @@ import { buildQueue } from '../domain/session';
 import { ConfirmDialog } from './ConfirmDialog';
 import { Icon } from './Icon';
 
-const VARIANTS = { primary: 'btn btn-primary', secondary: 'btn btn-secondary', white: 'btn btn-white' };
+export const BUTTON_VARIANTS = { primary: 'btn btn-primary', secondary: 'btn btn-secondary', white: 'btn btn-white' };
 
 /**
  * Builds a session for `config`, saves it as the current session, then enters it. When an unfinished
@@ -16,7 +16,7 @@ const VARIANTS = { primary: 'btn btn-primary', secondary: 'btn btn-secondary', w
 export function StartPractice({ config, label, variant = 'primary' }: {
   config: SessionConfig;
   label: string;
-  variant?: keyof typeof VARIANTS;
+  variant?: keyof typeof BUTTON_VARIANTS;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -61,11 +61,11 @@ export function StartPractice({ config, label, variant = 'primary' }: {
 
   return (
     <div className="start-practice">
-      <button type="button" className={VARIANTS[variant]} onClick={request} disabled={state === 'starting'}>
+      <button type="button" className={BUTTON_VARIANTS[variant]} onClick={request} disabled={state === 'starting'}>
         {state === 'starting' ? t('start.starting') : label}
         {state !== 'starting' && <Icon name="arrowRight" />}
       </button>
-      {state === 'empty' && <p className="notice" role="status">{t('start.empty')}</p>}
+      {state === 'empty' && <p className="notice" role="status">{t(config.mode === 'due' ? 'start.emptyDue' : 'start.empty')}</p>}
       {state === 'failed' && <p className="notice notice-error" role="alert"><Icon name="alert" size={18} />{t('start.failed')}</p>}
       {unfinished && (
         <ConfirmDialog

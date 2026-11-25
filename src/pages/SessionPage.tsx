@@ -12,6 +12,7 @@ import { IntroCard } from '../features/session/IntroCard';
 import { Question, type CheckInput, type CheckResult } from '../features/session/Question';
 import { SessionHeader } from '../features/session/SessionHeader';
 import { SessionSummary } from '../features/session/SessionSummary';
+import { PracticeSummary } from '../features/session/PracticeSummary';
 
 /** The answered question stays on screen, with its exact commit, until that commit is saved. */
 interface Answered {
@@ -59,7 +60,8 @@ export function SessionPage() {
     return (
       <div className="session-screen">
         <SessionHeader answered={session.queue.length} total={session.queue.length} />
-        <SessionSummary session={session} />
+        {session.config.mode === 'daily' || session.config.mode === 'lesson'
+          ? <SessionSummary session={session} /> : <PracticeSummary session={session} mode={session.config.mode} />}
       </div>
     );
   }
@@ -172,6 +174,7 @@ export function SessionPage() {
         <Question
           key={itemKey}
           exercise={exercise}
+          mode={session.config.mode}
           sense={sense}
           context={contexts.find((context) => context.id === exercise.contextId)}
           isRetry={item.source === 'retry'}

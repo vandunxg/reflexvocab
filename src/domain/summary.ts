@@ -4,8 +4,10 @@ import type { Attempt, CardProgress } from './model';
 export interface SessionSummary {
   /** Questions answered for the first time in this session (retries excluded). */
   firstAttempts: number;
-  /** First attempts answered correctly without showing the answer. */
+  /** First attempts answered correctly without assistance. */
   correct: number;
+  /** First attempts where a hint or answer was shown. */
+  assisted: number;
   /** Recovery retries practised after a mistake or reveal. */
   recoveryPractice: number;
 }
@@ -14,13 +16,14 @@ export interface SessionSummary {
 export function summarizeSession(attempts: Attempt[], sessionId: string): SessionSummary {
   const unique = new Map(attempts.filter((attempt) => attempt.sessionId === sessionId)
     .map((attempt) => [attempt.id, attempt]));
-  const summary: SessionSummary = { firstAttempts: 0, correct: 0, recoveryPractice: 0 };
+  const summary: SessionSummary = { firstAttempts: 0, correct: 0, assisted: 0, recoveryPractice: 0 };
   for (const attempt of unique.values()) {
     if (attempt.isRetry) {
       summary.recoveryPractice += 1;
     } else {
       summary.firstAttempts += 1;
-      if (attempt.outcome === 'correct' && !attempt.answerRevealed) summary.correct += 1;
+      if (attempt.hintUsed || attempt.answerRevealed) summary.assisted += 1;
+      else if (attempt.outcome === 'correct') summary.correct += 1;
     }
   }
   return summary;

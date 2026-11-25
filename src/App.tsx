@@ -4,6 +4,10 @@ import { AuthGate } from './app/AuthGate';
 import { OnboardingGate } from './app/OnboardingGate';
 import { createPrivateAuth } from './lib/auth';
 import { HomePage } from './pages/HomePage';
+import { LearnPage } from './pages/LearnPage';
+import { PracticePage } from './pages/PracticePage';
+import { LessonCompletePage } from './pages/LessonCompletePage';
+import { LessonPage } from './pages/LessonPage';
 import { LibraryPage } from './pages/LibraryPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { OnboardingPage } from './pages/OnboardingPage';
@@ -23,8 +27,12 @@ export default function App() {
           <Route path="onboarding" element={<OnboardingPage />} />
           <Route element={<OnboardingGate />}>
             <Route path="session" element={<SessionPage />} />
+            <Route path="learn/lessons/:lessonId/complete" element={<LessonCompletePage />} />
             <Route element={<AppShell />}>
               <Route index element={<HomePage />} />
+              <Route path="learn" element={<LearnPage />} />
+              <Route path="practice" element={<PracticePage />} />
+              <Route path="learn/lessons/:lessonId" element={<LessonPage />} />
               <Route path="library" element={<LibraryPage />} />
               <Route path="settings" element={<SettingsPage />} />
               <Route path="*" element={<NotFoundPage />} />

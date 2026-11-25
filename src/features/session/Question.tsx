@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Evidence } from '../../domain/answers';
-import type { Exercise, VocabularyContext, VocabularySense } from '../../domain/model';
+import type { Exercise, SessionConfig, VocabularyContext, VocabularySense } from '../../domain/model';
 import { Icon } from '../../components/Icon';
 import { SpeakButton } from '../audio/SpeakButton';
 import { correctAnswerText, feedbackHeading, hintItems, shuffle, speakablePrompt, splitOnWord, type HintItem } from './content';
@@ -29,10 +29,11 @@ type Option = { id: string; text: string };
  * One question from first view to feedback. Keyed by queue position, so every question starts
  * with fresh answer, hint and timing state.
  */
-export function Question({ exercise, sense, context, isRetry, retryNewContext, save, onCheck, onContinue }: {
+export function Question({ exercise, sense, context, mode, isRetry, retryNewContext, save, onCheck, onContinue }: {
   exercise: Exercise;
   sense: VocabularySense;
   context: VocabularyContext | undefined;
+  mode: SessionConfig['mode'];
   isRetry: boolean;
   retryNewContext: boolean;
   /** Save progress of the submitted answer; null until the answer is checked. */
@@ -136,6 +137,7 @@ export function Question({ exercise, sense, context, isRetry, retryNewContext, s
     <form ref={formRef} className="session-body" onSubmit={submit} noValidate>
       <main className="session-main" id="main">
         <div className="session-meta">
+          {mode !== 'daily' && mode !== 'lesson' && <span className="pill pill-retry">{t(`practice.modeLabels.${mode}`)}</span>}
           <span className={`pill kind-pill kind-${exercise.kind}`}>{t(`session.kinds.${exercise.kind}`)}</span>
           {isRetry && (
             <span className="pill pill-retry"><Icon name="retry" size={14} />{retryNewContext ? t('session.retryBadge') : t('session.retrySameBadge')}</span>

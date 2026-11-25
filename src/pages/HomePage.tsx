@@ -165,7 +165,10 @@ export function HomePage() {
       </div>
 
       <section className="today-topics" aria-labelledby="today-topics-title">
-        <h2 id="today-topics-title">{t('today.topics.title')}</h2>
+        <div className="today-topics-head">
+          <h2 id="today-topics-title">{t('today.topics.title')}</h2>
+          <Link to="/learn" className="today-path-link">{t('today.topics.path')}<Icon name="arrowRight" size={18} /></Link>
+        </div>
         <div className="today-chips" role="group" aria-label={t('today.topics.filterLabel')}>
           {FILTERS.map((value) => (
             <button

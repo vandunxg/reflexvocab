@@ -20,5 +20,10 @@ test('the summary separates first attempts from recovery and counts each saved a
     attempt('4', { isRetry: true }),
     attempt('5', { sessionId: 'other' }),
   ];
-  assert.deepEqual(summarizeSession(attempts, 's'), { firstAttempts: 3, correct: 1, recoveryPractice: 1 });
+  assert.deepEqual(summarizeSession(attempts, 's'), { firstAttempts: 3, correct: 1, assisted: 1, recoveryPractice: 1 });
+});
+
+test('hinted correct answers are counted as assisted, not independent correct answers', () => {
+  const attempts = [attempt('1', { hintUsed: true }), attempt('2', { isRetry: true, hintUsed: true })];
+  assert.deepEqual(summarizeSession(attempts, 's'), { firstAttempts: 1, correct: 0, assisted: 1, recoveryPractice: 1 });
 });

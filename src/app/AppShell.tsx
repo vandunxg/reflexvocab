@@ -4,8 +4,10 @@ import { Brand } from '../components/Brand';
 import { Icon, type IconName } from '../components/Icon';
 
 // Only implemented product surfaces appear here; feature tasks add their routes as they land.
-const NAV_ITEMS: { to: string; icon: IconName; label: 'nav.today' | 'nav.library' }[] = [
+const NAV_ITEMS: { to: string; icon: IconName; label: 'nav.today' | 'nav.learn' | 'nav.practice' | 'nav.library' }[] = [
   { to: '/', icon: 'today', label: 'nav.today' },
+  { to: '/learn', icon: 'learn', label: 'nav.learn' },
+  { to: '/practice', icon: 'practice', label: 'nav.practice' },
   { to: '/library', icon: 'library', label: 'nav.library' },
 ];
 
@@ -19,7 +21,7 @@ export function AppShell() {
         <Link to="/" aria-label={t('nav.home')}><Brand /></Link>
         <nav className="top-nav" aria-label={t('nav.label')}>
           {NAV_ITEMS.map((item) => (
-            <NavLink key={item.to} to={item.to} end className="tab">{t(item.label)}</NavLink>
+            <NavLink key={item.to} to={item.to} end={item.to === '/'} className="tab">{t(item.label)}</NavLink>
           ))}
         </nav>
         <div className="app-header-tools">
@@ -33,7 +35,7 @@ export function AppShell() {
       </main>
       <nav className="bottom-nav" aria-label={t('nav.label')}>
         {NAV_ITEMS.map((item) => (
-          <NavLink key={item.to} to={item.to} end className="bottom-tab">
+          <NavLink key={item.to} to={item.to} end={item.to === '/'} className="bottom-tab">
             <span className="bottom-tab-pill"><Icon name={item.icon} /></span>
             {t(item.label)}
           </NavLink>

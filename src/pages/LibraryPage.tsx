@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLearning } from '../app/LearningProvider';
 import type { MasteryStage } from '../domain/model';
-import { MAX_QUESTION_BUDGET } from '../domain/session';
+import { buildQueue, MAX_QUESTION_BUDGET } from '../domain/session';
 import { Icon } from '../components/Icon';
 import { StartPractice } from '../components/StartPractice';
 import { LibraryRow, type LibraryEntry } from '../features/library/LibraryRow';
@@ -21,7 +21,7 @@ const fold = (text: string) => text.normalize('NFD').replace(/\p{M}/gu, '').repl
 /** Library (`/library`): search, inspect, listen, save and pick senses to practise. Browsing records no evidence. */
 export function LibraryPage() {
   const { t } = useTranslation();
-  const { catalog, snapshot, repository, applyBookmark } = useLearning();
+  const { catalog, snapshot, settings, repository, applyBookmark } = useLearning();
   const [query, setQuery] = useState('');
   const [topicId, setTopicId] = useState('');
   const [levelId, setLevelId] = useState('');
@@ -82,6 +82,12 @@ export function LibraryPage() {
   }
 
   const selectedIds = [...selected];
+  const selectedBudget = Math.min(MAX_QUESTION_BUDGET, selectedIds.length);
+  const selectedAvailable = selectedBudget ? buildQueue({
+    config: { mode: 'custom', senseIds: selectedIds, questionBudget: selectedBudget },
+    topics: catalog.topics, lessons: catalog.lessons, senses: catalog.senses, exercises: catalog.exercises,
+    progress: snapshot.cards, now: new Date(), timezone: settings.timezone, newPerDay: settings.newPerDay,
+  }).length : 0;
   return (
     <div className="page">
       <div className="page-heading">
@@ -121,8 +127,11 @@ export function LibraryPage() {
             <div className="library-selection" role="region" aria-label={t('library.selectionLabel')}>
               <span className="library-selection-count" role="status">{t('library.selected', { count: selected.size })}</span>
               <button type="button" className="text-button" onClick={() => setSelected(new Set())}>{t('library.clearSelection')}</button>
+              {selectedAvailable < selectedBudget && <span role="status">
+                {selectedAvailable === 0 ? t('practice.none') : t('practice.undersized', { count: selectedAvailable, requested: selectedBudget })}
+              </span>}
               <StartPractice
-                config={{ mode: 'custom', senseIds: selectedIds, questionBudget: Math.min(MAX_QUESTION_BUDGET, selectedIds.length) }}
+                config={{ mode: 'custom', senseIds: selectedIds, questionBudget: selectedBudget }}
                 label={t('library.practise', { count: selected.size })}
               />
             </div>

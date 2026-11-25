@@ -5,6 +5,7 @@ import { useLearning } from '../../app/LearningProvider';
 import type { LearningSession } from '../../domain/model';
 import { dueByTomorrow, summarizeSession } from '../../domain/summary';
 import { Icon } from '../../components/Icon';
+import { lessonHref, useLearningPath } from '../learn/path';
 
 /** Completion summary from recorded attempts. Completion is not presented as mastery. */
 export function SessionSummary({ session }: { session: LearningSession }) {
@@ -14,6 +15,17 @@ export function SessionSummary({ session }: { session: LearningSession }) {
   const [now] = useState(() => new Date());
   const summary = summarizeSession(snapshot.attempts, session.id);
   const due = dueByTomorrow(snapshot.cards, now, settings.timezone);
+  const path = useLearningPath();
+  const lesson = session.config.mode === 'lesson'
+    ? path.flatMap((level) => level.lessons).find((item) => item.lesson.id === session.config.lessonId)
+    : undefined;
+  // The completion surface marks a real event: coverage reached 100% during this session.
+  const lessonSenses = new Set(lesson?.senses.map((sense) => sense.id));
+  const completedNow = lesson?.status === 'complete' && snapshot.cards.some((card) =>
+    lessonSenses.has(card.senseId) && Date.parse(card.firstSeenAt) >= Date.parse(session.startedAt));
+  const action = completedNow && lesson
+    ? { label: t('session.summary.lessonComplete'), to: `${lessonHref(lesson)}/complete` }
+    : lesson ? { label: t('session.summary.backToLesson'), to: lessonHref(lesson) } : { label: t('session.summary.action'), to: '/' };
   return (
     <main className="summary" id="main">
       <svg className="summary-art" width="220" height="140" viewBox="0 0 220 140" aria-hidden="true">
@@ -30,12 +42,13 @@ export function SessionSummary({ session }: { session: LearningSession }) {
       <dl className="summary-stats">
         <div className="summary-stat"><dt>{t('session.summary.firstAttempts')}</dt><dd>{summary.firstAttempts}</dd></div>
         <div className="summary-stat summary-stat-correct"><dt>{t('session.summary.correct')}</dt><dd>{summary.correct}</dd></div>
+        <div className="summary-stat"><dt>{t('session.summary.assisted')}</dt><dd>{summary.assisted}</dd></div>
         <div className="summary-stat summary-stat-recovery"><dt>{t('session.summary.recovery')}</dt><dd>{summary.recoveryPractice}</dd></div>
       </dl>
       <p className="summary-note">{t('session.summary.note')}</p>
       {due > 0 && <p className="summary-due"><Icon name="calendar" size={18} />{t('session.summary.dueTomorrow', { count: due })}</p>}
-      <button type="button" className="btn btn-primary btn-session" onClick={() => navigate('/')}>
-        {t('session.summary.action')}<Icon name="arrowRight" />
+      <button type="button" className="btn btn-primary btn-session" onClick={() => navigate(action.to)}>
+        {action.label}<Icon name="arrowRight" />
       </button>
     </main>
   );
