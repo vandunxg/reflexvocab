@@ -1,9 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { AppShell } from './app/AppShell';
 import { AuthGate } from './app/AuthGate';
+import { OnboardingGate } from './app/OnboardingGate';
 import { createPrivateAuth } from './lib/auth';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { OnboardingPage } from './pages/OnboardingPage';
 import { SessionPage } from './pages/SessionPage';
 import { SettingsPage } from './pages/SettingsPage';
 
@@ -17,11 +19,14 @@ export default function App() {
     <BrowserRouter>
       <AuthGate auth={auth}>
         <Routes>
-          <Route path="session" element={<SessionPage />} />
-          <Route element={<AppShell />}>
-            <Route index element={<HomePage />} />
-            <Route path="settings" element={<SettingsPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+          <Route path="onboarding" element={<OnboardingPage />} />
+          <Route element={<OnboardingGate />}>
+            <Route path="session" element={<SessionPage />} />
+            <Route element={<AppShell />}>
+              <Route index element={<HomePage />} />
+              <Route path="settings" element={<SettingsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
           </Route>
         </Routes>
       </AuthGate>
