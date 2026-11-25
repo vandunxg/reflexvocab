@@ -26,6 +26,8 @@ interface LearningContextValue {
   applyCommit: (commit: AttemptCommit) => void;
   /** Records settings the server has saved. */
   applySettings: (changes: Partial<UserSettings>) => void;
+  /** Records a bookmark state the server has saved. */
+  applyBookmark: (senseId: string, saved: boolean) => void;
 }
 
 type LoadState =
@@ -82,6 +84,13 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
     updateSnapshot((snapshot) => ({ ...snapshot, settings: { ...DEFAULT_SETTINGS, ...snapshot.settings, ...changes } }));
   }, [updateSnapshot]);
 
+  const applyBookmark = useCallback((senseId: string, saved: boolean) => {
+    updateSnapshot((snapshot) => ({
+      ...snapshot,
+      bookmarks: [...snapshot.bookmarks.filter((bookmark) => bookmark.senseId !== senseId), ...(saved ? [{ senseId }] : [])],
+    }));
+  }, [updateSnapshot]);
+
   const locale = state.status === 'ready' ? state.snapshot.settings?.locale : undefined;
   useEffect(() => {
     applyLocale(locale);
@@ -91,8 +100,8 @@ export function LearningProvider({ auth, children }: { auth: PrivateAuth; childr
   const value = useMemo(() => state.status === 'ready' ? {
     auth, repository, catalog: state.catalog, snapshot: state.snapshot,
     settings: { ...DEFAULT_SETTINGS, ...state.snapshot.settings },
-    refresh: load, applySession, applyCommit, applySettings,
-  } : null, [auth, repository, state, load, applySession, applyCommit, applySettings]);
+    refresh: load, applySession, applyCommit, applySettings, applyBookmark,
+  } : null, [auth, repository, state, load, applySession, applyCommit, applySettings, applyBookmark]);
 
   if (state.status === 'loading') {
     return (

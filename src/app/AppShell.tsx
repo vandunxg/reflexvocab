@@ -4,8 +4,9 @@ import { Brand } from '../components/Brand';
 import { Icon, type IconName } from '../components/Icon';
 
 // Only implemented product surfaces appear here; feature tasks add their routes as they land.
-const NAV_ITEMS: { to: string; icon: IconName; label: 'nav.today' }[] = [
+const NAV_ITEMS: { to: string; icon: IconName; label: 'nav.today' | 'nav.library' }[] = [
   { to: '/', icon: 'today', label: 'nav.today' },
+  { to: '/library', icon: 'library', label: 'nav.library' },
 ];
 
 /** Main-screen layout: desktop top navigation, mobile bottom navigation, Settings in the header. */

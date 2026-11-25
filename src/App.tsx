@@ -4,6 +4,7 @@ import { AuthGate } from './app/AuthGate';
 import { OnboardingGate } from './app/OnboardingGate';
 import { createPrivateAuth } from './lib/auth';
 import { HomePage } from './pages/HomePage';
+import { LibraryPage } from './pages/LibraryPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { OnboardingPage } from './pages/OnboardingPage';
 import { SessionPage } from './pages/SessionPage';
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="session" element={<SessionPage />} />
             <Route element={<AppShell />}>
               <Route index element={<HomePage />} />
+              <Route path="library" element={<LibraryPage />} />
               <Route path="settings" element={<SettingsPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
