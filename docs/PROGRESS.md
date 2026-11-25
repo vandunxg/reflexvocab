@@ -10,9 +10,9 @@ This is the **only execution/status tracker** for this starter. Requirements, PL
 | Current phase          | [P06 — Private release](phases/PHASE_06_PRIVATE_RELEASE.md); [P01-T02](phases/PHASE_01_DATA_AND_PRIVATE_ACCESS.md#p01-t02) remains blocked on hosted signup configuration |
 | Current task           | [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) |
 | Last completed task    | [P05-T04 — End-to-end usability gaps](phases/PHASE_05_MVP_COMPLETION.md#p05-t04) |
-| Work stopped after     | The owner chose local development with the existing hosted development Supabase; Vercel deployment is deferred until the application is complete. Local release-candidate checks passed and a development source handoff was inspected; no application deployment was performed. |
+| Work stopped after     | At the owner's request, imported the first of 20 planned new lessons into hosted development: customer service, 20 senses and 40 exercises. Vercel deployment remains deferred. |
 | Next task              | [P06-T01 — Private deployment](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) |
-| Next action            | Continue local development and reuse the recorded local/hosted-development checks. When the owner requests deployment, configure Vercel and the intended Supabase target, disable public signup for private release, and complete [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) and the deployed journey. |
+| Next action            | Continue the owner's requested content expansion: 19 additional lessons of 20 senses remain. When deployment is requested, configure Vercel and the intended Supabase target, disable public signup for private release, and complete [P06-T01](phases/PHASE_06_PRIVATE_RELEASE.md#p06-t01) and the deployed journey. |
 | Product implementation | 21 of 25 product tasks complete |
 
 ## Status meanings
@@ -116,6 +116,7 @@ Task details, dependencies and acceptance criteria are intentionally kept in the
 | P06-T01 | On revision `021ff82`, `npm run check`, `npm run build`, `node --test tests/*.test.ts` and a Chromium mobile preview using hosted development authentication. | Typecheck, lint, build and 45 tests passed. Direct preview routes for Progress, the follow-up lesson, Practice and Settings loaded without page errors. This is local preview, not deployment evidence. The build warned about a JavaScript chunk above 500 kB. |
 | P06-T01 | Scanned `dist/` for the configured database URL and four test password values; read hosted development Auth settings. | None of those five values appeared in the bundle; this is not a comprehensive secret audit. Auth returned `disable_signup: false`, so hosted development is not a private release environment. |
 | P06-T03 | Created and inspected a temporary `git archive` of revision `131e778` for development handoff. | 184 tracked files; the lockfile, documentation, latest migration and reviewed content batch were present. No environment files other than `.env.example`, dependencies, build output or Git internals appeared in the archive inventory. File contents were not comprehensively audited for secrets. This is not a private release. |
+| Content expansion | Ran `customer_service.sql` in a rolled-back local PostgreSQL transaction, then once in a transaction on authorized hosted development and read back with an authenticated Data API account. | One new lesson, 20 senses and 40 active typing exercises; each sense has two contexts. No learner tables were changed. The AI-assisted batch has not had independent language review or an in-app preview. Reimport fails safely on ID collision. |
 
 The source/configuration review found no useful further scaffold refactor. Formatting left executable source and configuration unchanged after the passing checks; later documentation edits reused that evidence. The fixed delivery report is [VERIFICATION.md](VERIFICATION.md).
 

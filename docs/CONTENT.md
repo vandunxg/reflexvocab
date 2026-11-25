@@ -2,6 +2,8 @@
 
 The intended dataset combines frequency-informed sequencing with TOEIC topics, contextual meanings, and collocations. The eventual target is approximately 1,000 reviewed learning items. The [starter seed](../supabase/seed.sql) includes three original workplace-English senses and six exercises. The owner-reviewed [office follow-up batch](content/p05-office-follow-up-draft.md) adds four senses and eight exercises when [its SQL](../supabase/content/office_follow_up.sql) is applied. Both are original project-authored material, contain no official test questions and make no frequency or exam-level claim.
 
+The [customer service development batch](../supabase/content/customer_service.sql) adds one lesson with 20 senses and 40 typing exercises in two contexts per sense. It is AI-assisted original content, not official TOEIC material, and has not received independent language review. It is imported into hosted development at the owner's request; it must not be described as independently reviewed. Its SQL is insert-only and intentionally fails on ID collisions or a repeated import rather than overwriting existing content.
+
 This document specifies future authoring work. [PLAN.md](PLAN.md) locates the relevant phase tasks; [PROGRESS.md](PROGRESS.md) tracks execution. Content must satisfy [REQUIREMENTS.md](REQUIREMENTS.md), especially R03, R05, R10, and R21.
 
 ## 1. Unit of learning
