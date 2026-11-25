@@ -7,4 +7,5 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" \
   -f /dev-setup/migrations/20261125000100_private_access.sql \
   -f /dev-setup/seed.sql \
   -f /dev-setup/content/office_follow_up.sql \
-  -f /dev-setup/content/customer_service.sql
+  -f /dev-setup/content/customer_service.sql \
+  -f /dev-setup/content/toeic_topics.sql

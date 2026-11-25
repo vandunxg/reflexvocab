@@ -8,7 +8,7 @@ Start the Docker database with `docker compose up -d --wait`. It listens only on
 `127.0.0.1:55432` with database/user `reflexvocab` and the development-only
 password `reflexvocab-local`. Its named Docker volume persists data across
 container restarts. The first initialization applies the existing migrations and
-`supabase/seed.sql`, `supabase/content/office_follow_up.sql` and `supabase/content/customer_service.sql`; subsequent starts do not reapply changed files. Never use
+`supabase/seed.sql`, `supabase/content/office_follow_up.sql`, `supabase/content/customer_service.sql` and `supabase/content/toeic_topics.sql`; subsequent starts do not reapply changed files. Never use
 `docker compose down -v` unless intentionally discarding local data.
 
 The local `auth` schema only lets PostgreSQL apply and test the existing
@@ -86,7 +86,7 @@ psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 \
 
 If the local Supabase stack already applied the migrations, run only the fixtures. To retain the reviewed catalog in the disposable environment after checks, run `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/seed.sql -f supabase/content/office_follow_up.sql`. The batches do not write to learner tables. To check SQL without Supabase, a disposable PostgreSQL instance needs the API roles `anon`, `authenticated` and `service_role` (with `BYPASSRLS`), `auth.users` with a UUID primary key, and a minimal `auth.uid()` that reads the test claim. That substitute does not verify Supabase Auth or the Data API.
 
-For a fresh development database, the optional AI-assisted customer-service batch can be applied once with `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/content/customer_service.sql`. It fails on an existing ID, including a repeated import; check the target first and do not delete existing content or learner data to make it succeed.
+For a fresh development database, the optional AI-assisted customer-service batch can be applied once with `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/content/customer_service.sql`. It fails on an existing ID, including a repeated import; check the target first and do not delete existing content or learner data to make it succeed. The optional AI-assisted TOEIC topic batch (30 topics, 600 senses) is applied the same way with `supabase/content/toeic_topics.sql` and also fails if any of its headwords already exists in the catalog.
 
 The authorized hosted development project has had migrations through
 `20261125000700_public_sign_in_preview.sql` applied directly with `psql`.
