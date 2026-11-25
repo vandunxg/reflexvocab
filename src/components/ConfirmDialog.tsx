@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef } from 'react';
 
 /** Modal confirmation built on the native dialog element (focus containment and Escape included). */
-export function ConfirmDialog({ open, title, body, cancelLabel, confirmLabel, onCancel, onConfirm }: {
+export function ConfirmDialog({ open, title, body, cancelLabel, confirmLabel, onCancel, onConfirm, onDismiss = onCancel }: {
   open: boolean;
   title: string;
   body: string;
@@ -9,6 +9,8 @@ export function ConfirmDialog({ open, title, body, cancelLabel, confirmLabel, on
   confirmLabel: string;
   onCancel: () => void;
   onConfirm: () => void;
+  /** Escape; defaults to the cancel action. */
+  onDismiss?: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -23,7 +25,7 @@ export function ConfirmDialog({ open, title, body, cancelLabel, confirmLabel, on
       ref={ref}
       className="confirm-dialog"
       aria-labelledby={titleId}
-      onCancel={(event) => { event.preventDefault(); onCancel(); }}
+      onCancel={(event) => { event.preventDefault(); onDismiss(); }}
     >
       <h2 id={titleId}>{title}</h2>
       <p className="muted">{body}</p>

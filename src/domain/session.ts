@@ -44,7 +44,8 @@ function isWeak(progress: CardProgress): boolean {
   return progress.lastMistakeAt !== null && progress.masteryStage === 'learning';
 }
 
-function categorize(progress: CardProgress | undefined, now: Date): Category {
+/** The queue category a sense falls into now; Today's counts use the same rule as session building. */
+export function categorize(progress: CardProgress | undefined, now: Date): Category {
   if (!progress) return 'new';
   if (Date.parse(progress.card.dueAt) <= now.getTime()) return 'due';
   return isWeak(progress) ? 'weak' : 'practice';

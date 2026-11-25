@@ -6,9 +6,9 @@ import { MAX_QUESTION_BUDGET } from '../domain/session';
 import { Icon } from '../components/Icon';
 import { StartPractice } from '../components/StartPractice';
 import { LibraryRow, type LibraryEntry } from '../features/library/LibraryRow';
+import { levelName } from '../i18n';
 
 const STAGES: MasteryStage[] = ['new', 'learning', 'familiar', 'mastered'];
-const KNOWN_LEVELS = ['foundation', 'intermediate', 'advanced'] as const;
 const toggled = (set: Set<string>, id: string, present: boolean) => {
   const next = new Set(set);
   if (present) next.add(id);
@@ -48,7 +48,6 @@ export function LibraryPage() {
   }, [catalog, snapshot.cards]);
   const savedIds = useMemo(() => new Set(snapshot.bookmarks.map((bookmark) => bookmark.senseId)), [snapshot.bookmarks]);
   const levels = [...new Set(catalog.topics.map((topic) => topic.levelId))];
-  const levelName = (id: string) => ((KNOWN_LEVELS as readonly string[]).includes(id) ? t(`levels.${id as typeof KNOWN_LEVELS[number]}`) : id);
 
   const needle = fold(query.trim());
   const shown = entries.filter((entry) => (!needle || entry.search.includes(needle))
@@ -102,7 +101,7 @@ export function LibraryPage() {
         </select>
         <select className="library-select" aria-label={t('library.levelLabel')} value={levelId} onChange={(event) => setLevelId(event.target.value)}>
           <option value="">{t('library.allLevels')}</option>
-          {levels.map((id) => <option key={id} value={id}>{levelName(id)}</option>)}
+          {levels.map((id) => <option key={id} value={id}>{levelName(t, id)}</option>)}
         </select>
         <select className="library-select" aria-label={t('library.stageLabel')} value={stage} onChange={(event) => setStage(event.target.value as MasteryStage | '')}>
           <option value="">{t('library.allStages')}</option>
@@ -117,7 +116,7 @@ export function LibraryPage() {
       <section className="library-card" aria-labelledby="library-count">
         <div className="library-card-head">
           <h2 id="library-count" aria-live="polite">{t('library.count', { count: shown.length })}</h2>
-          {shownLevels.map((id) => <span key={id} className="level-badge">{levelName(id)}</span>)}
+          {shownLevels.map((id) => <span key={id} className="level-badge">{levelName(t, id)}</span>)}
           {selected.size > 0 && (
             <div className="library-selection" role="region" aria-label={t('library.selectionLabel')}>
               <span className="library-selection-count" role="status">{t('library.selected', { count: selected.size })}</span>
