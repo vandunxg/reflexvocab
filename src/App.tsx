@@ -6,6 +6,7 @@ import { createPrivateAuth } from './lib/auth';
 import { HomePage } from './pages/HomePage';
 import { LearnPage } from './pages/LearnPage';
 import { PracticePage } from './pages/PracticePage';
+import { ProgressPage } from './pages/ProgressPage';
 import { LessonCompletePage } from './pages/LessonCompletePage';
 import { LessonPage } from './pages/LessonPage';
 import { LibraryPage } from './pages/LibraryPage';
@@ -32,6 +33,7 @@ export default function App() {
               <Route index element={<HomePage />} />
               <Route path="learn" element={<LearnPage />} />
               <Route path="practice" element={<PracticePage />} />
+              <Route path="progress" element={<ProgressPage />} />
               <Route path="learn/lessons/:lessonId" element={<LessonPage />} />
               <Route path="library" element={<LibraryPage />} />
               <Route path="settings" element={<SettingsPage />} />

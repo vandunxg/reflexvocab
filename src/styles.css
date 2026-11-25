@@ -1528,6 +1528,40 @@ p {
   font-size: 17px;
 }
 
+.progress-page { display: grid; gap: 20px; }
+.progress-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
+.progress-stats > div, .progress-panel {
+  padding: 20px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+.progress-stats dt { color: var(--muted); }
+.progress-stats dd { margin: 4px 0 0; font: 800 30px/1.2 var(--font-heading); }
+.progress-panels { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+.progress-panel { min-width: 0; }
+.progress-panel h2 { margin: 0 0 12px; }
+.progress-panel p { margin: 6px 0; }
+.progress-stages, .progress-history { list-style: none; margin: 0; padding: 0; }
+.progress-stages li { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.progress-stages li > span { flex: 0 0 100px; }
+.progress-stage-bar { flex: 1; height: 12px; border-radius: 99px; background: #f0eee8; overflow: hidden; }
+.progress-stage-bar span { display: block; height: 100%; border-radius: inherit; }
+.progress-stage-new { background: #b9b6ab; }
+.progress-stage-learning { background: #ffcf3d; }
+.progress-stage-familiar { background: #3d57e6; }
+.progress-stage-mastered { background: #2fc66b; }
+.progress-history-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.progress-history-head a { font-weight: 700; }
+.progress-history li { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 12px 0; border-top: 1px solid var(--border); }
+.progress-history li > span:not(.tag) { flex: 1 1 180px; }
+.progress-history time { color: var(--muted); font-size: 14px; }
+@media (max-width: 600px) {
+  .progress-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .progress-panels { grid-template-columns: 1fr; }
+  .progress-stats > div, .progress-panel { padding: 16px; }
+}
+
 .practice-page {
   display: grid;
   gap: 28px;
