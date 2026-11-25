@@ -1,8 +1,9 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Brand } from '../components/Brand';
 import { Icon } from '../components/Icon';
 import type { PrivateAuth } from '../lib/auth';
+import { loadSignInPreview, type SignInPreview } from '../lib/preview';
 
 type SignInError = 'required' | 'unauthenticated' | 'unavailable';
 
@@ -11,6 +12,13 @@ export function SignInPage({ auth }: { auth: PrivateAuth }) {
   const { t } = useTranslation();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<SignInError | null>(null);
+  const [preview, setPreview] = useState<SignInPreview | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    loadSignInPreview(auth.client).then((value) => { if (active) setPreview(value); }).catch(() => undefined);
+    return () => { active = false; };
+  }, [auth]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,19 +51,15 @@ export function SignInPage({ auth }: { auth: PrivateAuth }) {
           <span className="shape shape-ring" />
         </div>
         <Brand />
-        <div className="signin-sample" aria-hidden="true">
+        {preview && <div className="signin-sample" aria-hidden="true">
           <div className="signin-sample-meta">
-            <span className="signin-sample-topic">{t('signIn.sampleTopic')}</span>
-            <span>{t('signIn.sampleProgress')}</span>
+            <span className="signin-sample-topic">{preview.topic}</span>
           </div>
-          <p lang="en" className="signin-sample-prompt">{t('signIn.samplePrompt')}</p>
+          <p lang="en" className="signin-sample-prompt">{preview.prompt}</p>
           <div className="signin-sample-options" lang="en">
-            <span>attend</span>
-            <span className="is-correct">postpone</span>
-            <span>confirm</span>
-            <span>agenda</span>
+            {preview.choices.map((choice, index) => <span key={`${index}-${choice}`}>{choice}</span>)}
           </div>
-        </div>
+        </div>}
         <div className="signin-hero-copy">
           <p className="signin-hero-title">{t('signIn.heroTitle')}</p>
           <p className="signin-hero-body">{t('signIn.heroBody')}</p>

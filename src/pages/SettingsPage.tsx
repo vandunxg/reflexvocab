@@ -8,8 +8,6 @@ import { Select } from '../components/Select';
 import { Icon } from '../components/Icon';
 import { audio, useEnglishVoices } from '../features/audio/audio';
 
-// Spoken sample for "Try voice"; English learning audio, so it is not translated.
-const VOICE_SAMPLE = 'Please attach the invoice to your email.';
 const RATE_MIN = 0.6;
 const RATE_MAX = 1.2;
 const LOCALES: InterfaceLocale[] = ['en', 'vi'];
@@ -21,7 +19,7 @@ const withSaved = <T,>(options: readonly T[], saved: T) => (options.includes(sav
 /** Settings (`/settings`): study habit, interface language, English voice and the account section. */
 export function SettingsPage() {
   const { t, i18n } = useTranslation();
-  const { auth, repository, settings, applySettings } = useLearning();
+  const { auth, catalog, repository, settings, applySettings } = useLearning();
   const voices = useEnglishVoices();
   const [minutes, setMinutes] = useState(settings.dailyMinutes);
   const [newPerDay, setNewPerDay] = useState(settings.newPerDay);
@@ -36,6 +34,7 @@ export function SettingsPage() {
   useEffect(() => () => audio.stop(), []);
 
   const canSpeak = audio.supported && voices.length > 0;
+  const voiceSample = catalog.contexts[0]?.example;
   const voiceMissing = voiceId !== null && canSpeak && !voices.some((voice) => voice.id === voiceId);
   const draft: Partial<UserSettings> = { dailyMinutes: minutes, newPerDay, timezone, locale, voiceId, speechRate: rate };
   // Only changed fields are sent, so a save never overwrites a value this form did not touch.
@@ -66,9 +65,10 @@ export function SettingsPage() {
       audio.stop();
       return;
     }
+    if (!voiceSample) return;
     setSample('playing');
     try {
-      await audio.speak(VOICE_SAMPLE, { voiceId, rate });
+      await audio.speak(voiceSample, { voiceId, rate });
       setSample('idle');
     } catch {
       setSample('failed');
@@ -180,10 +180,10 @@ export function SettingsPage() {
           />
         </div>
         <div className="settings-row settings-row-start">
-          <button type="button" className="btn btn-secondary" disabled={!canSpeak} aria-pressed={sample === 'playing'} onClick={trySample}>
+          <button type="button" className="btn btn-secondary" disabled={!canSpeak || !voiceSample} aria-pressed={sample === 'playing'} onClick={trySample}>
             {sample === 'playing' ? t('settings.audio.stop') : t('settings.audio.try')}
           </button>
-          <p className="settings-hint">{sample === 'failed' ? t('settings.audio.failed') : t('settings.audio.note')}</p>
+          <p className="settings-hint">{sample === 'failed' ? t('settings.audio.failed') : !voiceSample ? t('settings.audio.noSample') : t('settings.audio.note')}</p>
         </div>
       </section>
 

@@ -89,7 +89,7 @@ If the local Supabase stack already applied the migrations, run only the fixture
 For a fresh development database, the optional AI-assisted customer-service batch can be applied once with `psql "$DEV_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f supabase/content/customer_service.sql`. It fails on an existing ID, including a repeated import; check the target first and do not delete existing content or learner data to make it succeed.
 
 The authorized hosted development project has had migrations through
-`20261125000600_spaced_retry_queue.sql` applied directly with `psql`.
+`20261125000700_public_sign_in_preview.sql` applied directly with `psql`.
 It has no Supabase CLI migration-history table. Reconcile migration history
 before using CLI migration commands there; blindly replaying these files will
 fail on existing objects. The new SQL functions were checked with rolled-back
